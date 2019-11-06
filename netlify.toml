@@ -1,0 +1,4 @@
+[build]
+base = "memefly/"
+publish = "memefly/build/"
+command = "yarn build"
