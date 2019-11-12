@@ -1,15 +1,23 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import {Route, Switch} from 'react-router-dom';
 import './App.css';
 import MemeMain from './components/MemeMain';
-import MainNav from './components/NavLoggedOut';
+import MainNavLoggedOut from './Navigation/NavLoggedOut';
+import MainNavLoggedIn from './Navigation/NavLoggedIn'
 
 function App() {
   
   return (
     <>
-    <MainNav />
-    <MemeMain />
+    <Switch>
+      <Route exact path="/" component={MemeMain} />
+
+
+    </Switch>
+    <MainNavLoggedOut />
+    <MainNavLoggedIn />
+    {/* <MemeMain /> */}
     </>
   );
 }
