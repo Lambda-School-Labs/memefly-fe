@@ -1,14 +1,15 @@
-import React from 'react';
+// import React from 'react';
+// import NavLoggedIn from './NavLoggedIn';
+// import NavLoggedOut from './NavLoggedOut';
 
-const NavCondition = () => {
-    const navTest = localStorage.getItem("token");
+// const NavCondition = () => {
+//     const navTest = localStorage.getItem("token");
 
-    if (test === null) {
-        return <LoggedOut />
-        
-    }else {
-        return <LoggedIn />
-    }
-}
+//     if (navTest === null) {
+//         return <NavLoggedOut />
+//     }else {
+//         return <NavLoggedIn />
+//     }
+// }
 
-export default NavCondition;
+// export default NavCondition;
