@@ -9,34 +9,39 @@ class SignupForm extends React.Component {
     super(props);
     this.state = {
       cookies: props.cookies,
+      isLoading: false,
       newSignup: {
         username: "",
         email: "",
-        password: ""
-      }
+        password: "",
+        firstName:"",
+        lastName:""
+      },
+      error: { status: false, message: "" }
     };
   }
 
-  componentDidMount() {
-    let d = new Date();
-    d.setTime(d.getTime() + 1440 * 60 * 1000);
-    this.state.cookies.set("_uid", "hello", { expires: d });
-    console.log(this.state.cookies.get("_uid"));
-  }
-
-  SignupForm = e => {
+  signupHandler = e => {
     e.preventDefault();
-    console.log("fired");
+    this.setState({
+      ...this.state,
+      isLoading: true
+    });
     axios
-      .post("https://memefly.herokuapp.com/api/register", this.state.newSignup)
+      .post("https://memefly.herokuapp.com/api/register",
+      this.state.newSignup
+      )
       .then(res => {
-        console.log(res);
-
         this.state.cookies.set("_uid", res.data.token);
         this.props.history.push("/");
       })
       .catch(error => {
         console.log(error);
+        this.setState({
+          ...this.state,
+          isLoading: false,
+          error: { status: true, message: "Sorry but That name is taken." }
+        });
       });
   };
 
@@ -86,6 +91,28 @@ class SignupForm extends React.Component {
                 name="password"
                 onChange={this.onChange}
                 value={this.password}
+                className="form-control"
+              />
+            </div>
+
+            <div className="input">
+              <label className="control-label">firstName</label>
+              <input
+                type="text"
+                name="firstName"
+                onChange={this.onChange}
+                value={this.firstName}
+                className="form-control"
+              />
+            </div>
+
+            <div className="input">
+              <label className="control-label">lastName</label>
+              <input
+                type="text"
+                name="lastName"
+                onChange={this.onChange}
+                value={this.lastName}
                 className="form-control"
               />
             </div>
