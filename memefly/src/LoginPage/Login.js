@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 //import { withCookies } from "react-cookie";
 
 import { Container, Row, Col, Input, Button, Alert, Spinner } from "reactstrap";
@@ -12,6 +12,7 @@ class Login extends React.Component {
       isLoading: false,
       credentials: {
         username: "",
+        email: "",
         password: ""
       },
       error: { status: false, message: "" }
@@ -24,16 +25,33 @@ class Login extends React.Component {
       ...this.state,
       isLoading: true
     });
-    axios
-      .post(
-        "https://memefly.herokuapp.com/api/user/login",
-        this.state.credentials
-      )
+
+    const axios = require("axios");
+
+    axios({
+      url: "https://memefly.herokuapp.com/api/user",
+      method: "post",
+      data: {
+        query: `{
+        login(email:"${null}", password:"${null}")
+     }
+       `
+      }
+      // }).then(result => {
+      //   console.log(result.data);
+      // });
+
+      //   .post(
+      //     "https://memefly.herokuapp.com/api/user/login",
+      //     this.state.credentials
+      //   )
+    })
       .then(res => {
         this.setState({
           ...this.state,
           credentials: {
             username: "",
+            email: "",
             password: ""
           }
         });
@@ -83,6 +101,14 @@ class Login extends React.Component {
                 name="username"
                 placeholder="Username"
                 value={this.state.credentials.username}
+                onChange={this.handleChange}
+              />
+              <br />
+              <Input
+                type="text"
+                name="email"
+                placeholder="email"
+                value={this.state.credentials.email}
                 onChange={this.handleChange}
               />
               <br />

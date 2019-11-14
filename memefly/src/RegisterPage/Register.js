@@ -66,7 +66,7 @@ class Register extends React.Component {
             ) : null}
             <form onSubmit={this.signupHandler}>
               <div onClick={this.logout}>
-                <h2>Login to</h2>
+                <h2>Register to</h2>
                 <h1>MemeFLY!</h1>
               </div>
               <Input
@@ -101,7 +101,7 @@ class Register extends React.Component {
             </form>
             <div>
               <h3>Login to account </h3>
-              <Link to="/">Login</Link>
+              <Link to="/login">Login</Link>
             </div>
           </Col>
         </Row>
