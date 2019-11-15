@@ -30,7 +30,7 @@ class Register extends React.Component {
       method: "post",
       data: {
         query: `{
-        login(email:"${null}", password:"${null}")
+        login(email:"", password:"")
      }
        `
       }
@@ -40,6 +40,7 @@ class Register extends React.Component {
       //   this.state.newSignup
       // )
       .then(res => {
+        console.log(res);
         this.state.set("_uid", res.data.token);
         this.props.history.push("/");
       })

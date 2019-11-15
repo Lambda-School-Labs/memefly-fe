@@ -12,7 +12,7 @@ class Login extends React.Component {
       isLoading: false,
       credentials: {
         username: "",
-        email: "",
+        //email: "",
         password: ""
       },
       error: { status: false, message: "" }
@@ -22,8 +22,8 @@ class Login extends React.Component {
   login = e => {
     e.preventDefault();
     this.setState({
-      ...this.state,
-      isLoading: true
+      ...this.state
+      //isLoading: true
     });
 
     const axios = require("axios");
@@ -32,8 +32,8 @@ class Login extends React.Component {
       url: "https://memefly.herokuapp.com/api/user",
       method: "post",
       data: {
-        query: `{
-        login(email:"${null}", password:"${null}")
+        query: `query{
+        login(username:"", password:"")
      }
        `
       }
@@ -48,15 +48,16 @@ class Login extends React.Component {
       //   )
 
       .then(res => {
+        console.log(res);
         this.setState({
           ...this.state,
           credentials: {
             username: "",
-            email: "",
+            //email: "",
             password: ""
           }
         });
-        this.state.set("_uid", res.data.token);
+        // this.state.set("_uid", res.data.token);
         this.props.history.push("/login");
       })
       .catch(err => {
@@ -104,14 +105,14 @@ class Login extends React.Component {
                 value={this.state.credentials.username}
                 onChange={this.handleChange}
               />
-              <br />
+              {/* <br />
               <Input
                 type="text"
                 name="email"
                 placeholder="email"
                 value={this.state.credentials.email}
                 onChange={this.handleChange}
-              />
+              /> */}
               <br />
               <Input
                 type="password"
