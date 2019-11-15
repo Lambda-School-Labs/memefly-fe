@@ -25,11 +25,20 @@ class Register extends React.Component {
       ...this.state,
       isLoading: true
     });
-    axios
-      .post(
-        "https://memefly.herokuapp.com/api/user/register",
-        this.state.newSignup
-      )
+    axios({
+      url: "https://memefly.herokuapp.com/api/user",
+      method: "post",
+      data: {
+        query: `{
+        login(email:"${null}", password:"${null}")
+     }
+       `
+      }
+    })
+      // .post(
+      //   "https://memefly.herokuapp.com/api/user/register",
+      //   this.state.newSignup
+      // )
       .then(res => {
         this.state.set("_uid", res.data.token);
         this.props.history.push("/");

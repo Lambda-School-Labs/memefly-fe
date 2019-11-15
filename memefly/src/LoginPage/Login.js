@@ -37,6 +37,7 @@ class Login extends React.Component {
      }
        `
       }
+    })
       // }).then(result => {
       //   console.log(result.data);
       // });
@@ -45,7 +46,7 @@ class Login extends React.Component {
       //     "https://memefly.herokuapp.com/api/user/login",
       //     this.state.credentials
       //   )
-    })
+
       .then(res => {
         this.setState({
           ...this.state,
