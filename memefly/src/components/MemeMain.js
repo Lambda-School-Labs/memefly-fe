@@ -8,12 +8,24 @@ const MemeMain = () => {
   );
   const [rankUrl, setRankUrl] = useState([]);
 
+
+  // Returns Dimensions of called Image 
+  function getDimensions(url){   
+    var img = new Image();
+    img.addEventListener("load", function(){
+        console.log( 'width: ' + this.naturalWidth + 'px' +' '+  'height: ' +  this.naturalHeight + 'px' );
+    });
+    img.src = url;
+  }
+
+  console.log("Image Dimensions", getDimensions(memeURL));
+
   const handleChange = e => {
     setSearch(e.target.value);
     console.log("search", search);
     //{**TO DO**} Make sure this changes and is dynamically added to a search function
   };
-
+  
   const searchIncludes = search => {
     axios
       .get("URL 'INCLUDES' ENDPOINT FOR SEARCH FUNCTION"`${search}`)
@@ -60,6 +72,7 @@ const MemeMain = () => {
       });
   }, []);
 
+
   // For each item in the res, check to see if the count is <= 5, if so render an img with src of res.data.url
   ////////////////////////////////////////////////////////
   rankUrl.map(item => {
@@ -69,7 +82,9 @@ const MemeMain = () => {
   return (
     <div className="MainContainer">
         <div className="MemeContainer">
-            <img src={memeURL} className="mainmeme" />
+
+            <img src={memeURL} className="mainmeme" style={{maxWidth:'500px'}}/>
+            
             <button onClick={generateMeme} id="mainGenerateButton">
             GENERATE MEME
             </button>
