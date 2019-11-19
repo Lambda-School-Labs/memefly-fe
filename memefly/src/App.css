@@ -1,9 +1,25 @@
+
+/* Font Files */
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700,800,900|Roboto:400,500,500i,700,900&display=swap');
+
+/* font-family: 'Nunito', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+/* Style Info */
+/* Corner Radius: 6px; */
+
+/* Page Fonts are set here as variables for easy change */
+:root{
+  --title-Font:'Roboto', sans-serif;
+  --body-Font: 'Nunito', sans-serif;
+}
+
+
 main {
   align-content: center;
   box-sizing: border-box;
   display: grid;
-  font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
-    'Arial', sans-serif;
+  font-family: 'Nunito';
   hyphens: auto;
   line-height: 1.65;
   margin: 0 auto;
@@ -11,6 +27,7 @@ main {
   min-height: 100vh;
   padding: 72px 0;
   text-align: center;
+  background-color: #0E1111;
 }
 h1 {
   font-size: 45px;
@@ -26,13 +43,17 @@ p {
   font-size: 16px;
 }
 a {
-  color: goldenrod;
-  cursor: crosshair;
+  cursor: pointer;
   text-decoration: none;
   padding: 10px;
   margin: 5px;
   min-width: 10rem;
+
+  font-family: var(--body-Font);
   text-align: center;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 18px;
 }
 a:hover {
   border-bottom: 4px solid #0076ff;
@@ -53,37 +74,58 @@ code:after {
 max-width: 45%;
 padding-top: 40px;
 }
-.MemeContainer{
-  max-width: 50%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-}
+
 .MainContainer{
+
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  background-color: rgb(255, 245, 100);
+  background-color :#0E1111;
 
 }
+
+.MemeContainer{
+  max-width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column; 
+
+  background: linear-gradient(123.9deg, #C75C8C -11.73%, #1A61CB 48.53%, rgba(203, 58, 26, 0.65) 111.36%);
+  /* border: 1px solid white; */
+  border-radius: 6px;
+}
+
+
 .navlogo{
-  width:100px;
+  width:50%;
   align-content: flex-start;
 }
 .linkContainer{
   display: flex;
   justify-content: space-around;
 }
+
 .MidPageNav{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   width:100%;
-  border-bottom: 2px solid black;
+  /* border-bottom: 2px solid black; */
 }
+
+.trendingMemeContainer{
+  width: 95%;
+  margin: 1% auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: rgba(253, 253, 254, 0.2);
+  border-radius: 6px;
+}
+
 .trendingMemeUrlContainer{
 max-width: 10rem;
 padding:10px;
@@ -98,27 +140,46 @@ background-color: rgb(152, 248, 255);
   /* padding: 10px; */
   max-width: 80%;
 }
-.trendingMemeContainer{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  max-width: 800px;
-}
+
+/* NAVIGATION STYLING */
 nav{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-content: space-around;
-  background-color: black;
+  background-color: #0E1111;
   width: 100%;
+}
+
+.navWrap{
+  width:90%;
+  display: flex;
+  flex-direction: row;
 }
 #generateMeme{
   border: 3px solid gold;
   border-radius: 4px;
+
+  
 }
 #mainGenerateButton{
   margin-top: 40px;
-  padding: 10px;
-  border: 3px solid gold;
-  border-radius: 4px;
+  padding: 10px; 
+  width:364px;
+
+  background-color: transparent;
+  border: 2px solid #FDFDFE;
+  border-radius: 6px;
+
+  color: #FDFDFE;
+  font-family: var(--body-Font);
+  font-style: Bold;
+
+}
+
+#canvas{
+  /* position: absolute; */
+  /* padding-top: 40px; */
+  margin: 10% auto;
+
 }

@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       {/* ******** Navs Placed here to build them out with out auth restrictions ********** */}
-      \{/* ******** Will be moved to Nav Condition when ready ************** */}
+      {/* ******** Will be moved to Nav Condition when ready ************** */}
       {/* <MainNavLoggedOut /> */}
       <MainNavLoggedIn />
       <Switch>

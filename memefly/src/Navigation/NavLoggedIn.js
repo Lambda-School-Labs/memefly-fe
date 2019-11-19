@@ -20,25 +20,27 @@ class Navigation extends React.Component {
   render() {
     return (
       <nav className="nav">
-        <div className="logoContainer">
-          <img
-            src="https://i.ibb.co/bNbhmXY/Meme-Fly-Crooked-Logo-White.png"
-            className="navlogo"
-          />
-        </div>
+        <div className="navWrap">
+          <div className="logoContainer">
+            <img
+              src="https://i.ibb.co/bNbhmXY/Meme-Fly-Crooked-Logo-White.png"
+              className="navlogo"
+            />
+          </div>
 
-        <div className="linkContainer">
-          <a href="url" id="generateMeme">
-            Generate a Meme
-          </a>
-          <a href="url">Learn More</a>
-          <a href="/login">Log-IN</a>
-          <a href="/register">Register</a>
-          <a> Dynamic usernanme here </a>
+          <div className="linkContainer">
+            <a href="url" id="generateMeme">
+              Generate a Meme
+            </a>
+            <a href="url">Learn More</a>
+            <a href="/login">Log-IN</a>
+            <a href="/register">Register</a>
+            <a> Dynamic usernanme here </a>
+          </div>
+          <nav className="logout" onClick={this.state.handleChange} to="/">
+            Log Out
+          </nav>
         </div>
-        <nav className="logout" onClick={this.state.handleChange} to="/">
-          Log Out
-        </nav>
       </nav>
     );
   }
