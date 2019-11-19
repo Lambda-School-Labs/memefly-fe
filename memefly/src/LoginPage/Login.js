@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-//import axios from "axios";
+import axios from "axios";
 //import { withCookies } from "react-cookie";
 
 import { Container, Row, Col, Input, Button, Alert, Spinner } from "reactstrap";
@@ -19,21 +19,21 @@ class Login extends React.Component {
     };
   }
 
-  login = e => {
+  login = e => (email, password) => {
     e.preventDefault();
     this.setState({
       ...this.state
       //isLoading: true
     });
 
-    const axios = require("axios");
+    //const axios = require("axios");
 
     axios({
       url: "https://memefly.herokuapp.com/api/user",
       method: "post",
       data: {
-        query: `query{
-        login(username:"", password:"")
+        query: `{
+        login(email:"${email}", password:"${password}")
      }
        `
       }

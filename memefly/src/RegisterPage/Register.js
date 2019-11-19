@@ -19,7 +19,7 @@ class Register extends React.Component {
     };
   }
 
-  signupHandler = e => {
+  signupHandler = e => (email, username, password) => {
     e.preventDefault();
     this.setState({
       ...this.state,
@@ -29,8 +29,9 @@ class Register extends React.Component {
       url: "https://memefly.herokuapp.com/api/user",
       method: "post",
       data: {
-        query: `{
-        login(email:"", password:"")
+        query: `
+        mutation{
+          register(email:"${email}", username:"${username}" password:"${password}")
      }
        `
       }
@@ -74,7 +75,14 @@ class Register extends React.Component {
             {this.state.error.status ? (
               <Alert color="danger"> {this.state.error.message} </Alert>
             ) : null}
-            <form onSubmit={this.signupHandler}>
+            <form
+              onSubmit={e =>
+                this.signupHandler(e)(
+                  this.state.newSignup.email,
+                  this.state.newSignup.password
+                )
+              }
+            >
               <div onClick={this.logout}>
                 <h2>Register to</h2>
                 <h1>MemeFLY!</h1>
