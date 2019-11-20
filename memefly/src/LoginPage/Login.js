@@ -15,12 +15,13 @@ class Login extends React.Component {
         //email: "",
         password: ""
       },
-      error: { status: false, message: "" }
+      error: { status: false, message: "error" }
     };
   }
 
   login = e => (username, password) => {
     e.preventDefault();
+    console.log(`${username}: ${password}`);
     this.setState({
       ...this.state
       //isLoading: true
@@ -93,12 +94,19 @@ class Login extends React.Component {
             {this.state.error.status ? (
               <Alert color="danger">{this.state.error.message}</Alert>
             ) : null}
-            <form onSubmit={this.login}>
+            <form
+              onSubmit={e =>
+                this.login(e)(
+                  this.state.credentials.username,
+                  this.state.credentials.password
+                )
+              }
+            >
               <div onClick={this.logout}>
                 <h2>Login to</h2>
                 <h1>MemeFLY</h1>
               </div>
-              <input
+              <Input
                 type="text"
                 name="username"
                 placeholder="Username"
@@ -114,7 +122,7 @@ class Login extends React.Component {
                 onChange={this.handleChange}
               /> */}
               <br />
-              <input
+              <Input
                 type="password"
                 name="password"
                 placeholder="Password"
