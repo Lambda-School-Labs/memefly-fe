@@ -1,50 +1,74 @@
 import React, { useState, useEffect, Context, useRef } from "react";
 import axios from "axios";
+import DisplayTemplates from "../ImgEditor/DisplayTemplates";
 
 const MemeMain = () => {
   const [search, setSearch] = useState("");
   const [allMemes, setAllMemes] = useState([]);
-  const [memeData, setMemeData] = useState("https://i.ibb.co/g911kmh/phone-meme.jpg");
+  const [memeData, setMemeData] = useState({url: "https://i.ibb.co/g911kmh/phone-meme.jpg"});
   const [rankUrl, setRankUrl] = useState([]);
   const [memeText, setMemeText] = useState("");
+  const [fontSize, setFontSize] = useState(1000);
 
     const canvas = useRef(null);
 
   // Places Text on image
-  function imageOverlay() {
-    console.log("Inside Image Overlay");
+    function imageOverlay() {
+      console.log("Inside Image Overlay");
 
-    console.log("current", canvas.current);
+      console.log("current", canvas.current);
+      const ctx = canvas.current.getContext("2d");
 
-    const ctx = canvas.current.getContext("2d");
+      ctx.fillStyle = "Red";
+      ctx.strokeStyle = "Black";    
+      var textMeasure = ctx.measureText(memeData.name) //change dynamically
 
-    ctx.fillStyle = "Red";
-    ctx.strokeStyle = "Black";
-    ctx.font = "100px Impact";
-    ctx.fillText("Chicken", 50, 125);   
-  }
+      var test = ctx.fillText(memeData.name, 50, 125);   
 
-  const max_width = "500px";
-  function renderImage(src) {
+
+      ctx.font = `${fontSize}px Impact`;
+    
+      console.log("%c memeData: ", 'background: #222; color: #bada55', memeData.name)
+
+      // Adjust Font if Width is too big
+      var textWidth=textMeasure.width;//335.83984375  Same every time for "Chicken"
+      // var textHeight=textMeasure.height; //undefined
+      console.log("Text Measurements: ", textWidth); 
+
+      const textSize=()=>{
+      if(textWidth>max_width){
+        setFontSize(fontSize -200);
+      }else{
+        return
+      }  // then reduce the font size and re-measure
+      }
+      textSize();
+   } 
+
+
     var image = new Image();
 
-    // This Takes in the image and constrains it to a max width of 500px
-    image.onload = function() {
-      var canvas = document.getElementById("canvas");///
-      if (image.width > max_width) {
-        image.height *= max_width / image.height;
-        image.width = max_width;
-      }
-
-    // This makes a canvas on top of the image that matches the width and height of the image 
-      let ctx = canvas.getContext("2d");
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      canvas.width = image.width;
-      canvas.height = image.height;
-      ctx.drawImage(image, 0, 0, image.width, image.height);
-    };
-    image.src = src;
-  }
+    const  max_width = '500px';
+    function renderImage(src) {
+      var image = new Image();
+  
+      // This Takes in the image and constrains it to a max width of 500px
+      image.onload = function() {
+        var canvas = document.getElementById("canvas");///
+        if (image.width > max_width) {
+          image.height *= max_width / image.height;
+          image.width = max_width;
+        }
+  
+      // This makes a canvas on top of the image that matches the width and height of the image 
+        let ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.width = image.width;
+        canvas.height = image.height;
+        ctx.drawImage(image, 0, 0, image.width, image.height);
+      };
+      image.src = src;
+    }
 
   const handleChange = e => {
     setSearch(e.target.value);
@@ -84,11 +108,11 @@ const MemeMain = () => {
         setAllMemes(res.data.data.getMemes)
       })
 },[])
-
+ 
   const generateMeme = () => {
     let randomNumber = Math.floor(Math.random() * 104);
     console.log("ALL MEMES HERE", allMemes[randomNumber]);
-    setMemeData(allMemes[randomNumber].url)
+    setMemeData(allMemes[randomNumber])
     setTimeout(imageOverlay, 500);
 
   };
@@ -143,7 +167,7 @@ const MemeMain = () => {
         "http://version1.api.memegenerator.net//Generators_Select_ByNew?pageIndex=0&pageSize=12&apiKey=demo"
       )
       .then(res => {
-        console.log(res.data.result);
+        // console.log(res.data.result);
         setRankUrl(res.data.result);
       })
       .catch(error => {
@@ -161,58 +185,26 @@ const MemeMain = () => {
     <div className="MainContainer">
       <div className="MemeContainer">
         <div id="imageGroup">
+          {/* Place Div here  and incoming Text from DS  */}
+          {/* Div Props will have variety of pointer events:  */}
           <canvas
             ref={canvas}
             id="canvas"
             style={{ width: "500px", display: "hidden" }}
-
           >
-            {renderImage(memeData)}{" "}
+            {renderImage(memeData.url)}{" "}
 
           </canvas>
         </div>
 
         <button onClick={generateMeme} id="mainGenerateButton" >GENERATE MEME</button>
 
+        <>
+        <DisplayTemplates />    
+        </>
 
-      
-
-        {/* <button > Add Text Box</button> */}
-
-        <div className="trendingMeme">
-          {/* {**TO DO** HERE IS WHERE WE WILL MAP THE TOP 5 RANKINGS} */}
-          <div className="trendingMemeContainer">
-            <div className="MidPageNav">
-              <h4>Trending Images</h4>
-              <form>
-                <input
-                  type="text"
-                  className="SearchField"
-                  placeholder="Search"
-                  value={search}
-                  onChange={handleChange}
-                />
-                <button onSubmit={searchIncludes}>SEARCH</button>
-              </form>
-            </div>
-
-            {rankUrl.slice(0, 5).map(item => {
-              return (
-                <div key={item.imageID} className="trendingmemeDataContainer">
-                  <img
-                    src={item.imageUrl}
-                    alt="trending"
-                    className="trendingmemeData"
-                  />
-                  <h4>{item.displayName}</h4>
-                  <h4>Total Votes: {item.entityVotesSummary.totalVotesSum}</h4>
-                </div>
-              );
-            })}
-          </div>
-        </div>
       </div>
-    </div>
-  );
-};
-export default MemeMain;
+  </div> )
+  }
+
+ export default MemeMain;
