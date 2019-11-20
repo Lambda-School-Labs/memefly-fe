@@ -19,7 +19,7 @@ class Login extends React.Component {
     };
   }
 
-  login = e => (email, password) => {
+  login = e => (username, password) => {
     e.preventDefault();
     this.setState({
       ...this.state
@@ -33,7 +33,7 @@ class Login extends React.Component {
       method: "post",
       data: {
         query: `{
-        login(email:"${email}", password:"${password}")
+        login(username:"${username}", password:"${password}")
      }
        `
       }
@@ -43,7 +43,7 @@ class Login extends React.Component {
       // });
 
       //   .post(
-      //     "https://memefly.herokuapp.com/api/user/login",
+      //     "https://memefly.herokuapp.com/api/user",
       //     this.state.credentials
       //   )
 
@@ -98,7 +98,7 @@ class Login extends React.Component {
                 <h2>Login to</h2>
                 <h1>MemeFLY</h1>
               </div>
-              <Input
+              <input
                 type="text"
                 name="username"
                 placeholder="Username"
@@ -114,7 +114,7 @@ class Login extends React.Component {
                 onChange={this.handleChange}
               /> */}
               <br />
-              <Input
+              <input
                 type="password"
                 name="password"
                 placeholder="Password"
