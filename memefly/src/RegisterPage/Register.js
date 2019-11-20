@@ -91,24 +91,24 @@ class Register extends React.Component {
                 type="text"
                 name="username"
                 placeholder="Username"
-                value={this.username}
-                onChange={this.onChange}
+                value={this.state.newSignup.username}
+                onChange={this.handleChange}
               />
               <br />
               <Input
                 type="text"
                 name="email"
                 placeholder="Email"
-                value={this.email}
-                onChange={this.onChange}
+                value={this.state.newSignup.email}
+                onChange={this.handleChange}
               />
               <br />
               <Input
                 type="password"
                 name="password"
                 placeholder="Password"
-                onChange={this.onChange}
-                value={this.password}
+                onChange={this.handleChange}
+                value={this.state.newSignup.password}
               />
               <br />
               {this.state.isLoading ? (

@@ -15,12 +15,13 @@ class Login extends React.Component {
         //email: "",
         password: ""
       },
-      error: { status: false, message: "" }
+      error: { status: false, message: "error" }
     };
   }
 
-  login = e => (email, password) => {
+  login = e => (username, password) => {
     e.preventDefault();
+    console.log(`${username}: ${password}`);
     this.setState({
       ...this.state
       //isLoading: true
@@ -33,7 +34,7 @@ class Login extends React.Component {
       method: "post",
       data: {
         query: `{
-        login(email:"${email}", password:"${password}")
+        login(username:"${username}", password:"${password}")
      }
        `
       }
@@ -43,7 +44,7 @@ class Login extends React.Component {
       // });
 
       //   .post(
-      //     "https://memefly.herokuapp.com/api/user/login",
+      //     "https://memefly.herokuapp.com/api/user",
       //     this.state.credentials
       //   )
 
@@ -93,7 +94,14 @@ class Login extends React.Component {
             {this.state.error.status ? (
               <Alert color="danger">{this.state.error.message}</Alert>
             ) : null}
-            <form onSubmit={this.login}>
+            <form
+              onSubmit={e =>
+                this.login(e)(
+                  this.state.credentials.username,
+                  this.state.credentials.password
+                )
+              }
+            >
               <div onClick={this.logout}>
                 <h2>Login to</h2>
                 <h1>MemeFLY</h1>
