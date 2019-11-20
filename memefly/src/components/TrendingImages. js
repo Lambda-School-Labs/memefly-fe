@@ -1,0 +1,30 @@
+        {/* <button > Add Text Box</button> */}
+        {/* <div className="trendingMeme">
+          <div className="trendingMemeContainer">
+            <div className="MidPageNav">
+              <h4>Select a Template</h4>
+              <form>
+                <input
+                  type="text"
+                  className="SearchField"
+                  placeholder="Search"
+                  value={search}
+                  onChange={handleChange}
+                />
+                <button onSubmit={searchIncludes}>SEARCH</button>
+              </form>
+            </div>
+
+            {rankUrl.slice(0, 5).map(item => {
+              return (
+                <div key={item.imageID} className="trendingmemeDataContainer">
+                  <img
+                    src={item.imageUrl}
+                    alt="trending"
+                    className="trendingmemeData"
+                  />
+                  <h4>{item.displayName}</h4>
+                  <h4>Total Votes: {item.entityVotesSummary.totalVotesSum}</h4>
+                </div>
+              );
+            })}*
