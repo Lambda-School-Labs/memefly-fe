@@ -2,6 +2,7 @@ import React, { useState, useEffect, Context, useRef } from "react";
 import axios from "axios";
 import DisplayTemplates from "../ImgEditor/DisplayTemplates";
 import {Meme} from "../ImgEditor/Meme";
+import html2canvas from 'html2canvas';
 
 const MemeMain = () => {
   const [search, setSearch] = useState("");
@@ -154,6 +155,13 @@ const MemeMain = () => {
     setMemeData(allMemes[randomNumber])
     setTimeout(imageOverlay, 500);
   };
+  // const saveMeme=()=>{
+  //   html2canvas(document.querySelector('#kitten')).then(function(canvas){
+  //     document.querySelector("#canvas").appendChild(canvas);
+  //     console.log("insideSaveMeme")
+
+  //   });
+  // }
 
 
   return (
@@ -174,6 +182,9 @@ const MemeMain = () => {
         <button onClick={generateMeme} id="mainGenerateButton">
           GENERATE MEME
         </button>
+        {/* <button onClick={saveMeme} id="mainGenerateButton">
+          SAVE MEME
+        </button> */}
 
         <>
           <div className="trendingMeme">
@@ -193,6 +204,7 @@ const MemeMain = () => {
                       template={template}
                       onClick={() => {
                         setMemeData(template);
+                        setTimeout(imageOverlay, 500);
                       }}
                     />
                     </>

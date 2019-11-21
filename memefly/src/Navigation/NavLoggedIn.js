@@ -29,17 +29,20 @@ class Navigation extends React.Component {
           </div>
 
           <div className="linkContainer">
-            <a href="url" id="generateMeme">
-              Generate a Meme
-            </a>
-            <a href="url">Learn More</a>
-            <a href="/login">Log-IN</a>
-            <a href="/register">Register</a>
-            <a> Dynamic usernanme here </a>
+            <nav href="url" id="HighLightLink" className="NavLink" alt='Generate a Meme'>Generate a Meme</nav>
+            <nav href="url" className="NavLink" alt='Learn More'>Learn More</nav>
+            <nav href="/login" className="NavLink" alt='log-in'>Log-IN</nav>
+            <nav href="/register" className="NavLink">Register</nav>
+
+
+              <div className='UserWrapper'>
+                <nav className="NavLink" id="UserName" alt='Username, access to account'>UserName</nav>
+                <nav className="NavLink" id='LogOut' onClick={this.state.handleChange} to="/" alt='LogOut'>
+                  Log Out
+                </nav>
+              </div>
+
           </div>
-          <nav className="logout" onClick={this.state.handleChange} to="/">
-            Log Out
-          </nav>
         </div>
       </nav>
     );
