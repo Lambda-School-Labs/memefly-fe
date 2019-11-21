@@ -28,3 +28,82 @@
                 </div>
               );
             })}*
+
+
+
+                // axios(
+    //   {
+    //     url:
+    //       "https://memefly.herokuapp.com/api/memes?query=%7B%0A%20getMemes%7B%0A%09name%0A%20%20box%0A%20%20url%0A%09%7D%0A%7D",
+    //     method: "post",
+    //     data: {
+    //       query: `query getMemes{name box url}`
+    //     }
+    //   }
+    // )
+    //   .then((res) => {
+    //     // Selects a Random Meme from Web BE and stores the data in memeData 
+    //     let randomNumber = Math.floor(Math.random() * 104);
+    //     setMemeData(res.data.data.getMemes[randomNumber]);
+    //     console.log(memeData);
+    //     //set state of image to generated true
+        
+      
+        // return axios
+        //   .post(
+        //     "http://memeflydsapp-env.cjpgr2xwjn.us-west-2.elasticbeanstalk.com/generate-meme-text?meme_name=Y-U-No",
+        //     {
+        //       headers: {
+        //         "Content-Type": "application/json",
+        //         'Authorization': ''
+        //       }
+        //     }
+        //   )
+        //   .then(res => {
+        //     // setMemeText()
+        //     console.log("DS AXIOS: ", res);
+        //   });
+
+      // })
+      // .catch(error => {
+      //   console.log("error in axios call generate", error);
+      // });
+
+      // async function waitForText(){
+      //   const data = await axios.get("https://memefly.herokuapp.com/api/memes?query=%7B%0A%20getMemes%7B%0A%09name%0A%20%20box%0A%20%20url%0A%09%7D%0A%7D")
+      // }
+  
+
+  //THIS CAN BE USED ONCE WE GET A RANKING SYSTEM IN PLACE
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "http://version1.api.memegenerator.net//Generators_Select_ByNew?pageIndex=0&pageSize=12&apiKey=demo"
+  //     )
+  //     .then(res => {
+  //       // console.log(res.data.result);
+  //       setRankUrl(res.data.result);
+  //     })
+  //     .catch(error => {
+  //       console.log("error in top5", error);
+  //     });
+  // }, []);
+
+  // For each item in the res, check to see if the count is <= 5, if so render an img with src of res.data.url
+  ////////////////////////////////////////////////////////
+  // rankUrl.map(item => {
+  //   console.log(item.imageUrl);
+  // });
+
+
+************ Search Bar *****************
+                {/* <form>
+                  <input
+                    type="text"
+                    className="SearchField"
+                    placeholder="Search"
+                    value={search}
+                    onChange={handleChange}
+                  />
+                  <button onSubmit={searchIncludes}>SEARCH</button>
+                </form> */}

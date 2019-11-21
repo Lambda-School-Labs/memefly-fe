@@ -10,6 +10,7 @@ function DisplayTemplates() {
     const [bottomText, setBottomText] = useState("");
     const [meme, setMeme] = useState(null);
 
+    console.log("CHOSEN TEMPLATE", template);
 
     useEffect(() => {
         Axios(
@@ -31,7 +32,7 @@ function DisplayTemplates() {
 
     return (
       <div style={{ textAlign: "center" }}>
-        {!template && (
+        {(
           <>
             {templates.map(template => {
               return (
