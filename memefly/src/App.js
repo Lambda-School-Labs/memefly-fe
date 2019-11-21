@@ -13,6 +13,7 @@ import MainNavLoggedIn from "./Navigation/NavLoggedIn";
 import NavCondition from "./Navigation/NavCondition";
 import Login from "./LoginPage/Login";
 import Register from "./RegisterPage/Register";
+import Dashboard from "./Dashboard/Dashboard.js";
 // import Entry from '.components/Entries'
 
 function App() {
@@ -25,10 +26,10 @@ function App() {
       <Switch>
         <Route exact path="/MemeMain" component={MemeMain} />
         <Route exact path="/NavCondition" component={NavCondition} />
-        <Route path="/Login" component={Login} />
+        <Route exact path="/Login" component={Login} />
+        <Route exact path="/Dashboard" component={Dashboard} />
         <Route path="/Register" component={Register} />
       </Switch>
-      <MemeMain />
     </>
   );
 }
