@@ -91,7 +91,6 @@ padding-top: 40px;
   justify-content: space-around;
   align-items: center;
   flex-direction: column; 
-
   background: linear-gradient(123.9deg, #C75C8C -11.73%, #1A61CB 48.53%, rgba(203, 58, 26, 0.65) 111.36%);
   /* border: 1px solid white; */
   border-radius: 6px;
@@ -116,14 +115,55 @@ padding-top: 40px;
   /* border-bottom: 2px solid black; */
 }
 
-.trendingMemeContainer{
+.templateMemeContainer{
   width: 95%;
   margin: 1% auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   background: rgba(253, 253, 254, 0.2);
+  background-size: contain;
   border-radius: 6px;
+}
+
+.templateMemeGroup{
+  padding:5px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  
+}
+
+.MemeCardContainer{
+  width: 200px;
+  height: 255px;
+  height: 255px;
+  border-radius: 4px;
+  background-color: rgba(204, 204, 204, 0.351);
+  padding: 10px;
+  margin: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+  transition:         transform .2s ease-in-out;
+
+}
+.MemeCardContainer:hover{
+  background-color: #d3d3d3e1;
+  transform: rotate(10deg) scale(1.125);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+}
+.IndividualMemeCards{
+  max-width: 200px;
+  max-height: 250px;
+  background-size: contain;
+  border-radius: 4px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
 }
 
 .trendingMemeUrlContainer{
@@ -135,7 +175,10 @@ border-radius: 4px;
 text-align: center;
 box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
 background-color: rgb(152, 248, 255);
+overflow: hidden;
+
 }
+
 .trendingMemeUrl{
   /* padding: 10px; */
   max-width: 80%;
@@ -159,8 +202,6 @@ nav{
 #generateMeme{
   border: 3px solid gold;
   border-radius: 4px;
-
-  
 }
 #mainGenerateButton{
   margin-top: 40px;
@@ -181,5 +222,12 @@ nav{
   /* position: absolute; */
   /* padding-top: 40px; */
   margin: 10% auto;
+
+}
+#imageGroup{
+  /* height: 40rem; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
 }
