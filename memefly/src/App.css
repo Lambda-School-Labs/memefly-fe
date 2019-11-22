@@ -61,7 +61,7 @@ a {
   font-size: 1.8rem;
 }
 a:hover {
-  border-bottom: .4rem solid #0076ff;
+  border-top: .4rem solid #0076ff;
 }
 code,
 pre {
@@ -186,8 +186,7 @@ overflow: hidden;
 .nav{
   background-color: #0E1111;
   width: 100%;
-  padding-bottom: 1%;
-  border: 1px solid red;
+  padding: 1% 0;
 }
 
 .navWrap{
@@ -195,35 +194,75 @@ overflow: hidden;
   margin:0 auto;
   display: flex;
   flex-direction: row;
-  border: 1px solid green;
+  justify-content: space-between;
 }
 
-.logoContainer{
-  border: 1px solid cyan;
-  /* max-width: 40%; */
-
-}
 
 .navlogo{
-  max-width: 11Rem;
+  max-width: 16Rem;
   width:90%;
   align-content: flex-start;
 }
 
 .linkContainer{
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+  width: 60%;
 }
+
+
+
+.NavButton{
+  color:#FDFDFE;
+  display: flex;
+  padding:1rem 3rem;
+  font-size: 1.8rem;
+  margin: auto 0;
+  cursor: pointer;
+
+  /* border: 1px solid orange; */
+}
+
 
 #HighLightLink{
-  border: .3rem solid gold;
-  border-radius: .4rem;
+  color: #FFFE54;
+  border: .2rem solid #FFFE54;
+  border-radius: .6rem;
+  max-height: 4rem;
+  /* padding: 1rem 3rem; */
 }
 
-#mainGenerateButton{
-  margin-top: 4rem;
-  padding: 1rem; 
+.UserWrapper{
+  /* border: 1px solid silver; */
+  flex-direction: column-reverse;
+  display: flex;
+}
+
+#UserName{
+  align-items: center;
+}
+#UserNavAvatar{
+  padding: 1rem;
+}
+
+#LogOut{
+  display: block;
+  font-size: 1.4rem;
+  /* padding-top: 4rem; */
+  position: absolute;
+  padding: 0;
+  top: 7rem;
+  right: 16rem;
+}
+#LogOut:hover{
+  color:red;
+  border-top: none;
+}
+
+.ButtonDesignOne{
   width:36.4rem;
+  padding: 1rem;
+  margin:0 1rem; 
 
   background-color: transparent;
   border: .2rem solid #FDFDFE;
@@ -231,7 +270,8 @@ overflow: hidden;
 
   color: #FDFDFE;
   font-family: var(--body-Font);
-  font-style: Bold;
+  font-weight: 800;
+  text-align: center;
 
 }
 
