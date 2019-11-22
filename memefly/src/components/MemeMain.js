@@ -155,36 +155,37 @@ const MemeMain = () => {
     setMemeData(allMemes[randomNumber])
     setTimeout(imageOverlay, 500);
   };
-  // const saveMeme=()=>{
-  //   html2canvas(document.querySelector('#kitten')).then(function(canvas){
-  //     document.querySelector("#canvas").appendChild(canvas);
-  //     console.log("insideSaveMeme")
+  const saveMeme = function() {
+    console.log("Sleepy");
+    window.open(document.querySelector("screen"));
+}
 
-  //   });
-  // }
 
 
   return (
     <div className="MainContainer">
       <div className="MemeContainer">
-        <div id="imageGroup">
+        <div id="imageGroup screen">
           {/* Place Div here  and incoming Text from DS  */}
           {/* Div Props will have variety of pointer events:  */}
           <canvas
             ref={canvas}
             id="canvas"
+            className="cnvs"
             style={{ width: "500px", display: "hidden" }}
           >
             {renderImage(memeData.url)}{" "}
           </canvas>
         </div>
 
-        <button onClick={generateMeme} id="mainGenerateButton">
+        <div className="ImageControlWrapper">
+        <button onClick={generateMeme} class="ButtonDesignOne" id="mainGenerateButton">
           GENERATE MEME
         </button>
-        {/* <button onClick={saveMeme} id="mainGenerateButton">
+        <button onClick={saveMeme} class="ButtonDesignOne"  id="SaveMemeButton">
           SAVE MEME
-        </button> */}
+        </button>
+        </div>
 
         <>
           <div className="trendingMeme">

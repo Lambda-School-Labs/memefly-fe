@@ -1,7 +1,6 @@
 import React from "react";
-// import "./Navigation.css";
-import { Link, NavLink } from "react-router-dom";
-// import { withCookies } from "react-cookie";
+import {Avatar, Grid} from '@material-ui/core';
+import {NavLink} from 'react-router-dom';
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -29,19 +28,51 @@ class Navigation extends React.Component {
           </div>
 
           <div className="linkContainer">
-            <nav href="url" id="HighLightLink" className="NavLink" alt='Generate a Meme'>Generate a Meme</nav>
-            <nav href="url" className="NavLink" alt='Learn More'>Learn More</nav>
-            <nav href="/login" className="NavLink" alt='log-in'>Log-IN</nav>
-            <nav href="/register" className="NavLink">Register</nav>
+            <NavLink to="/"
+              href="url"
+              id="HighLightLink"
+              className="NavButton"
+              alt="Generate a Meme"
+            >
+              Generate a Meme
+            </NavLink>
+            <NavLink to="/" href="url" className="NavButton" alt="Learn More">
+              Learn More
+            </NavLink>
+
+            <div className='UserWrapper'>
+              <NavLink to="/"
+                className="NavButton"
+                id="UserName"
+                alt="Username, access to account"
+              >
+                UserName 
+
+                <Grid container justify="center" alignItems="center" id='UserNavAvatar'>
+                  <Avatar alt="Remy Sharp" src="https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg"   />
+                </Grid>
+                </NavLink>
+                
+                <NavLink
+                className="NavButton"
+                id="LogOut"
+                to="/"
+                alt="LogOut"
+              >
+                Log Out
+              </NavLink>
 
 
-              <div className='UserWrapper'>
+
+            </div>
+
+            {/* This is to be styled as per figma link */}
+            {/* <div className='UserWrapper'>
                 <nav className="NavLink" id="UserName" alt='Username, access to account'>UserName</nav>
                 <nav className="NavLink" id='LogOut' onClick={this.state.handleChange} to="/" alt='LogOut'>
                   Log Out
                 </nav>
-              </div>
-
+              </div> */}
           </div>
         </div>
       </nav>
