@@ -2,6 +2,8 @@ import React from "react";
 import {Avatar, Grid} from '@material-ui/core';
 import {NavLink} from 'react-router-dom';
 
+// Navigation bar when user is logged in with valid credentials 
+
 class Navigation extends React.Component {
   constructor(props) {
     super(props);
@@ -18,14 +20,6 @@ class Navigation extends React.Component {
 
   render() {
     return (
-      <nav className="nav">
-        <div className="navWrap">
-          <div className="logoContainer">
-            <img
-              src="https://i.ibb.co/bNbhmXY/Meme-Fly-Crooked-Logo-White.png"
-              className="navlogo"
-            />
-          </div>
 
           <div className="linkContainer">
             <NavLink to="/"
@@ -61,21 +55,8 @@ class Navigation extends React.Component {
               >
                 Log Out
               </NavLink>
-
-
-
             </div>
-
-            {/* This is to be styled as per figma link */}
-            {/* <div className='UserWrapper'>
-                <nav className="NavLink" id="UserName" alt='Username, access to account'>UserName</nav>
-                <nav className="NavLink" id='LogOut' onClick={this.state.handleChange} to="/" alt='LogOut'>
-                  Log Out
-                </nav>
-              </div> */}
           </div>
-        </div>
-      </nav>
     );
   }
 }

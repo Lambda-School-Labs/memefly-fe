@@ -1,15 +1,20 @@
-// import React from 'react';
-// import NavLoggedIn from './NavLoggedIn';
-// import NavLoggedOut from './NavLoggedOut';
+import React from 'react';
+import NavLoggedIn from './NavLoggedIn';
+import NavLoggedOut from './NavLoggedOut';
 
-// const NavCondition = () => {
-//     const navTest = localStorage.getItem("token");
+// Determines which Navigation is displayed
+// Changes on Log in & log out.
 
-//     if (navTest === null) {
-//         return <NavLoggedOut />
-//     }else {
-//         return <NavLoggedIn />
-//     }
-// }
+const NavCondition = () => {
+    // Needs to be updated to change on user log in. Not sure if we're still using tokens.
+    const navTest = localStorage.getItem("token");
+    const forced = true;
 
-// export default NavCondition;
+    if (forced === true) {
+        return <NavLoggedOut />
+    }else {
+        return <NavLoggedIn />
+    }
+}
+
+export default NavCondition;

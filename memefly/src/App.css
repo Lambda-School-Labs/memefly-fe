@@ -60,9 +60,7 @@ a {
   font-weight: 800;
   font-size: 1.8rem;
 }
-a:hover {
-  border-top: .4rem solid #0076ff;
-}
+
 code,
 pre {
   color: #d400ff;
@@ -198,10 +196,16 @@ overflow: hidden;
 }
 
 
+
 .navlogo{
   max-width: 16Rem;
   width:90%;
   align-content: flex-start;
+}
+
+.navlogo a:hover{
+
+  border:2px solid red;
 }
 
 .linkContainer{
@@ -223,6 +227,9 @@ overflow: hidden;
   /* border: 1px solid orange; */
 }
 
+.NavButton:hover {
+  border-top: .4rem solid #0076ff;
+}
 
 #HighLightLink{
   color: #FFFE54;
