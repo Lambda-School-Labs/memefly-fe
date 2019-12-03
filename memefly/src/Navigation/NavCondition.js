@@ -7,7 +7,7 @@ import NavLoggedOut from './NavLoggedOut';
 
 const NavCondition = () => {
     // Needs to be updated to change on user log in. Not sure if we're still using tokens.
-    const navTest = localStorage.getItem("token");
+    // const navTest = localStorage.getItem("token");
     const forced = true;
 
     if (forced === true) {

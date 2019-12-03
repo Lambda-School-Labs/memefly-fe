@@ -2,6 +2,7 @@ import React, { useState, useEffect, Context, useRef } from "react";
 import axios from "axios";
 import { Meme } from "../ImgEditor/Meme";
 import { fabric } from "fabric";
+import { border } from "@material-ui/system";
 
 const MemeMain = () => {
   const [search, setSearch] = useState("");
@@ -223,17 +224,16 @@ const MemeMain = () => {
     <div className="MainContainer">
       <div className="MemeContainer">
         <div id="imageGroup screen">
-          {/* Place Div here  and incoming Text from DS  */}
           {/* Div Props will have variety of pointer events:  */}
-          {/* <canvas
+          <canvas
             ref={canvas}
             id="canvas"
             className="cnvs"
             style={{ width: "500px", display: "hidden" }}
           >
             {renderImage(memeData.url)}{" "}
-          </canvas> */}
-          <canvas id="c"></canvas>
+          </canvas>
+          {/* <canvas id="c" ></canvas> */}
         </div>
 
         <div className="ImageControlWrapper">

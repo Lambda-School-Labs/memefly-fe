@@ -11,7 +11,7 @@ const Header = () => {
           <div className="navWrap" >
             <div className="logoContainer">
                 <a href="/" id="LogoWrap">
-                    <img src="https://i.ibb.co/bNbhmXY/Meme-Fly-Crooked-Logo-White.png" className="navlogo" />
+                    <img src="https://i.ibb.co/bNbhmXY/Meme-Fly-Crooked-Logo-White.png" className="navlogo" alt="MemeFly Logo of a Fly"/>
                 </a>
             </div>
 

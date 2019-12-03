@@ -1,5 +1,4 @@
 import React from "react";
-import { Avatar, Grid } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 
 
