@@ -1,22 +1,46 @@
-import React from 'react';
-import {
-    NavLink
-} from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-const MainNavLoggedOut = () => {
+
+// Default User Nav when not logged in with valid credentials.
+
+class Navigation extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      // cookies: props.cookies
+    };
+  }
+
+  handleChange = () => {
+    // this.state.cookies.remove("_uid");
+    this.props.history.push("/login");
+    console.log("run");
+  };
+
+  render() {
     return (
-        <nav>
-            <div className="logoContainer">
-                <img src="https://i.ibb.co/bNbhmXY/Meme-Fly-Crooked-Logo-White.png" className="navlogo" />
-            </div>
 
-            <div className="linkContainer">
-                {/* <NavLink exact activeClassName="active" to="/MemeMain" id="generateMeme">Generate a Meme</NavLink>
-                <NavLink>Learn More</NavLink>
-                <NavLink>Sign In</NavLink>
-                <NavLink>Sign Up</NavLink> */}
-            </div>
-        </nav>
+          <div className="linkContainer">
+            <NavLink to="/MemeMain" href="url" className="NavButton" alt="Generate a Meme">
+              Generate-A-Meme
+            </NavLink>
+
+            <NavLink to="/" href="url" className="NavButton" alt="Learn More">
+              Learn More
+            </NavLink>
+
+            <NavLink to="/Login" className="NavButton" id="SignIn" alt="Sign In">
+              Sign In
+            </NavLink>
+
+            <NavLink className="NavButton" to="/Register" id="HighLightLink" alt="Sign Up">
+              Sign Up
+            </NavLink>
+
+          </div>
     );
+  }
 }
-export default MainNavLoggedOut;
+
+export default Navigation;
