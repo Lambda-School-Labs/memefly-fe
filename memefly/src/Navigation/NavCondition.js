@@ -10,6 +10,7 @@ const NavCondition = () => {
     // const navTest = localStorage.getItem("token");
     const forced = true;
 
+
     if (forced === true) {
         return <NavLoggedOut />
     }else {
