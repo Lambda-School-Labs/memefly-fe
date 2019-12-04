@@ -1,9 +1,30 @@
+
+/* Font Files */
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700,800,900|Roboto:400,500,500i,700,900&display=swap');
+
+/* Style Info */
+
+/* font-family: 'Nunito', sans-serif;
+font-family: 'Roboto', sans-serif; */
+/* Corner Radius: 6px; */
+
+/* Page Fonts are set here as variables for easy change */
+:root{
+  --title-Font:'Roboto', sans-serif;
+  --body-Font: 'Nunito', sans-serif;
+
+  /* Font Set to 10px for easy Easy Rem Calculations
+  1rem = 10px
+  1.4rem = 14px */
+  font-size: 10px; 
+}
+
+
 main {
   align-content: center;
   box-sizing: border-box;
   display: grid;
-  font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
-    'Arial', sans-serif;
+  font-family: 'Nunito';
   hyphens: auto;
   line-height: 1.65;
   margin: 0 auto;
@@ -11,31 +32,35 @@ main {
   min-height: 100vh;
   padding: 72px 0;
   text-align: center;
+  background-color: #0E1111;
 }
 h1 {
-  font-size: 45px;
+  font-size: 4.5rem;
 }
 h2 {
   margin-top: 1.5em;
 }
 h4{
-  text-align: left;
+  text-align: center;
+  font-size: 2rem;
 }
 p {
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 a {
-  color: goldenrod;
-  cursor: crosshair;
+  cursor: pointer;
   text-decoration: none;
-  padding: 10px;
-  margin: 5px;
+  padding: 1rem;
+  margin: .5rem;
   min-width: 10rem;
+
+  font-family: var(--body-Font);
   text-align: center;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 1.8rem;
 }
-a:hover {
-  border-bottom: 4px solid #0076ff;
-}
+
 code,
 pre {
   color: #d400ff;
@@ -50,57 +75,226 @@ code:after {
 
 .mainmeme{
 max-width: 45%;
-padding-top: 40px;
+padding-top: 4rem;
 }
-.MemeContainer{
-  max-width: 50%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-}
+
 .MainContainer{
+
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  background-color: rgb(255, 245, 100);
+  background-color :#0E1111;
 
 }
-.navlogo{
-  width:100px;
-  align-content: flex-start;
-}
-.linkContainer{
+
+.MemeContainer{
+  max-width: 90%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  flex-direction: column; 
+  background: linear-gradient(123.9deg, #C75C8C -11.73%, #1A61CB 48.53%, rgba(203, 58, 26, 0.65) 111.36%);
+  /* border: 1px solid white; */
+  border-radius: 6px;
 }
+
+
+
+
 .MidPageNav{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   width:100%;
-  border-bottom: 2px solid black;
+  /* border-bottom: 2px solid black; */
 }
-.trendingMemeUrl{
-  padding: 20px;
-}
-nav{
+
+.templateMemeContainer{
+  width: 95%;
+  margin: 1% auto;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  background: rgba(253, 253, 254, 0.2);
+  background-size: contain;
+  border-radius: .6rem;
+}
+
+.templateMemeGroup{
+  padding:.5rem;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  
+}
+
+.MemeCardContainer{
+  width: 200px;
+  height: 255px;
+  height: 255px;
+  border-radius: .4rem;
+  background-color: rgba(204, 204, 204, 0.351);
+  padding: 1rem;
+  margin: .5rem;
+  display: flex;
   justify-content: space-around;
-  align-content: space-around;
-  background-color: black;
+  align-items: center;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+  transition:         transform .2s ease-in-out;
+
+}
+.MemeCardContainer:hover{
+  background-color: #d3d3d3e1;
+  transform: rotate(10deg) scale(1.125);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+}
+.IndividualMemeCards{
+  max-width: 20rem;
+  max-height: 25rem;
+  background-size: contain;
+  border-radius: .4rem;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+}
+
+.trendingMemeUrlContainer{
+max-width: 10rem;
+padding:1rem;
+margin:1rem;
+/* border: 2px solid red; */
+border-radius: 4px;
+text-align: center;
+box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+background-color: rgb(152, 248, 255);
+overflow: hidden;
+
+}
+
+.trendingMemeUrl{
+  /* padding: 10px; */
+  max-width: 80%;
+}
+
+/* NAVIGATION STYLING */
+.nav{
+  background-color: #0E1111;
   width: 100%;
+  padding: 1% 0;
 }
-#generateMeme{
-  border: 3px solid gold;
-  border-radius: 4px;
+
+.navWrap{
+  width:90%;
+  margin:0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-#mainGenerateButton{
-  margin-top: 40px;
-  padding: 10px;
-  border: 3px solid gold;
-  border-radius: 4px;
+
+
+
+.navlogo{
+  max-width: 16Rem;
+  width:90%;
+  align-content: flex-start;
+}
+
+.navlogo a:hover{
+
+  border:2px solid red;
+}
+
+.linkContainer{
+  display: flex;
+  justify-content: flex-end;
+  width: 60%;
+}
+
+
+
+.NavButton{
+  color:#FDFDFE;
+  display: flex;
+  padding:1rem 3rem;
+  font-size: 1.8rem;
+  margin: auto 0;
+  cursor: pointer;
+
+  /* border: 1px solid orange; */
+}
+
+.NavButton:hover {
+  border-top: .4rem solid #0076ff;
+}
+
+#HighLightLink{
+  color: #FFFE54;
+  border: .2rem solid #FFFE54;
+  border-radius: .6rem;
+  max-height: 4rem;
+  /* padding: 1rem 3rem; */
+}
+
+.UserWrapper{
+  /* border: 1px solid silver; */
+  flex-direction: column-reverse;
+  display: flex;
+}
+
+#UserName{
+  align-items: center;
+}
+#UserNavAvatar{
+  padding: 1rem;
+}
+
+#LogOut{
+  display: block;
+  font-size: 1.4rem;
+  /* padding-top: 4rem; */
+  position: absolute;
+  padding: 0;
+  top: 7rem;
+  right: 16rem;
+}
+#LogOut:hover{
+  color:red;
+  border-top: none;
+}
+
+.ButtonDesignOne{
+  width:36.4rem;
+  padding: 1rem;
+  margin:0 1rem; 
+
+  background-color: transparent;
+  border: .2rem solid #FDFDFE;
+  border-radius: .6rem;
+
+  color: #FDFDFE;
+  font-family: var(--body-Font);
+  font-weight: 800;
+  text-align: center;
+
+}
+
+
+/* Canvas Section */
+
+#canvas{
+  /* position: absolute; */
+  /* padding-top: 40px; */
+  margin: 10% auto;
+
+}
+#imageGroup{
+  /* height: 40rem; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
 }

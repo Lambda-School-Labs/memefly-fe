@@ -1,15 +1,26 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import './App.css';
-import MemeMain from './components/MemeMain';
-import MainNav from './components/NavLoggedOut';
+// React Stuff
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+
+// Styling
+import "./App.css";
+
+// Components
+import MemeMain from "./components/MemeMain";
+import Login from "./LoginPage/Login";
+import Register from "./RegisterPage/Register";
+import Header from "./Navigation/Header";
 
 function App() {
-  
   return (
     <>
-    <MainNav />
-    <MemeMain />
+      <Header/>
+
+      <Switch>
+        <Route exact path="/" component={MemeMain} />
+        <Route path="/Login" component={Login} />
+        <Route path="/Register" component={Register} />
+      </Switch>
     </>
   );
 }
