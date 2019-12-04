@@ -298,3 +298,8 @@ overflow: hidden;
   align-items: center;
 
 }
+
+.CanvasC{
+  border:1px solid red;
+  margin: 5% auto;
+}

@@ -25,6 +25,33 @@
     <title>MemeFly</title>
   </head>
   <body>
+<!-- Below is the code for FB auth -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=2663807077036415&autoLogAppEvents=1"></script>
+
+<script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '2663807077036415',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v5.0'
+      });
+        
+      FB.AppEvents.logPageView();   
+      fbSDKloaded();  
+    };
+  
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <script src="/src/Navigation/Header.js"></script>
+  <!-- Above is the code for FB auth -->
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
