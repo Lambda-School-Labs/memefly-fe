@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Context, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Meme } from "../ImgEditor/Meme";
 import { fabric } from "fabric";
@@ -227,7 +227,9 @@ const MemeMain = () => {
 
 
   
-  var test = new fabric.Canvas('c');
+  var test = new fabric.Canvas('c',{
+    backgroundImage:memeData.url,
+  });
 
   var text = new fabric.Text(memeData.name, { left: 0, top: 0 , fontFamily:'Impact'});
 
@@ -237,15 +239,7 @@ const MemeMain = () => {
     <div className="MainContainer">
       <div className="MemeContainer">
         <div id="imageGroup screen">
-          <canvas
-            ref={canvas}
-            id="canvas"
-            className="cnvs"
-            style={{ width: "500px", display: "hidden" }}
-          >
-            {renderImage(memeData.url)}{" "}
-          </canvas>
-          {/* <canvas id="c" className="CanvasC" ></canvas> */}
+          <canvas id="c" className="CanvasC" width="500"></canvas>
         </div>
 
         <div className="ImageControlWrapper">
