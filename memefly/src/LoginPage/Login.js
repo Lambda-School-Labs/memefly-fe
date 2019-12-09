@@ -87,7 +87,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <Container>
+      <Container className="LoginContainer">
         <Row
           style={{ height: "100vh", alignItems: "center" }}
           className="text-center"
@@ -104,7 +104,7 @@ class Login extends React.Component {
                 )
               }
             >
-              <div onClick={this.logout}>
+              <div onClick={this.logout} className='divTest'>
                 <h2>Login to</h2>
                 <h1>MemeFLY</h1>
               </div>
