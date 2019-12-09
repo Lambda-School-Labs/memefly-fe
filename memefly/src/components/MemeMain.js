@@ -143,7 +143,6 @@ const MemeMain = () => {
       memeData.name
     );
   } //End of Image Overlay
-  var image = new Image();
   const max_width = "500px";
   function renderImage(src) {
     var image = new Image();

@@ -16,7 +16,8 @@ font-family: 'Roboto', sans-serif; */
   /* Font Set to 10px for easy Easy Rem Calculations
   1rem = 10px
   1.4rem = 14px */
-  font-size: 10px; 
+  font-size: 10px;
+  background-color: #0E1111; 
 }
 
 
@@ -297,9 +298,4 @@ overflow: hidden;
   justify-content: space-around;
   align-items: center;
 
-}
-
-.CanvasC{
-  border:1px solid red;
-  margin: 5% auto;
 }

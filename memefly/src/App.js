@@ -11,6 +11,7 @@ import Login from "./LoginPage/Login";
 import Register from "./RegisterPage/Register";
 import Header from "./Navigation/Header";
 import ImgContainer from "./ImgEditor/ImgContainer";
+import GenerateMemePage from "./ImgEditor/GenerateMemePage";
 
 
 
@@ -21,7 +22,7 @@ function App() {
       <Header/>
 
       <Switch>
-        <Route exact path="/" component={ImgContainer} />
+        <Route exact path="/" component={GenerateMemePage} />
         <Route path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
       </Switch>
