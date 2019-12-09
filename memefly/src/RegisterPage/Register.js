@@ -4,6 +4,7 @@ import axios from "axios";
 //import { withCookies } from "react-cookie";
 
 import { Container, Row, Col, Input, Button, Alert, Spinner } from "reactstrap";
+import Facebook from "../components/Facebook";
 
 class Register extends React.Component {
   constructor(props) {
@@ -18,7 +19,6 @@ class Register extends React.Component {
       error: { status: false, message: "" }
     };
   }
-
   signupHandler = e => (email, username, password) => {
     e.preventDefault();
     this.setState({
@@ -54,7 +54,6 @@ class Register extends React.Component {
         });
       });
   };
-
   onChange = e => {
     this.setState({
       newSignup: {
@@ -79,7 +78,7 @@ class Register extends React.Component {
               onSubmit={e =>
                 this.signupHandler(e)(
                   this.state.newSignup.email,
-                  this.state.newSignup.password
+                  this.state.newSignup.password,
                 )
               }
             >
@@ -87,28 +86,33 @@ class Register extends React.Component {
                 <h2>Register to</h2>
                 <h1>MemeFLY!</h1>
               </div>
+              {/* <h3>Sign in with Facebook?</h3> */}
+              <Facebook />
+              <h3>Username</h3>
               <Input
-                type="text"
+                type="input"
                 name="username"
                 placeholder="Username"
-                value={this.state.newSignup.username}
+                defaultValue={this.state.newSignup.username}
                 onChange={this.handleChange}
               />
               <br />
+              <h3>Email</h3>
               <Input
                 type="text"
                 name="email"
                 placeholder="Email"
-                value={this.state.newSignup.email}
+                defaultValue={this.state.newSignup.email}
                 onChange={this.handleChange}
               />
               <br />
+              <h3>Password</h3>
               <Input
                 type="password"
                 name="password"
                 placeholder="Password"
                 onChange={this.handleChange}
-                value={this.state.newSignup.password}
+                defaultValue={this.state.newSignup.password}
               />
               <br />
               {this.state.isLoading ? (

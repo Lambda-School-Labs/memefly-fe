@@ -1,5 +1,6 @@
 import React from 'react';
 import NavCondition from './NavCondition';
+import WelcomeTag from './WelcomeTag';
 
 // Container for all Nav bar Items.
 
@@ -14,7 +15,8 @@ const Header = () => {
                     <img src="https://i.ibb.co/bNbhmXY/Meme-Fly-Crooked-Logo-White.png" className="navlogo" alt="MemeFly Logo of a Fly"/>
                 </a>
             </div>
-
+            
+            <WelcomeTag />
             <NavCondition/>
             
           </div>
