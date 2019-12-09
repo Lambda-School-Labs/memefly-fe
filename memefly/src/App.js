@@ -14,6 +14,7 @@ import ImgContainer from "./ImgEditor/ImgContainer";
 import GenerateMemePage from "./ImgEditor/GenerateMemePage";
 
 
+import Userprofile from "./UserProfile/Userprofile";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/" component={GenerateMemePage} />
         <Route path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
+        <Route path="/Profile" component={Userprofile} />
       </Switch>
     </>
   );

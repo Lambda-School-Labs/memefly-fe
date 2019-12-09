@@ -12,6 +12,7 @@
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-draggable": "^4.1.0",
+    "react-facebook-login": "^4.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "2.1.1",
     "reactstrap": "^8.1.1"

@@ -299,3 +299,13 @@ overflow: hidden;
   align-items: center;
 
 }
+
+/* Profile Section */
+.profileCard{
+  border: 2px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  align-content: center;
+}

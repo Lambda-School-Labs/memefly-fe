@@ -244,14 +244,14 @@ const MemeMain = () => {
         <div className="ImageControlWrapper">
           <button
             onClick={generateMeme}
-            class="ButtonDesignOne"
+            className="ButtonDesignOne"
             id="mainGenerateButton"
           >
             GENERATE MEME
           </button>
           <button
             onClick={saveMeme}
-            class="ButtonDesignOne"
+            className="ButtonDesignOne"
             id="SaveMemeButton"
           >
             SAVE MEME
