@@ -1,6 +1,6 @@
 import React from 'react';
 import NavCondition from './NavCondition';
-import GenerateMeme from '../ImgEditor/GenerateMeme.js'
+import WelcomeTag from './WelcomeTag';
 
 
 // Container for all Nav bar Items.
@@ -16,11 +16,9 @@ const Header = () => {
                     <img src="https://i.ibb.co/bNbhmXY/Meme-Fly-Crooked-Logo-White.png" className="navlogo" alt="MemeFly Logo of a Fly"/>
                 </a>
             </div>
+            
+            <div className="NavButton"><WelcomeTag /></div>
             <NavCondition/>
-            {/* FB LOGIN BUTTON */}
-            <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="true" data-onlogin={GenerateMeme}></div>
-            {/* <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-            </fb:login-button> */}
           </div>
         </nav>
       </header>

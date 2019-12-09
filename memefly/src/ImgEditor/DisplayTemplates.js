@@ -4,37 +4,51 @@ import {Meme} from "./Meme";
 
 function DisplayTemplates() {
 
-    const [templates, setTemplates] = useState([]);
+    const [templates, setTemplates] = useState({});
     const [template, setTemplate] = useState(null);
-    const [topText, setTopText] = useState("");
-    const [bottomText, setBottomText] = useState("");
-    const [meme, setMeme] = useState(null);
 
-    console.log("CHOSEN TEMPLATE", template);
+    console.log("CHOSEN TEMPLATE", templates);
 
-    useEffect(() => {
-        Axios(
-          {
-            url:
-              "https://memefly.herokuapp.com/api/memes?query=%7B%0A%20getMemes%7B%0A%09name%0A%20%20box%0A%20%20url%0A%09%7D%0A%7D",
-            method: "post",
-            data: {
-              query: `query getMemes{name box url}`
+    function axiosConfig(query) {
+					return {
+						url: "http://memefly.herokuapp.com/api/memes/base",
+						method: "POST",
+						data: {
+							query
+						}
+					};
+				}
+
+  function getBaseMeme(id, rand = false) {
+			return `
+        query{
+            getBaseMeme(id:${id}, rand:${rand}){
+                message
+                fetched
+                meme_bounding_box
+                meme_id
+                meme_url
+                meme_text
             }
-          }
-        )
-        .then(res => {
-            console.log("MEMEFLIP RESPONSE", res.data.data.getMemes)
-            setTemplates(res.data.data.getMemes);
-        })
-        .catch(err => console.log(err))
-    },[])
+        }
+    `;
+		}
 
-    return (
+  useEffect(() => {
+    Axios(axiosConfig(getBaseMeme(null, true)))
+    .then(res => {
+      // console.log(res);
+      setTemplates(res.data.data.getBaseMeme);
+    })
+
+  }, [])
+
+
+  return (
       <div style={{ textAlign: "center" }}>
         {(
           <>
-            {templates.map(template => {
+            {/* {templates.map(template => {
               return (
                 <Meme
                   template={template}
@@ -43,11 +57,11 @@ function DisplayTemplates() {
                   }}
                 />
               );
-            })}
+            })} */}
           </>
         )}
       </div>
-    );
+  );
 };
 
 export default DisplayTemplates;

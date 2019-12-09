@@ -1,83 +1,138 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Meme } from "./Meme";
+import React, {useEffect, useState, useRef} from "react";
 import { fabric } from "fabric";
-import GenerateMeme from "./GenerateMeme";
+import Axios from 'axios';
 
 function ImgContainer() {
-	const [templates, setTemplates] = useState([]);
-	const [allMemes, setAllMemes] = useState([]);
 	const [memeData, setMemeData] = useState({
-		name: "batman-slapping-robin",
-		url: "https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg"
+		meme_url:'https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg'
 	});
-	const [memeText, setMemeText] = useState("");
+	const [imgSize, setImgSize] = useState({})
+	const [innerText, setText] = useState('');
+	const canvasRef = useRef(null);
+
+	function axiosConfig(query) {
+		return {
+			url: "http://memefly.herokuapp.com/api/memes/base",
+			method: "POST",
+			data: {
+				query
+			}
+		};
+	}
+
+	function getBaseMeme(id, rand = false) {
+	return `
+	query{
+	getBaseMeme(id:${id}, rand:${rand}){
+		message
+		fetched
+		meme_bounding_box
+		meme_id
+		meme_url
+		meme_text
+	}
+	}
+	`;
+	}
+
+	useEffect(() => {
+	Axios(axiosConfig(getBaseMeme(null, true)))
+	.then(res => {
+		// console.log(res.data.data.getBaseMeme);
+		// setMemeData(res.data.data.getBaseMeme);
+	})
+
+	}, [])
 
 
-	const saveMeme = function() {
-		console.log("Sleepy");
-		window.open(document.querySelector("screen"));
-  };
-  
-  var test = new fabric.Canvas('c', {
-    backgroundImage: memeData.url,
-  });
+	var text2 = new fabric.Textbox('Hello', {
+		cursorColor :"blue",
+		top:16,
+		left:3,
+		fontFamily:'impact',
+	});
 
-  var text = new fabric.Text(memeData.name, { left: 0, top: 0 , fontFamily:'Impact'});
+	var text = new fabric.Textbox('world', {
+		cursorColor :"blue",
+		top:5,
+		left:272,
+		fontFamily:'impact',
+	});
 
-  test.add(text);
+	useEffect(() => {
+
+		// Creates Canvas 
+		let canvas = new fabric.Canvas('d',{
+			preserveObjectStacking:true
+		});
+		
+		// This loads the image
+		let tempImg = memeData.meme_url;
+		// console.log('tempimg: ', tempImg);
+		let meme;
+		let memeImg = new Image();
+		const max_width = 500;
+		
+		memeImg.onload = function (img) {
+
+			// Properties for Meme Image
+			meme = new fabric.Image(memeImg, {
+				angle: 0,
+				left: 0,
+				top: 0,
+				selectable: false,
+			});
+			canvas.add(meme);
+
+			// This is like z-index, this keeps the image behind the text
+			canvas.moveTo(meme, 0);
+
+			// Stores Image Dimensions in imgSize as object.
+			setImgSize({
+				width: memeImg.width.toString(),
+				height: memeImg.height.toString()
+			});
+			// console.log("memeImg.height:", memeImg.height);
+			// console.log(" memeImg.width: ", memeImg.width);
+
+			// This Takes in the image and constrains it to a max width of 500px
+			// if (memeImg.width > max_width) {
+			// 	memeImg.height *= max_width / memeImg.height;
+			// 	memeImg.width = max_width;
+			//   }
+
+			// Sets canvas size to size of image.
+			canvas.setHeight(memeImg.height)
+			canvas.setWidth(memeImg.width)
+		};
+
+		memeImg.src = tempImg;
+
+		function addText(){
+			canvas.add(text);
+		}
+
+		addText();
+		canvas.add(text2);
+
+
+	},[])
+
+	useEffect(()=>{
+		let canvas = new fabric.Canvas('d',{
+			preserveObjectStacking:true
+		});
+		console.log(canvas, innerText)
+		canvas.text = innerText
+	}, [innerText])
+
+	
+
 
 	return (
-		<div className="MainContainer">
-			<div className="MemeContainer">
-				<div id="imageGroup screen">
-          <canvas id="c" ></canvas>
-        </div>
-
-				<div className="ImageControlWrapper">
-					<button
-						onClick={<GenerateMeme/>}
-						class="ButtonDesignOne"
-						id="mainGenerateButton"
-					>
-						GENERATE MEME
-					</button>
-					<button onClick={saveMeme} class="ButtonDesignOne" id="SaveMemeButton">
-						SAVE MEME
-					</button>
-					<div class="fb-share-button" data-href="https://www.memeflyai.com" data-layout="button_count" data-size="small" >
-						<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.memeflyai.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" >
-							Share
-						</a>
-					</div>
-				</div>
-
-				<>
-					<div className="trendingMeme">
-						<div className="templateMemeContainer">
-							<div className="MidPageNav">
-								<h2> Pick a Template!</h2>
-							</div>
-
-							<div className="templateMemeGroup">
-								{templates.map(template => {
-									return (
-										<>
-											<Meme
-												template={template}
-												onClick={() => {
-													setMemeData(template);
-													// setTimeout(imageOverlay, 500);
-												}}
-											/>
-										</>
-									);
-								})}
-							</div>
-						</div>
-					</div>
-				</>
-			</div>
+		<div>
+			<canvas ref={canvasRef} id="d" className="CanvasC"></canvas>
+			<button onClick={() => setText('nothing here')}>Add some text!!!</button>
 		</div>
 	);
 }
