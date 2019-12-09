@@ -174,21 +174,21 @@ const MemeMain = () => {
 
   //on click set search to value, use includes endpoint to return meme that includes search term in the title/tag and set returned meme ur to setMemeData to display in main meme page
 
-  useEffect(() => {
-    //This loads all of the memes into state
-    axios({
-      url:
-        "https://memefly.herokuapp.com/api/memes?query=%7B%0A%20getMemes%7B%0A%09name%0A%20%20box%0A%20%20url%0A%09%7D%0A%7D",
-      method: "post",
-      data: {
-        query: `query getMemes{name box url}`
-      }
-    }).then(res => {
-      console.log(res.data.data.getMemes[0].url);
-      setAllMemes(res.data.data.getMemes);
-      setTemplates(res.data.data.getMemes);
-    });
-  }, []);
+  // useEffect(() => {
+  //   //This loads all of the memes into state
+  //   axios({
+  //     url:
+  //       "https://memefly.herokuapp.com/api/memes?query=%7B%0A%20getMemes%7B%0A%09name%0A%20%20box%0A%20%20url%0A%09%7D%0A%7D",
+  //     method: "post",
+  //     data: {
+  //       query: `query getMemes{name box url}`
+  //     }
+  //   }).then(res => {
+  //     console.log(res.data.data.getMemes[0].url);
+  //     setAllMemes(res.data.data.getMemes);
+  //     setTemplates(res.data.data.getMemes);
+  //   });
+  // }, []);
 
   const generateMeme = () => {
     let randomNumber = Math.floor(Math.random() * 104);
@@ -239,14 +239,14 @@ const MemeMain = () => {
         <div className="ImageControlWrapper">
           <button
             onClick={generateMeme}
-            class="ButtonDesignOne"
+            className="ButtonDesignOne"
             id="mainGenerateButton"
           >
             GENERATE MEME
           </button>
           <button
             onClick={saveMeme}
-            class="ButtonDesignOne"
+            className="ButtonDesignOne"
             id="SaveMemeButton"
           >
             SAVE MEME

@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 //import { withCookies } from "react-cookie";
+// import Facebook from "./components/Facebook.js";
+
 
 import { Container, Row, Col, Input, Button, Alert, Spinner } from "reactstrap";
 
@@ -140,6 +142,7 @@ class Login extends React.Component {
               <h3>Register for a account </h3>
               <Link to="/register">Register</Link>
             </div>
+
           </Col>
         </Row>
       </Container>
