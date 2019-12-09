@@ -37,6 +37,10 @@ class Navigation extends React.Component {
             </Grid>
           </NavLink>
 
+          <NavLink className="NavButton" id="Profile" to="/profile" alt="Profile">
+           Profile
+          </NavLink>
+
           <NavLink className="NavButton" id="LogOut" to="/" alt="LogOut">
             Log Out
           </NavLink>

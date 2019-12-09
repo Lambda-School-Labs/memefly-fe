@@ -16,7 +16,7 @@ const Header = () => {
                 </a>
             </div>
             
-            <WelcomeTag />
+            <div className="NavButton"><WelcomeTag /></div>
             <NavCondition/>
             
           </div>

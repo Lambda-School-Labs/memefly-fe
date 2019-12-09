@@ -1,24 +1,13 @@
 import React, {useState} from 'react';
 import axios from "axios";
 
-
-
-// FB.api('/me', response=>{
-//         setName(response.name)
-//     })
-
 const WelcomeTag = ()=>{
-    const [name, setName] = useState(null);
-
-axios.get("FB.api/me")
-.then(res=>
-    {console.log(res)}  
-)
+    let name = localStorage.getItem("name")
     
-    if(name === null){
+    if(name === undefined){
         return "Welcome!"
-    }else if(name){
-        return `"Welcome  ${name}! "`
+    }else{
+        return `"Welcome,  ${name}!"`
     }
 }
 
