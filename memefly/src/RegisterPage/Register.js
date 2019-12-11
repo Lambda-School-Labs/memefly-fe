@@ -1,135 +1,115 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
-//import { withCookies } from "react-cookie";
+import { Formik, Field, Form, useFormik, ErrorMessage } from "formik";
+import { Redirect, Link } from "react-router-dom";
+import * as Yup from "yup";
+import {Container} from "@material-ui/core"
 
-import { Container, Row, Col, Input, Button, Alert, Spinner } from "reactstrap";
-import Facebook from "../components/Facebook";
+const Register = () => {
+	const [created, setCreated] = useState({
+		created: false
+	});
 
-class Register extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: false,
-      newSignup: {
-        username: "",
-        email: "",
-        password: ""
-      },
-      error: { status: false, message: "" }
-    };
-  }
-  signupHandler = e => (email, username, password) => {
-    e.preventDefault();
-    this.setState({
-      ...this.state,
-      isLoading: true
-    });
-    axios({
-      url: "https://memefly.herokuapp.com/api/user",
-      method: "post",
-      data: {
-        query: `
-        mutation{
-          register(email:"${email}", username:"${username}" password:"${password}")
-     }
-       `
-      }
-    })
-      // .post(
-      //   "https://memefly.herokuapp.com/api/user/register",
-      //   this.state.newSignup
-      // )
-      .then(res => {
-        console.log(res);
-        this.state.set("_uid", res.data.token);
-        this.props.history.push("/");
-      })
-      .catch(error => {
-        console.log(error);
-        this.setState({
-          ...this.state,
-          isLoading: false,
-          error: { status: true, message: "Sorry but That name is taken." }
-        });
-      });
-  };
-  onChange = e => {
-    this.setState({
-      newSignup: {
-        ...this.state.newSignup,
-        [e.target.name]: e.target.value
-      }
-    });
-  };
+	console.log(created);
 
-  render() {
-    return (
-      <Container>
-        <Row
-          style={{ height: "100vh", alignItems: "center" }}
-          className="text-center"
-        >
-          <Col xs={{ order: 2, size: 12 }} md="6">
-            {this.state.error.status ? (
-              <Alert color="danger"> {this.state.error.message} </Alert>
-            ) : null}
-            <form
-              onSubmit={e =>
-                this.signupHandler(e)(
-                  this.state.newSignup.email,
-                  this.state.newSignup.password,
-                )
-              }
-            >
-              <div onClick={this.logout}>
-                <h2>Register to</h2>
-                <h1>MemeFLY!</h1>
-              </div>
-              {/* <h3>Sign in with Facebook?</h3> */}
-              <Facebook />
-              <h3>Username</h3>
-              <Input
-                type="input"
-                name="username"
-                placeholder="Username"
-                defaultValue={this.state.newSignup.username}
-                onChange={this.handleChange}
-              />
-              <br />
-              <h3>Email</h3>
-              <Input
-                type="text"
-                name="email"
-                placeholder="Email"
-                defaultValue={this.state.newSignup.email}
-                onChange={this.handleChange}
-              />
-              <br />
-              <h3>Password</h3>
-              <Input
-                type="password"
-                name="password"
-                placeholder="Password"
-                onChange={this.handleChange}
-                defaultValue={this.state.newSignup.password}
-              />
-              <br />
-              {this.state.isLoading ? (
-                <Spinner color="primary" />
-              ) : (
-                <Button color="primary">Register</Button>
-              )}
-            </form>
-            <div>
-              <h3>Login to account </h3>
-              <Link to="/login">Login</Link>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
-}
+	async function handleSubmit(values, formikBag) {
+		var { setSubmitting, resetForm } = formikBag;
+		let { username, email, password } = values;
+		console.log(username, email, password);
+		console.log("HANDLE SUBMIT WAS HIT.");
+		try {
+			let config = {
+				method: "POST",
+				url: "http://memefly.herokuapp.com/api/accounts",
+				data: {
+					query: `
+	              mutation{
+	                register(username:"${username}", email:"${email}", password:"${password}"){message created}
+	              }
+	            `
+				}
+			};
+
+			axios.defaults.withCredentials = true;
+			let test = await axios(config);
+			console.log(test);
+
+			// if (!created) {
+			//   console.log("true");
+			//   throw `Email already Taken`;
+			// } else {
+			//   console.log("false");
+			// 	setSubmitting(false);
+			// 	setCreated({ created: true });
+			// }
+		} catch (error) {
+			resetForm();
+			alert(error);
+		}
+	}
+
+	return (
+		<>
+			<div className="RegisterContainer">
+		<Container maxWidth="xl">
+				<div className="LogInHeader">
+					<h1 id="WelcomeBack" alt="Welcome Back!">
+						Welcome To MemeFly
+						<p>
+							To access the full version of MemeFly, we need to get to know you a
+							little better.
+						</p>
+					</h1>
+				</div>
+
+				<Formik
+					initialValues={{
+						username: "",
+						email: "",
+						password: ""
+					}}
+					validationSchema={Yup.object({
+						username: Yup.string().required("Username Required"),
+						email: Yup.string().required("Email Required"),
+						password: Yup.string().required("Password Required")
+					})}
+					onSubmit={handleSubmit}
+				>
+					{props => (
+						<Form className="RegisterWrapper">
+							<p><h2>Hi!</h2> You can call me 
+							<Field className="input" id="username" name="username" type="text" placeholder="UserName"/>
+							<ErrorMessage name="username" />.</p>
+							<p>If I forget my password or anything, you can email me at
+							{/* <label htmlFor="email">Email</label> */}
+							<Field className="input" id="email" name="email" type="email" placeholder="Email"/>
+							<ErrorMessage name="email" /> </p>
+
+							<p>I know my password needs to be 8 characters long and at least one uppercase letter. </p>
+							<p> I'd like my password to be 
+							<Field className="input" id="password" name="password" type="password" placeholder="Password" />
+							<ErrorMessage name="password" /> </p>
+							{/* <label htmlFor="password">Password</label> */}
+
+							<button type="submit" id="YellowButton">
+								Submit
+							</button>
+
+							<div>
+								<h3>
+									Already have an account?{" "}
+									<a href="/Login" id="SignUpHere" className="YellowLink">
+										Log in.
+									</a>{" "}
+								</h3>
+							</div>
+						</Form>
+					)}
+				</Formik>
+			</Container>
+			</div>
+		</>
+	);
+};
 
 export default Register;

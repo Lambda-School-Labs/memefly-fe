@@ -3,7 +3,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 
 // Styling
-import "./App.css";
+import "./App.scss";
 
 // Components
 // import MemeMain from "./components/MemeMain";

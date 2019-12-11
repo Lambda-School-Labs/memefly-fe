@@ -132,7 +132,7 @@ function ImgContainer() {
 	return (
 		<div>
 			<canvas ref={canvasRef} id="d" className="CanvasC"></canvas>
-			<button onClick={() => setText('nothing here')}>Add some text!!!</button>
+			{/* <button onClick={() => setText('nothing here')}>Add some text!!!</button> */}
 		</div>
 	);
 }

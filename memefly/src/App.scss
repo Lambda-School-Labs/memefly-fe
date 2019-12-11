@@ -39,10 +39,12 @@ h1 {
   font-size: 4.5rem;
 }
 h2 {
-  margin-top: 1.5em;
+  font-size:3.8rem;
+}
+h3{
+  font-size: 2.5rem;
 }
 h4{
-  text-align: center;
   font-size: 2rem;
 }
 p {
@@ -73,6 +75,9 @@ code:before,
 code:after {
   content: '\`';
 }
+
+
+
 
 .mainmeme{
 max-width: 45%;
@@ -308,4 +313,84 @@ overflow: hidden;
   justify-content: space-between;
   flex-direction: column;
   align-content: center;
+}
+
+/* Log-In Section */
+.LoginContainer{
+  background-color: #494692;
+  color:#FFFFFF;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  .LoginWrapper{
+    border:1px solid green;
+    padding:2rem;
+    margin-right: 5rem;
+  }
+
+  #SignUpHere{
+    color: #FFFE54;
+  }
+
+  #WelcomeBack{
+    border:4px solid #FFFFFF;
+    padding: 4rem 20%;
+    width: 50%;
+  }
+  .input{
+    background-color: transparent !important;
+   border:none;  
+   border-bottom: 3px solid #FFFFFF;
+  }
+
+}
+
+/* Register Section */
+.RegisterContainer{
+  background-color: #494692;
+  color:#FFFFFF;
+  display: flex;
+  flex-direction: column;
+  height:100%;
+  
+
+  .RegisterWrapper{
+  border: 1px solid yellow;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  
+  }
+
+  #WelcomeBack{
+    border:4px solid #FFFFFF;
+    padding: 4rem 15%;
+    text-align: center;
+  }
+
+  
+}
+
+.input {
+ background-color: transparent !important;
+ border:none;  
+ border-bottom: 3px solid #FFFFFF;
+ margin: .5rem;
+}
+
+#YellowButton{
+  width:15rem;
+  height: 3.5rem;
+  border:none;
+  border-radius: 5px;
+  background-color: #FFFE54;
+  font-family: var(--body-Font);
+  font-weight: 800;
+}
+.YellowLink{
+  color: #FFFE54;
+  max-height: 4rem;
+  //  padding: 1rem 3rem; 
 }
