@@ -39,10 +39,12 @@ h1 {
   font-size: 4.5rem;
 }
 h2 {
-  margin-top: 1.5em;
+  font-size:3.8rem;
+}
+h3{
+  font-size: 2.5rem;
 }
 h4{
-  text-align: center;
   font-size: 2rem;
 }
 p {
@@ -73,6 +75,9 @@ code:before,
 code:after {
   content: '\`';
 }
+
+
+
 
 .mainmeme{
 max-width: 45%;
@@ -312,6 +317,40 @@ overflow: hidden;
 
 /* Log-In Section */
 .LoginContainer{
-  background-color: #C75C8C;
-  
+  background-color: #494692;
+  color:#FFFFFF;
+  display: flex;
+  justify-content: flex-end;
+
+  .LoginWrapper{
+    border:1px solid green;
+    padding:2rem;
+    margin-right: 5rem;
+  }
+
+  #SignUpHere{
+    color: #FFFE54;
+  }
+
+  #WelcomeBack{
+    border:4px solid #FFFFFF;
+    padding: 4rem 20%;
+    width: 50%;
+  }
+
+}
+
+.input{
+ border:none;  
+ border-bottom: 3px solid #FFFFFF;
+}
+
+#YellowButton{
+  width:24rem;
+  height: 5.3rem;
+  border:none;
+  border-radius: 5px;
+  background-color: #FFFE54;
+  font-family: var(--body-Font);
+  font-weight: 800;
 }

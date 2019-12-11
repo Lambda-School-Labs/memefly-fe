@@ -1,153 +1,143 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-//import { withCookies } from "react-cookie";
-// import Facebook from "./components/Facebook.js";
-
-
-import { Container, Row, Col, Input, Button, Alert, Spinner } from "reactstrap";
+import { Formik, Field, Form } from "formik";
+import { Redirect } from "react-router-dom";
+import * as Yup from "yup";
 
 class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: false,
-      credentials: {
-        username: "",
-        //email: "",
-        password: ""
-      },
-      error: { status: false, message: "error" }
-    };
-  }
+	constructor() {
+		super();
+		this.state = {
+			loggedIn: false
+		};
+		this.initValues = {
+			//user can log in with either username or email
+			login: "",
+			password: ""
+		};
+		this.schema = Yup.object().shape({
+			login: Yup.string().required(),
+			password: Yup.string().required()
+		});
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+	async handleSubmit(values, formikBag) {
+		console.log("Hello");
+		var { setSubmitting, resetForm } = formikBag;
+		try {
+			let { login, password } = values,
+				loginType;
+			//check if login is type email or username
+			if (login.includes("@")) {
+				loginType = "email";
+			} else {
+				loginType = "username";
+			}
+			let config = {
+				method: "POST",
+				url: "http://localhost:5000/api/accounts",
+				data: {
+					query: `
+	              query{
+	                login(${loginType}:"${login}", password:"${password}"){loggedIn message token}
+	              }
+	            `
+				}
+			};
+			axios.defaults.withCredentials = true;
+			let {data:{data:{login:{loggedIn, token}}}} = await axios(config);
 
-  login = e => (username, password) => {
-    e.preventDefault();
-    console.log(`${username}: ${password}`);
-    this.setState({
-      ...this.state
-      //isLoading: true
-    });
+			if (!loggedIn) {
+				throw `Invalid ${loginType}/password`;
+			} else {
+				localStorage.setItem("token", token);
+				setSubmitting(false);
+				this.setState({ loggedIn: true });
+			}
 
-    //const axios = require("axios");
+		} catch (error) {
+			resetForm();
+			alert(error);
+		}
+	}
+	//checking if already logged in
+	componentDidMount() {
+		if (localStorage.getItem("username")) {
+			this.setState({ loggedIn: true });
+		}
+	}
+	render() {
+		var {
+			initValues,
+			schema,
+			handleSubmit,
+			state: { loggedIn }
+		} = this;
+		if (loggedIn) {
+			/*********************************************REDIRECT************************************************/
+			return <Redirect to="/dashboard" />;
+			/****************************************************************************************************/
+		} else {
+			/**************************************FORM*******************************************/
+			return (
+				<React.Fragment>
+					<Formik
+						initialValues={initValues}
+						validationSchema={schema}
+						onSubmit={handleSubmit}
+					>
+						{props => {
+							/**********************CHILDREN*********************/
+							var { errors, touched, isSubmitting } = props;
+							var buttonText = isSubmitting ? "Sending" : "Submit";
+							var loginError = errors.login && touched.login;
+							var passwordError = errors.password && touched.password;
+							return (
+								<div className="LoginContainer">
+									<div onClick={this.logout} className="LogInHeader">
+										<h1 id="WelcomeBack" alt="Welcome Back!">
+											Welcome Back!
+										</h1>
+									</div>
+									<Form className="LoginWrapper">
+										<div>
+											<h4>Username</h4>
+											<Field id="login" name="login" className="input" />
+											{loginError ? <small>login is required</small> : null}
+										</div>
 
-    axios({
-      url: "https://memefly.herokuapp.com/api/user",
-      method: "post",
-      data: {
-        query: `{
-        login(username:"${username}", password:"${password}")
-     }
-       `
-      }
-    })
-      // }).then(result => {
-      //   console.log(result.data);
-      // });
+										<div>
+											<h3>Password</h3>
+											<Field
+												id="password"
+												name="password"
+												type="password"
+												className="input"
+											/>
+											{passwordError ? <small>password is required</small> : null}
+										</div>
 
-      //   .post(
-      //     "https://memefly.herokuapp.com/api/user",
-      //     this.state.credentials
-      //   )
-
-      .then(res => {
-        console.log(res);
-        this.setState({
-          ...this.state,
-          credentials: {
-            username: "",
-            //email: "",
-            password: ""
-          }
-        });
-        // this.state.set("_uid", res.data.token);
-        this.props.history.push("/login");
-      })
-      .catch(err => {
-        console.log(err);
-        this.setState({
-          ...this.state,
-          isLoading: false,
-          error: {
-            status: true,
-            message: "Incorrect Info... please try again ; )"
-          }
-        });
-      });
-  };
-
-  handleChange = e => {
-    this.setState({
-      credentials: {
-        ...this.state.credentials,
-        [e.target.name]: e.target.value
-      }
-    });
-  };
-
-  render() {
-    return (
-      <Container className="LoginContainer">
-        <Row
-          style={{ height: "100vh", alignItems: "center" }}
-          className="text-center"
-        >
-          <Col xs={{ order: 2, size: 12 }} md={{ order: 1, size: 6 }}>
-            {this.state.error.status ? (
-              <Alert color="danger">{this.state.error.message}</Alert>
-            ) : null}
-            <form
-              onSubmit={e =>
-                this.login(e)(
-                  this.state.credentials.username,
-                  this.state.credentials.password
-                )
-              }
-            >
-              <div onClick={this.logout} className='divTest'>
-                <h2>Login to</h2>
-                <h1>MemeFLY</h1>
-              </div>
-              <Input
-                type="text"
-                name="username"
-                placeholder="Username"
-                value={this.state.credentials.username}
-                onChange={this.handleChange}
-              />
-              {/* <br />
-              <Input
-                type="text"
-                name="email"
-                placeholder="email"
-                value={this.state.credentials.email}
-                onChange={this.handleChange}
-              /> */}
-              <br />
-              <Input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={this.state.credentials.password}
-                onChange={this.handleChange}
-              />
-              <br />
-              {this.state.isLoading ? (
-                <Spinner color="primary" />
-              ) : (
-                <Button color="primary">Login</Button>
-              )}
-            </form>
-            <div>
-              <h3>Register for a account </h3>
-              <Link to="/register">Register</Link>
-            </div>
-
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
+										<button type="submit" id="YellowButton">
+											{buttonText}
+										</button>
+										<div>
+											<h3>
+												Need an account?{" "}
+												<a href="/register" id="SignUpHere">
+													Sign up here.
+												</a>{" "}
+											</h3>
+										</div>
+									</Form>
+								</div>
+							);
+							/*****************************************************/
+						}}
+					</Formik>
+				</React.Fragment>
+			);
+			/**********************************************************************************/
+		}
+	}
 }
-
 export default Login;

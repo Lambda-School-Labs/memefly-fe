@@ -7,6 +7,7 @@
     "@reach/router": "^1.2.1",
     "axios": "^0.19.0",
     "fabric": "^3.5.1",
+    "formik": "^2.0.6",
     "graphql-tag": "^2.10.1",
     "html2canvas": "^1.0.0-rc.5",
     "node-sass": "^4.13.0",
@@ -16,7 +17,8 @@
     "react-facebook-login": "^4.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "2.1.1",
-    "reactstrap": "^8.1.1"
+    "reactstrap": "^8.1.1",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",
