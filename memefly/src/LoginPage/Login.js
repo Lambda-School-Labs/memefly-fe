@@ -35,7 +35,7 @@ class Login extends React.Component {
 			}
 			let config = {
 				method: "POST",
-				url: "http://localhost:5000/api/accounts",
+				url: "http://memefly.herokuapp.com/api/accounts",
 				data: {
 					query: `
 	              query{
@@ -109,10 +109,10 @@ class Login extends React.Component {
 										<div>
 											<h3>Password</h3>
 											<Field
+												className="input"
 												id="password"
 												name="password"
 												type="password"
-												className="input"
 											/>
 											{passwordError ? <small>password is required</small> : null}
 										</div>
@@ -123,7 +123,7 @@ class Login extends React.Component {
 										<div>
 											<h3>
 												Need an account?{" "}
-												<a href="/register" id="SignUpHere">
+												<a href="/register" id="SignUpHere" className="YellowLink">
 													Sign up here.
 												</a>{" "}
 											</h3>

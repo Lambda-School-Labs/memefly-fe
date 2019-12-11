@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import axios from "axios";
-import{ Formik, Field, Form, useFormik, ErrorMessage} from "formik";
-import { Redirect, Link  } from "react-router-dom";
+import { Formik, Field, Form, useFormik, ErrorMessage } from "formik";
+import { Redirect, Link } from "react-router-dom";
 import * as Yup from "yup";
+import {Container} from "@material-ui/core"
 
 const Register = () => {
-  const [created, setCreated] = useState({
-    created: false
-  });
+	const [created, setCreated] = useState({
+		created: false
+	});
 
-  console.log(created);
+	console.log(created);
 
-  async function handleSubmit(values, formikBag) {
+	async function handleSubmit(values, formikBag) {
 		var { setSubmitting, resetForm } = formikBag;
-    let { username, email, password } = values;
-    console.log(username, email, password);
-    console.log("HANDLE SUBMIT WAS HIT.");
+		let { username, email, password } = values;
+		console.log(username, email, password);
+		console.log("HANDLE SUBMIT WAS HIT.");
 		try {
 			let config = {
 				method: "POST",
-				url: "http://localhost:5000/api/accounts",
+				url: "http://memefly.herokuapp.com/api/accounts",
 				data: {
 					query: `
 	              mutation{
@@ -27,71 +28,88 @@ const Register = () => {
 	              }
 	            `
 				}
-      };
-      
+			};
+
 			axios.defaults.withCredentials = true;
-      let test = await axios(config);
-      console.log(test);
+			let test = await axios(config);
+			console.log(test);
 
 			// if (!created) {
-      //   console.log("true");
-      //   throw `Email already Taken`;
+			//   console.log("true");
+			//   throw `Email already Taken`;
 			// } else {
-      //   console.log("false");
+			//   console.log("false");
 			// 	setSubmitting(false);
 			// 	setCreated({ created: true });
 			// }
-
-    } 
-    catch (error) {
+		} catch (error) {
 			resetForm();
 			alert(error);
 		}
-	};
+	}
 
-  
-			return (
-				<>
-					<div className="LoginContainer">
-						<Formik
-							initialValues={{
-								username: "",
-								email: "",
-								password: ""
-							}}
-							validationSchema={Yup.object({
-								username: Yup.string().required('Username Required'),
-								email: Yup.string().required('Email Required'),
-								password: Yup.string().required('Password Required')
-              })}
-              onSubmit={handleSubmit}
-						>
-              {(props) => (
-							<Form className="LoginWrapper">
+	return (
+		<>
+			<div className="RegisterContainer">
+		<Container maxWidth="xl">
+				<div className="LogInHeader">
+					<h1 id="WelcomeBack" alt="Welcome Back!">
+						Welcome To MemeFly
+						<p>
+							To access the full version of MemeFly, we need to get to know you a
+							little better.
+						</p>
+					</h1>
+				</div>
 
-								<label htmlFor="email">Email</label>
-								<Field className="input" id="email" name="email" type="email" />
-                <ErrorMessage name="email" />
+				<Formik
+					initialValues={{
+						username: "",
+						email: "",
+						password: ""
+					}}
+					validationSchema={Yup.object({
+						username: Yup.string().required("Username Required"),
+						email: Yup.string().required("Email Required"),
+						password: Yup.string().required("Password Required")
+					})}
+					onSubmit={handleSubmit}
+				>
+					{props => (
+						<Form className="RegisterWrapper">
+							<p><h2>Hi!</h2> You can call me 
+							<Field className="input" id="username" name="username" type="text" placeholder="UserName"/>
+							<ErrorMessage name="username" />.</p>
+							<p>If I forget my password or anything, you can email me at
+							{/* <label htmlFor="email">Email</label> */}
+							<Field className="input" id="email" name="email" type="email" placeholder="Email"/>
+							<ErrorMessage name="email" /> </p>
 
-								<label htmlFor="username"> UserName</label>
-								<Field className="input" id="username" name="username" type="text" />
-                <ErrorMessage name="username" />
+							<p>I know my password needs to be 8 characters long and at least one uppercase letter. </p>
+							<p> I'd like my password to be 
+							<Field className="input" id="password" name="password" type="password" placeholder="Password" />
+							<ErrorMessage name="password" /> </p>
+							{/* <label htmlFor="password">Password</label> */}
 
-								<label htmlFor="password">Password</label>
-								<Field className="input" id="password" name="password" type="password" />
-                <ErrorMessage name="password" />
+							<button type="submit" id="YellowButton">
+								Submit
+							</button>
 
-								<button type="submit" id="YellowButton">
-									Submit
-								</button>
-
-							</Form>
-              ) }
-						</Formik>
-					</div>
-				</>
-			);
-		
-}
+							<div>
+								<h3>
+									Already have an account?{" "}
+									<a href="/Login" id="SignUpHere" className="YellowLink">
+										Log in.
+									</a>{" "}
+								</h3>
+							</div>
+						</Form>
+					)}
+				</Formik>
+			</Container>
+			</div>
+		</>
+	);
+};
 
 export default Register;
