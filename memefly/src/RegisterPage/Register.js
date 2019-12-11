@@ -5,6 +5,7 @@ import { Redirect, Link } from "react-router-dom";
 import * as Yup from "yup";
 import {Container} from "@material-ui/core";
 import Facebook from "../components/Facebook";
+import { push_uniq } from "terser";
 
 const Register = () => {
 	const [created, setCreated] = useState({
@@ -21,7 +22,7 @@ const Register = () => {
 		try {
 			let config = {
 				method: "POST",
-				url: "http://memefly.herokuapp.com/api/accounts",
+				url: "http://localhost:5000/api/accounts",
 				data: {
 					query: `
 	              mutation{
@@ -34,7 +35,7 @@ const Register = () => {
 			axios.defaults.withCredentials = true;
 			let test = await axios(config);
 			console.log(test);
-
+			window.push("/");
 			// if (!created) {
 			//   console.log("true");
 			//   throw `Email already Taken`;

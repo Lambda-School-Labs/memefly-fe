@@ -1,6 +1,7 @@
 import React from "react";
-import { Avatar, Grid } from "@material-ui/core";
+import { Avatar, Grid, Box } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
+import WelcomeTag from './WelcomeTag';
 
 // Navigation bar when user is logged in with valid credentials
 
@@ -34,18 +35,22 @@ class Navigation extends React.Component {
           Learn More
         </NavLink>
 
-        <div className="UserWrapper">
+        <Box className="UserWrapper">
           <NavLink to="/profile" className="NavButton" id="Profile" alt="Username, access to account">
-            UserName
             <Grid container justify="center" alignItems="center" id="UserNavAvatar">
-              <Avatar to="/profile" alt="Avatar Image" src="https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg" />
-            </Grid>
-          </NavLink>
 
-          <a className="NavButton" id="LogOut" onClick={this.logOut} alt="LogOut">
-            Log Out
-          </a>
-        </div>
+              <WelcomeTag />
+
+              <a className="NavButton" id="LogOut" onClick={this.logOut} alt="LogOut">
+                Log Out
+              </a>
+            </Grid>
+
+              <Avatar to="/profile" alt="Avatar Image" src="https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg" />
+
+
+          </NavLink>
+        </Box>
       </div>
     );
   }
