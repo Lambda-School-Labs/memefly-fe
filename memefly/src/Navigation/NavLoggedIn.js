@@ -18,6 +18,11 @@ class Navigation extends React.Component {
     console.log("run");
   };
 
+   logOut = () => {
+    localStorage.clear();
+    window.location.href = '/';
+  }
+
   render() {
     return (
       <div className="linkContainer">
@@ -30,20 +35,16 @@ class Navigation extends React.Component {
         </NavLink>
 
         <div className="UserWrapper">
-          <NavLink to="/" className="NavButton" id="UserName" alt="Username, access to account">
+          <NavLink to="/profile" className="NavButton" id="Profile" alt="Username, access to account">
             UserName
             <Grid container justify="center" alignItems="center" id="UserNavAvatar">
-              <Avatar alt="Avatar Image" src="https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg" />
+              <Avatar to="/profile" alt="Avatar Image" src="https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg" />
             </Grid>
           </NavLink>
 
-          <NavLink className="NavButton" id="Profile" to="/profile" alt="Profile">
-           Profile
-          </NavLink>
-
-          <NavLink className="NavButton" id="LogOut" to="/" alt="LogOut">
+          <a className="NavButton" id="LogOut" onClick={this.logOut} alt="LogOut">
             Log Out
-          </NavLink>
+          </a>
         </div>
       </div>
     );

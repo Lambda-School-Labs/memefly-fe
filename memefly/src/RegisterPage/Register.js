@@ -3,7 +3,8 @@ import axios from "axios";
 import { Formik, Field, Form, useFormik, ErrorMessage } from "formik";
 import { Redirect, Link } from "react-router-dom";
 import * as Yup from "yup";
-import {Container} from "@material-ui/core"
+import {Container} from "@material-ui/core";
+import Facebook from "../components/Facebook";
 
 const Register = () => {
 	const [created, setCreated] = useState({

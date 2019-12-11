@@ -3,6 +3,8 @@ import axios from "axios";
 import { Formik, Field, Form } from "formik";
 import { Redirect } from "react-router-dom";
 import * as Yup from "yup";
+import {Container} from "@material-ui/core";
+import Facebook from "../components/Facebook";
 
 class Login extends React.Component {
 	constructor() {
@@ -35,7 +37,7 @@ class Login extends React.Component {
 			}
 			let config = {
 				method: "POST",
-				url: "http://memefly.herokuapp.com/api/accounts",
+				url: "http://localhost:5000/api/accounts",
 				data: {
 					query: `
 	              query{
@@ -75,7 +77,7 @@ class Login extends React.Component {
 		} = this;
 		if (loggedIn) {
 			/*********************************************REDIRECT************************************************/
-			return <Redirect to="/dashboard" />;
+			return <Redirect to="/" />;
 			/****************************************************************************************************/
 		} else {
 			/**************************************FORM*******************************************/
@@ -93,6 +95,7 @@ class Login extends React.Component {
 							var loginError = errors.login && touched.login;
 							var passwordError = errors.password && touched.password;
 							return (
+							<Container maxWidth="xl">
 								<div className="LoginContainer">
 									<div onClick={this.logout} className="LogInHeader">
 										<h1 id="WelcomeBack" alt="Welcome Back!">
@@ -121,6 +124,7 @@ class Login extends React.Component {
 											{buttonText}
 										</button>
 										<div>
+											<div onClick={<Facebook/>}></div>
 											<h3>
 												Need an account?{" "}
 												<a href="/register" id="SignUpHere" className="YellowLink">
@@ -130,6 +134,7 @@ class Login extends React.Component {
 										</div>
 									</Form>
 								</div>
+							</Container>
 							);
 							/*****************************************************/
 						}}
