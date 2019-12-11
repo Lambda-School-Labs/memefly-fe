@@ -4,7 +4,7 @@ import axios from "axios";
 const WelcomeTag = ()=>{
     let name = localStorage.getItem("name")
     
-    if(name === undefined){
+    if(!name){
         return "Welcome!"
     }else{
         return `"Welcome,  ${name}!"`

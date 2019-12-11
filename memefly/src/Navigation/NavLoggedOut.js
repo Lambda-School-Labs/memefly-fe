@@ -22,6 +22,7 @@ class Navigation extends React.Component {
     return (
 
           <div className="linkContainer">
+            
             <NavLink to="/" href="url" className="NavButton" alt="Generate a Meme">
               Generate-A-Meme
             </NavLink>

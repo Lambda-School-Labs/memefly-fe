@@ -24,7 +24,7 @@ class Login extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 	async handleSubmit(values, formikBag) {
-		console.log("Hello");
+
 		var { setSubmitting, resetForm } = formikBag;
 		try {
 			let { login, password } = values,
