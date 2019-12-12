@@ -3,7 +3,7 @@ import axios from "axios";
 import { Formik, Field, Form } from "formik";
 import { Redirect } from "react-router-dom";
 import * as Yup from "yup";
-import {Container} from "@material-ui/core";
+import {Container, Grid} from "@material-ui/core";
 import Facebook from "../components/Facebook";
 
 class Login extends React.Component {
@@ -38,7 +38,7 @@ class Login extends React.Component {
 			let config = {
 				method: "POST",
 				// url: "http://memefly.herokuapp.com/api/accounts",
-				url:"http://localhost:5000/api/accounts",
+				url:"https://localhost:5000/api/accounts",
 				data: {
 					query: `
 	              query{
@@ -96,46 +96,49 @@ class Login extends React.Component {
 							var loginError = errors.login && touched.login;
 							var passwordError = errors.password && touched.password;
 							return (
-							<Container maxWidth="xl">
 								<div className="LoginContainer">
-									<div onClick={this.logout} className="LogInHeader">
+								<Grid container xs >
+									<Grid xs item onClick={this.logout} className="LogInHeader">
 										<h1 id="WelcomeBack" alt="Welcome Back!">
 											Welcome Back!
 										</h1>
-									</div>
-									<Form className="LoginWrapper">
-										<div>
-											<h4>Username</h4>
-											<Field id="login" name="login" className="input" />
-											{loginError ? <small>login is required</small> : null}
-										</div>
+									</Grid>
 
-										<div>
-											<h3>Password</h3>
+									<Grid item xs >
+									<Form className="LoginWrapper">
+										<div className="InputWrapper">
+											<p>Username</p>
+											<Field id="login" name="login" className="input" placeholder="Username"/>
+											{loginError ? <small>login is required</small> : null}
+
+										
+											<p>Password</p>
 											<Field
 												className="input"
 												id="password"
 												name="password"
 												type="password"
+												placeholder="Password"
 											/>
 											{passwordError ? <small>password is required</small> : null}
 										</div>
 
-										<button type="submit" id="YellowButton">
-											{buttonText}
-										</button>
+											<button type="submit" id="YellowButton">
+												{buttonText}
+											</button>
+											<Facebook/>
 										<div>
-											<div onClick={<Facebook/>}></div>
-											<h3>
+											<p>
 												Need an account?{" "}
 												<a href="/register" id="SignUpHere" className="YellowLink">
 													Sign up here.
 												</a>{" "}
-											</h3>
+											</p>
 										</div>
 									</Form>
+									</Grid>
+							</Grid>
 								</div>
-							</Container>
 							);
 							/*****************************************************/
 						}}
