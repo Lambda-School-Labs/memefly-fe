@@ -22,7 +22,8 @@ const Register = () => {
 		try {
 			let config = {
 				method: "POST",
-				url: "http://memefly.herokuapp.com/api/api/accounts",
+				// url: "http://memefly.herokuapp.com/api/accounts",
+				url:"http://localhost:5000/api/accounts",
 				data: {
 					query: `
 	              mutation{
