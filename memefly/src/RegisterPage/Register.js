@@ -97,6 +97,10 @@ const Register = () => {
 							<button type="submit" id="YellowButton">
 								Submit
 							</button>
+							<br/>
+							<p>Or...</p>
+							<Facebook/>
+
 
 							<div>
 								<h3>
