@@ -3,8 +3,9 @@ import { fabric } from "fabric";
 import Axios from 'axios';
 
 function ImgContainer() {
+	const [memeURL, setMemeURL] = useState("https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg")
 	const [memeData, setMemeData] = useState({
-		meme_url:'https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg'
+		meme_url:''
 	});
 	const [imgSize, setImgSize] = useState({})
 	const [innerText, setText] = useState('');
@@ -79,11 +80,12 @@ function ImgContainer() {
 		});
 		
 		// This loads the image
-		let tempImg = memeData.meme_url;
+		let tempImg = memeURL;
 		// console.log('tempimg: ', tempImg);
 		let meme;
 		let memeImg = new Image();
 		const max_width = 500;
+		
 		
 		memeImg.onload = function (img) {
 
@@ -130,6 +132,7 @@ function ImgContainer() {
 
 	},[])
 
+
 	useEffect(()=>{
 		let canvas = new fabric.Canvas('d',{
 			preserveObjectStacking:true
@@ -137,8 +140,6 @@ function ImgContainer() {
 		// console.log(canvas, innerText)
 		canvas.text = innerText
 	}, [innerText])
-
-	
 
 
 	return (
