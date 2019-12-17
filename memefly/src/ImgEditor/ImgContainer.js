@@ -1,61 +1,17 @@
 import React, {useEffect, useState, useRef} from "react";
 import { fabric } from "fabric";
 import Axios from 'axios';
+import { connect } from "react-redux";
 
-function ImgContainer() {
-	const [memeData, setMemeData] = useState({
-		meme_url:'https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg'
-	});
+function ImgContainer({meme_url}) {
+
+	const [defaultImg, setDefaultImg] = useState({meme_url});
 	const [imgSize, setImgSize] = useState({})
 	const [innerText, setText] = useState('');
+
+	// console.log(defaultImg);	
+	
 	const canvasRef = useRef(null);
-
-	function axiosConfig(query) {
-		return {
-			url: "http://memefly.herokuapp.com/api/memes/base",
-			method: "POST",
-			data: {
-				query: `
-					query{
-						generateMeme(rand:true) {
-						meme_id
-						meme_name
-						meme_url
-						meme_bounding_box
-						message
-						generated_meme_texts
-						fetched
-						}
-					}
-				  `
-			}
-		};
-	}
-
-	function getBaseMeme(id, rand = false) {
-	return `
-	query{
-	getBaseMeme(id:${id}, rand:${rand}){
-		message
-		fetched
-		meme_bounding_box
-		meme_id
-		meme_url
-		meme_text
-	}
-	}
-	`;
-	}
-
-	useEffect(() => {
-	Axios(axiosConfig(getBaseMeme(null, true)))
-	.then(res => {
-		// console.log('res: ', res);
-		// setMemeData(res.data.data.getBaseMeme);
-	})
-
-	}, [])
-
 
 	var text2 = new fabric.Textbox('Hello', {
 		cursorColor :"blue",
@@ -70,23 +26,29 @@ function ImgContainer() {
 		left:272,
 		fontFamily:'impact',
 	});
-
+	console.log(meme_url);	
+	
 	useEffect(() => {
-
+		
+		let tempImg;
+		
 		// Creates Canvas 
 		let canvas = new fabric.Canvas('d',{
 			preserveObjectStacking:true
 		});
+		canvas.remove(memeImg);
+		
+		
 		
 		// This loads the image
-		let tempImg = memeData.meme_url;
-		// console.log('tempimg: ', tempImg);
+		tempImg = meme_url;
+
 		let meme;
 		let memeImg = new Image();
 		const max_width = 500;
 		
 		memeImg.onload = function (img) {
-
+			
 			// Properties for Meme Image
 			meme = new fabric.Image(memeImg, {
 				angle: 0,
@@ -126,9 +88,7 @@ function ImgContainer() {
 
 		addText();
 		canvas.add(text2);
-
-
-	},[])
+	},[meme_url])
 
 	useEffect(()=>{
 		let canvas = new fabric.Canvas('d',{
@@ -149,4 +109,11 @@ function ImgContainer() {
 	);
 }
 
-export default ImgContainer;
+const mapStateToProps = state => {
+	return{
+		meme_url: state.memeReducer.meme.meme_url,
+
+	}
+}
+
+export default connect(mapStateToProps, {ImgContainer}) (ImgContainer);

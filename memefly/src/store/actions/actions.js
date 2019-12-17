@@ -16,12 +16,12 @@ export const LOGIN_USER_SUCCESS  = 'LOGIN_USER_SUCCESS'
 export const LOGIN_USER_FAILURE  = 'LOGIN_USER_FAILURE'
 
 export const userLogin = () => dispatch =>{
-    console.log("Dispatch: ", dispatch);
+    // console.log("Dispatch: ", dispatch);
     dispatch({type: LOGIN_USER_START})
     return axios
 }
 
-// Generate meme
+// GENERATES A RANDOM MEME.
 
 export const GENERATE_MEME_START = 'GENERATE_MEME_START';
 export const GENERATE_MEME_SUCCESS = 'GENERATE_MEME_SUCCESS';
@@ -51,7 +51,7 @@ export const generateMeme = () => dispatch => {
         
     })
     .then((res) => {
-        console.log(res.data.data.getBaseMeme); 
+        // console.log(res.data.data.getBaseMeme); 
         dispatch({
         type:GENERATE_MEME_SUCCESS,
         payload: res.data.data.getBaseMeme}

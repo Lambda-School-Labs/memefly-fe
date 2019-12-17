@@ -57,10 +57,7 @@ function GenerateMemePage (props) {
 
 const mapStateToProps = state => {
   return{
-    meme_id: state.memeReducer.meme_id,
-    meme_url: state.memeReducer.meme_url,
-    meme_text: state.memeReducer.meme_text,
-    message: state.memeReducer.message
+    meme_data: state.memeReducer.meme,
   }
 }
 
