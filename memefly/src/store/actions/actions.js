@@ -29,33 +29,33 @@ export const GENERATE_MEME_FAILURE = 'GENERATE_MEME_FAILURE';
 
 
 export const generateMeme = () => dispatch => {
-    console.log('test')
     dispatch({type: GENERATE_MEME_START});
     return axios({
         method: "POST",
         // url: "http://memefly.herokuapp.com/api/accounts",
-        url:"https://localhost:5000/api/",
+        url:"http://localhost:5000/api/memes/base",
         data: {
             query:  `
             query{
-            getBaseMeme( rand:'true'){
-                message
-                fetched
-                meme_bounding_box
-                meme_id
-                meme_url
-                meme_text
-                }
+                getBaseMeme( rand:true ){
+                    message
+                    fetched
+                    meme_bounding_box
+                    meme_id
+                    meme_url
+                    meme_text
+                    }
             }
             `
         }
+        
     })
     .then((res) => {
-        console.log(res); 
-        // dispatch({
-        // type:GENERATE_MEME_SUCCESS,
-        // payload: res.data}
-        // );
+        console.log(res.data.data.getBaseMeme); 
+        dispatch({
+        type:GENERATE_MEME_SUCCESS,
+        payload: res.data.data.getBaseMeme}
+        );
     })
     .catch((err) =>{
         dispatch({

@@ -1,13 +1,14 @@
 import { GENERATE_MEME_START, GENERATE_MEME_SUCCESS, GENERATE_MEME_FAILURE } from "../actions/actions"
 
 const initialState= {
-    message:'',
-    fetched:false,
-    meme_bounding_box:[],
-    meme_id:9999,
-    meme_url:'',
-    meme_text:'',
-
+    meme:{
+        message:'',
+        fetched:false,
+        meme_bounding_box:[],
+        meme_id:9999,
+        meme_url:'',
+        meme_text:[],
+    },
     status:{
         isFetching:false,
         errors: null,
@@ -24,10 +25,10 @@ export const memeReducer = (state = initialState, action) => {
                 errors:null,
             }
         case GENERATE_MEME_SUCCESS:
+                console.log("ACTION.PAYLOAD: ", action.payload);
             return{
                 ...state,
-                isFetching:false,
-                errors:null,
+                meme: action.payload,
             }
         case GENERATE_MEME_FAILURE:
             return{

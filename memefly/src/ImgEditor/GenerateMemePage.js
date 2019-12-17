@@ -7,12 +7,11 @@ import {generateMeme} from '../store/actions/actions'
 
 function GenerateMemePage (props) {
   const [meme, setMeme] = useState()
-  console.log(meme);
 
   const handleGenerateMeme = e => {
     console.log("Handled Generate meme")
     e.preventDefault();
-   setMeme(props.generateMeme());
+   setMeme( props.generateMeme());
   }
 
     return (
