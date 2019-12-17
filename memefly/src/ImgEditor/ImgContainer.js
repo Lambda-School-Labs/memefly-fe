@@ -16,7 +16,19 @@ function ImgContainer() {
 			url: "http://memefly.herokuapp.com/api/memes/base",
 			method: "POST",
 			data: {
-				query
+				query: `
+					query{
+						generateMeme(rand:true) {
+						meme_id
+						meme_name
+						meme_url
+						meme_bounding_box
+						message
+						generated_meme_texts
+						fetched
+						}
+					}
+				  `
 			}
 		};
 	}
@@ -39,7 +51,7 @@ function ImgContainer() {
 	useEffect(() => {
 	Axios(axiosConfig(getBaseMeme(null, true)))
 	.then(res => {
-		// console.log(res.data.data.getBaseMeme);
+		// console.log('res: ', res);
 		// setMemeData(res.data.data.getBaseMeme);
 	})
 
@@ -125,7 +137,7 @@ function ImgContainer() {
 		let canvas = new fabric.Canvas('d',{
 			preserveObjectStacking:true
 		});
-		console.log(canvas, innerText)
+		// console.log(canvas, innerText)
 		canvas.text = innerText
 	}, [innerText])
 
