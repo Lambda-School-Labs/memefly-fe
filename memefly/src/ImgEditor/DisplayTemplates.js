@@ -7,7 +7,7 @@ function DisplayTemplates() {
     const [templates, setTemplates] = useState({});
     const [template, setTemplate] = useState(null);
 
-    console.log("CHOSEN TEMPLATE", templates);
+    // console.log("CHOSEN TEMPLATE", templates);
 
     function axiosConfig(query) {
 					return {

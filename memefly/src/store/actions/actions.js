@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { dispatch } from '../../../../../../../../AppData/Local/Microsoft/TypeScript/3.6/node_modules/rxjs/internal/observable/pairs';
 
 // USED IN REGISTRATION FORM
 export const ADD_USER_START = 'ADD_USER_START';
@@ -17,7 +16,52 @@ export const LOGIN_USER_SUCCESS  = 'LOGIN_USER_SUCCESS'
 export const LOGIN_USER_FAILURE  = 'LOGIN_USER_FAILURE'
 
 export const userLogin = () => dispatch =>{
+    console.log("Dispatch: ", dispatch);
     dispatch({type: LOGIN_USER_START})
-    return 
+    return axios
 }
+
+// Generate meme
+
+export const GENERATE_MEME_START = 'GENERATE_MEME_START';
+export const GENERATE_MEME_SUCCESS = 'GENERATE_MEME_SUCCESS';
+export const GENERATE_MEME_FAILURE = 'GENERATE_MEME_FAILURE';
+
+
+export const generateMeme = () => dispatch => {
+    dispatch({type: GENERATE_MEME_START});
+    return axios({
+        method: "POST",
+        // url: "http://memefly.herokuapp.com/api/accounts",
+        url:"http://localhost:5000/api/memes/base",
+        data: {
+            query:  `
+            query{
+                getBaseMeme( rand:true ){
+                    message
+                    fetched
+                    meme_bounding_box
+                    meme_id
+                    meme_url
+                    meme_text
+                    }
+            }
+            `
+        }
+        
+    })
+    .then((res) => {
+        console.log(res.data.data.getBaseMeme); 
+        dispatch({
+        type:GENERATE_MEME_SUCCESS,
+        payload: res.data.data.getBaseMeme}
+        );
+    })
+    .catch((err) =>{
+        dispatch({
+        type:GENERATE_MEME_FAILURE, 
+        payload:err});
+        console.log(err)
+    });
+};
   

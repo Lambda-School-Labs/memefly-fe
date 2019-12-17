@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from "react-redux"
 import ImgContainer from './ImgContainer';
 import DisplayTemplates from './DisplayTemplates';
 import ImgUpload from "../ImgUpload/ImgUpload.js"
+import {generateMeme} from '../store/actions/actions'
 
+function GenerateMemePage (props) {
+  const [meme, setMeme] = useState()
 
-function GenerateMemePage () {
+  const handleGenerateMeme = e => {
+    console.log("Handled Generate meme")
+    e.preventDefault();
+   setMeme( props.generateMeme());
+  }
 
     return (
             <div className="MainContainer">
@@ -15,14 +23,13 @@ function GenerateMemePage () {
         
                 <div className="ImageControlWrapper">
                   <button
-                    onClick={console.log('generateMeme')}
+                    onClick={handleGenerateMeme}
                     class="ButtonDesignOne"
                     id="mainGenerateButton"
                   >
                     GENERATE MEME
                   </button>
                   <button
-                    onClick={console.log('saveMeme')}
                     class="ButtonDesignOne"
                     id="SaveMemeButton"
                   >
@@ -50,4 +57,13 @@ function GenerateMemePage () {
           );
 }
 
-export default GenerateMemePage;
+const mapStateToProps = state => {
+  return{
+    meme_id: state.memeReducer.meme_id,
+    meme_url: state.memeReducer.meme_url,
+    meme_text: state.memeReducer.meme_text,
+    message: state.memeReducer.message
+  }
+}
+
+export default connect(mapStateToProps,{ generateMeme }) (GenerateMemePage);
