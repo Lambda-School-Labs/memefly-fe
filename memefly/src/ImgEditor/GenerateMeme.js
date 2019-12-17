@@ -7,12 +7,6 @@ function GenerateMeme() {
 		name: "batman-slapping-robin",
 		url: "https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg"
 	});
-	const [memeText, setMemeText] = useState("");
-
-    let randomNumber = Math.floor(Math.random() * 104);
-    console.log("ALL MEMES HERE", allMemes[randomNumber]);
-    setMemeData(allMemes[randomNumber]);
-    console.log("MEME NAME HERE: ", memeData.name.toLowerCase());
 
     axios
         .post(

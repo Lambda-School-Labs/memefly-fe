@@ -10,7 +10,7 @@ const NavCondition = () => {
     const navTest = localStorage.getItem("token");
     const faceTest = localStorage.getItem("isLoggedIn");
     const forced = true;
-    console.log(faceTest);
+    // console.log(faceTest);
 
 
     if (!navTest || !faceTest) {
