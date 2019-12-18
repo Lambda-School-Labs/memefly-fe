@@ -3,9 +3,11 @@ import { fabric } from "fabric";
 import Axios from 'axios';
 import { connect } from "react-redux";
 
+
 function ImgContainer({meme_url, generated_meme_texts}) {
 
 	const [defaultImg, setDefaultImg] = useState({meme_url});
+
 	const [imgSize, setImgSize] = useState({})
 	const [innerText, setText] = useState('');
 
@@ -45,11 +47,13 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		
 		
 		// This loads the image
-		tempImg = meme_url;
 
+		let tempImg = memeURL;
+		// console.log('tempimg: ', tempImg);
 		let meme;
 		let memeImg = new Image();
 		const max_width = 500;
+		
 		
 		memeImg.onload = function (img) {
 			
@@ -97,7 +101,6 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 	// 	canvas.text = innerText
 	// }, [innerText])
 
-	
 
 
 	return (
