@@ -1,85 +1,53 @@
 import React, {useEffect, useState, useRef} from "react";
 import { fabric } from "fabric";
 import Axios from 'axios';
+import { connect } from "react-redux";
 
-function ImgContainer() {
-	const [memeURL, setMemeURL] = useState("https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg")
-	const [memeData, setMemeData] = useState({
-		meme_url:''
-	});
+
+function ImgContainer({meme_url, generated_meme_texts}) {
+
+	const [defaultImg, setDefaultImg] = useState({meme_url});
+
 	const [imgSize, setImgSize] = useState({})
 	const [innerText, setText] = useState('');
-	const canvasRef = useRef(null);
 
-	function axiosConfig(query) {
-		return {
-			url: "http://memefly.herokuapp.com/api/memes/base",
-			method: "POST",
-			data: {
-				query: `
-					query{
-						generateMeme(rand:true) {
-						meme_id
-						meme_name
-						meme_url
-						meme_bounding_box
-						message
-						generated_meme_texts
-						fetched
-						}
-					}
-				  `
-			}
+	function randomMessage() {
+
+		if(!generated_meme_texts.length){
+			return generated_meme_texts;
+		} else {
+			return generated_meme_texts[Math.floor(Math.random() * generated_meme_texts.length)];	
 		};
 	}
+	const canvasRef = useRef(null);
 
-	function getBaseMeme(id, rand = false) {
-	return `
-	query{
-	getBaseMeme(id:${id}, rand:${rand}){
-		message
-		fetched
-		meme_bounding_box
-		meme_id
-		meme_url
-		meme_text
-	}
-	}
-	`;
-	}
-
-	useEffect(() => {
-	Axios(axiosConfig(getBaseMeme(null, true)))
-	.then(res => {
-		// console.log('res: ', res);
-		// setMemeData(res.data.data.getBaseMeme);
-	})
-
-	}, [])
-
-
-	var text2 = new fabric.Textbox('Hello', {
+	var text2 = new fabric.Textbox(randomMessage(), {
 		cursorColor :"blue",
 		top:16,
 		left:3,
 		fontFamily:'impact',
+		fill:'white',
 	});
 
-	var text = new fabric.Textbox('world', {
-		cursorColor :"blue",
-		top:5,
-		left:272,
-		fontFamily:'impact',
-	});
-
+	console.log(meme_url);	
+	
 	useEffect(() => {
-
+		if(canvas){
+			canvas.dispose();
+		}
+		
+		let tempImg;
+		
 		// Creates Canvas 
 		let canvas = new fabric.Canvas('d',{
-			preserveObjectStacking:true
+			preserveObjectStacking:true,
+			maxWidth: 500,
 		});
 		
+		
+		
 		// This loads the image
+
 		let tempImg = memeURL;
 		// console.log('tempimg: ', tempImg);
 		let meme;
@@ -88,7 +56,7 @@ function ImgContainer() {
 		
 		
 		memeImg.onload = function (img) {
-
+			
 			// Properties for Meme Image
 			meme = new fabric.Image(memeImg, {
 				angle: 0,
@@ -122,24 +90,17 @@ function ImgContainer() {
 
 		memeImg.src = tempImg;
 
-		function addText(){
-			canvas.add(text);
-		}
-
-		addText();
 		canvas.add(text2);
+	},[meme_url])
 
+	// useEffect(()=>{
+	// 	let canvas = new fabric.Canvas('d',{
+	// 		preserveObjectStacking:true
+	// 	});
+	// 	// console.log(canvas, innerText)
+	// 	canvas.text = innerText
+	// }, [innerText])
 
-	},[])
-
-
-	useEffect(()=>{
-		let canvas = new fabric.Canvas('d',{
-			preserveObjectStacking:true
-		});
-		// console.log(canvas, innerText)
-		canvas.text = innerText
-	}, [innerText])
 
 
 	return (
@@ -150,4 +111,12 @@ function ImgContainer() {
 	);
 }
 
-export default ImgContainer;
+const mapStateToProps = state => {
+	return{
+		meme_url: state.memeReducer.meme.meme_url,
+		generated_meme_texts: state.memeReducer.meme.generated_meme_texts,
+
+	}
+}
+
+export default connect(mapStateToProps, {ImgContainer}) (ImgContainer);
