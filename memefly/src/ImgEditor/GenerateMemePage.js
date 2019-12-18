@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { connect } from "react-redux"
 import ImgContainer from './ImgContainer';
 import DisplayTemplates from './DisplayTemplates';
-import ImgUpload from "../ImgUpload/ImgUpload.js";
-
+import ImgUpload from "../ImgUpload/ImgUpload.js"
 import {generateMeme} from '../store/actions/actions'
-
 
 function GenerateMemePage (props) {
   const [meme, setMeme] = useState()
