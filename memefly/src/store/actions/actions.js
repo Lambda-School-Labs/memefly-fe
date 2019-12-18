@@ -37,13 +37,13 @@ export const generateMeme = () => dispatch => {
         data: {
             query:  `
             query{
-                getBaseMeme( rand:true ){
+                generateMeme( rand:true ){
                     message
                     fetched
                     meme_bounding_box
                     meme_id
                     meme_url
-                    meme_text
+                    generated_meme_texts
                     }
             }
             `
@@ -51,10 +51,10 @@ export const generateMeme = () => dispatch => {
         
     })
     .then((res) => {
-        // console.log(res.data.data.getBaseMeme); 
+        // console.log(res.data.data.generateMeme); 
         dispatch({
         type:GENERATE_MEME_SUCCESS,
-        payload: res.data.data.getBaseMeme}
+        payload: res.data.data.generateMeme}
         );
     })
     .catch((err) =>{

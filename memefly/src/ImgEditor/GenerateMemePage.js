@@ -40,7 +40,7 @@ function GenerateMemePage (props) {
                       <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.memeflyai.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
                 </div>
         
-                <>
+                {/* <>
                   <div className="trendingMeme">
                     <div className="templateMemeContainer">
                       <div className="MidPageNav">
@@ -49,7 +49,7 @@ function GenerateMemePage (props) {
                       </div>
                     </div>
                   </div>
-                </>
+                </> */}
               </div>
             </div>
           );

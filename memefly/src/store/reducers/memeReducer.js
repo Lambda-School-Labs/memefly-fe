@@ -7,7 +7,7 @@ const initialState= {
         meme_bounding_box:[],
         meme_id:9999,
         meme_url:'https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg',
-        meme_text:[],
+        generated_meme_texts:["test Default"],
     },
     status:{
         isFetching:false,
