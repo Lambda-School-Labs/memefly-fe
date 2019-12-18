@@ -42,7 +42,7 @@ function GenerateMemePage (props) {
                       <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.memeflyai.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
                 </div>
         
-                <>
+                {/* <>
                   <div className="trendingMeme">
                     <div className="templateMemeContainer">
                       <div className="MidPageNav">
@@ -51,7 +51,7 @@ function GenerateMemePage (props) {
                       </div>
                     </div>
                   </div>
-                </>
+                </> */}
               </div>
             </div>
           );
@@ -59,10 +59,7 @@ function GenerateMemePage (props) {
 
 const mapStateToProps = state => {
   return{
-    meme_id: state.memeReducer.meme_id,
-    meme_url: state.memeReducer.meme_url,
-    meme_text: state.memeReducer.meme_text,
-    message: state.memeReducer.message
+    meme_data: state.memeReducer.meme,
   }
 }
 

@@ -6,8 +6,8 @@ const initialState= {
         fetched:false,
         meme_bounding_box:[],
         meme_id:9999,
-        meme_url:'',
-        meme_text:[],
+        meme_url:'https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg',
+        generated_meme_texts:["test Default"],
     },
     status:{
         isFetching:false,
@@ -25,7 +25,7 @@ export const memeReducer = (state = initialState, action) => {
                 errors:null,
             }
         case GENERATE_MEME_SUCCESS:
-                console.log("ACTION.PAYLOAD: ", action.payload);
+                // console.log("ACTION.PAYLOAD: ", action.payload);
             return{
                 ...state,
                 meme: action.payload,

@@ -18,7 +18,7 @@ const ImgUpload=()=>{
         if (file) {
           reader.readAsDataURL(file);
           console.log("url", preview.src)
-          console.log(file.name)
+          console.log(file)
         }
       }
 
