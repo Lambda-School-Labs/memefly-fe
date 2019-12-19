@@ -7,50 +7,66 @@ import ImgUpload from "../ImgUpload/ImgUpload.js"
 
 function ImgContainer({meme_url, generated_meme_texts}) {
 
-	const [defaultImg, setDefaultImg] = useState({meme_url});
+	const [imgSize, setImgSize] = useState({width:400, height:400});
 
-	const [imgSize, setImgSize] = useState({})
-	const [innerText, setText] = useState('');
-
+	// DISPLAYS A RANDOM MESSAGE IF THERE IS MORE THAN 1 CHOICE.
 	function randomMessage() {
-
 		if(!generated_meme_texts.length){
 			return generated_meme_texts;
 		} else {
 			return generated_meme_texts[Math.floor(Math.random() * generated_meme_texts.length)];	
 		};
 	}
+
+	const widthTest = imgSize.width - 50;
+	const middleOfImage = imgSize.width / 2;
 	const canvasRef = useRef(null);
 
+	// PROPERTIES FOR TEXT BOX.
 	var text2 = new fabric.Textbox(randomMessage(), {
 		cursorColor :"blue",
 		top:16,
-		left:3,
+		// left:middleOfImage,
+		width: widthTest,
 		fontFamily:'impact',
 		fill:'white',
 	});
 
-	// console.log(meme_url);	
+	console.log(meme_url);	
+
+	// function addText() {
+
+	// 	testTextAdd = fabric.Canvas('d');
+
+	// 	var newText = new fabric.Textbox(randomMessage(), {
+	// 		cursorColor :"blue",
+	// 		top:16,
+	// 		// left:middleOfImage,
+	// 		width: widthTest,
+	// 		fontFamily:'impact',
+	// 		fill:'white',
+	// 	});
+
+	// 	testTextAdd.add(newText);
+	// }
+
 	
+	// CANVAS USE EFFECT
 	useEffect(() => {
-		if(canvas){
-			canvas.dispose();
-		}
-		
-		// let tempImg;
-		
+		let canvas;
+		let tempImg;
+
+
+
 		// Creates Canvas 
-		let canvas = new fabric.Canvas('d',{
+		canvas = new fabric.Canvas('d',{
 			preserveObjectStacking:true,
-			maxWidth: 500,
 		});
 		
 		
 		
 		// This loads the image
-
-		let tempImg = meme_url;
-		// console.log('tempimg: ', tempImg);
+		tempImg = meme_url;
 		let meme;
 		let memeImg = new Image();
 		const max_width = 500;
@@ -75,8 +91,6 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 				width: memeImg.width.toString(),
 				height: memeImg.height.toString()
 			});
-			// console.log("memeImg.height:", memeImg.height);
-			// console.log(" memeImg.width: ", memeImg.width);
 
 			// This Takes in the image and constrains it to a max width of 500px
 			// if (memeImg.width > max_width) {
@@ -88,27 +102,23 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 			canvas.setHeight(memeImg.height)
 			canvas.setWidth(memeImg.width)
 		};
-
+		
 		memeImg.src = tempImg;
 
 
 		canvas.add(text2);
+		// console.log(memeImg)
+
+		// Clears up canvas after each new meme is generated
+		return function clean_up () {
+			canvas.dispose();
+		}
+
 	},[meme_url])
 
-	// useEffect(()=>{
-	// 	let canvas = new fabric.Canvas('d',{
-	// 		preserveObjectStacking:true
-	// 	});
-	// 	// console.log(canvas, innerText)
-	// 	canvas.text = innerText
-	// }, [innerText])
-
-
-
-	return (
+return (
 		<div>
 			<canvas ref={canvasRef} id="d" className="CanvasC"></canvas>
-			{/* <button onClick={() => setText('nothing here')}>Add some text!!!</button> */}
 		</div>
 	);
 }
