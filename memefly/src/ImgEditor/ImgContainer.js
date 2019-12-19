@@ -2,6 +2,7 @@ import React, {useEffect, useState, useRef} from "react";
 import { fabric } from "fabric";
 import Axios from 'axios';
 import { connect } from "react-redux";
+import ImgUpload from "../ImgUpload/ImgUpload.js"
 
 
 function ImgContainer({meme_url, generated_meme_texts}) {
@@ -29,14 +30,14 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		fill:'white',
 	});
 
-	console.log(meme_url);	
+	// console.log(meme_url);	
 	
 	useEffect(() => {
 		if(canvas){
 			canvas.dispose();
 		}
 		
-		let tempImg;
+		// let tempImg;
 		
 		// Creates Canvas 
 		let canvas = new fabric.Canvas('d',{
@@ -48,7 +49,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		
 		// This loads the image
 
-		let tempImg = memeURL;
+		let tempImg = meme_url;
 		// console.log('tempimg: ', tempImg);
 		let meme;
 		let memeImg = new Image();
@@ -89,6 +90,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		};
 
 		memeImg.src = tempImg;
+
 
 		canvas.add(text2);
 	},[meme_url])
