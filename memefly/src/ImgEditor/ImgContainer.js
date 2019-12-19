@@ -3,6 +3,7 @@ import { fabric } from "fabric";
 import Axios from 'axios';
 import { connect } from "react-redux";
 
+
 function ImgContainer({meme_url, generated_meme_texts}) {
 
 	const [imgSize, setImgSize] = useState({width:400, height:400});
@@ -68,6 +69,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		let meme;
 		let memeImg = new Image();
 		const max_width = 500;
+		
 		
 		memeImg.onload = function (img) {
 			
