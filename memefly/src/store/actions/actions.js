@@ -29,6 +29,7 @@ export const GENERATE_MEME_FAILURE = 'GENERATE_MEME_FAILURE';
 
 //USER UPLOADED IMAGE
 export const UPLOAD_IMAGE_START = 'UPLOAD_IMAGE_START'
+export const UPLOAD_IMAGE_START_TEST1 = 'UPLOAD_IMAGE_START'
 
 
 export const generateMeme = () => dispatch => {
@@ -72,7 +73,7 @@ export const uploadImage =(previewURL)=> dispatch =>{
     console.log("I'M INSIDE THE UPLOAD IMAGE", previewURL);
     dispatch({type: UPLOAD_IMAGE_START, payload: previewURL});
     return{
-        payload: previewURL
+        payload: previewURL,
     }
 }
   

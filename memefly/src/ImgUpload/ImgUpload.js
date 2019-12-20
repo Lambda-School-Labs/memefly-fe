@@ -4,9 +4,7 @@ import { uploadImageReducer } from '../store/reducers/memeReducer';
 import {generateMeme, uploadImage, UPLOAD_IMAGE_START} from '../store/actions/actions'
 
 export const ImgUpload=(props)=>{
-const [previewURL, setPreviewURL] = useState("");
-const dispatch = useDispatch;
-var preview = document.getElementById('imagePreview');
+const [previewURL, setPreviewURL] = useState("https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg");
 
     function previewFile() {
         var preview = document.getElementById('imagePreview');
@@ -24,7 +22,7 @@ var preview = document.getElementById('imagePreview');
 
         if (file) {
           reader.readAsDataURL(file);
-          console.log("entire uploaded file", file)
+          console.log("entire uploaded file", file);
         }
       }
 
@@ -35,10 +33,9 @@ var preview = document.getElementById('imagePreview');
       console.log("I'm HIT!", previewURL)
       },[previewURL]);
 
-    console.log("THIS NEEDS TO MATCH/UPDATE CURRENT STATE", previewURL)
+    // console.log("THIS NEEDS TO MATCH/UPDATE CURRENT STATE", previewURL)
     let imageState = useSelector(state => state.memeReducer.meme.meme_url);
-    // useDispatch({type: UPLOAD_IMAGE_START, payload: previewURL}, console.log("INSIDE THE DISPATCH"))
-    console.log("IMAGE CURRENT STATE", imageState)
+    // console.log("IMAGE CURRENT STATE", imageState)
     imageState = previewURL
 
     return(

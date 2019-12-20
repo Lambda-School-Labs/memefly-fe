@@ -17,11 +17,11 @@ function GenerateMemePage (props) {
    setMeme(props.generateMeme());
   }
 
-  // const handleUploadImage = e =>{  
-  //   console.log("Handled Image Upload");
-  //   e.preventDefault();
-  //   setMeme(props.uploadImage())
-  // }
+  const handleUploadImage = e =>{  
+    console.log("Handled Image Upload");
+    e.preventDefault();
+    setMeme(props.uploadImage())
+  }
 
     return (
             <div className="MainContainer">

@@ -1,4 +1,4 @@
-import { GENERATE_MEME_START, GENERATE_MEME_SUCCESS, GENERATE_MEME_FAILURE, UPLOAD_IMAGE_START } from "../actions/actions"
+import { GENERATE_MEME_START, GENERATE_MEME_SUCCESS, GENERATE_MEME_FAILURE, UPLOAD_IMAGE_START, UPLOAD_IMAGE_START_TEST1 } from "../actions/actions"
 
 const initialState= {
     meme:{
@@ -9,12 +9,11 @@ const initialState= {
         meme_url:'https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg',
         generated_meme_texts:["test Default"],
     },
-    status:{
-        isFetching:false,
-        errors: null,
-    }
+    // status:{
+    //     isFetching:false,
+    //     errors: null,
+    // }
 }
-
 
 export const memeReducer = (state = initialState, action) => {
     switch(action.type){
@@ -30,18 +29,20 @@ export const memeReducer = (state = initialState, action) => {
                 ...state,
                 meme: action.payload,
             }
+        case UPLOAD_IMAGE_START:
+            console.log("in reducer ACTION.PAYLOAD: ", action.payload);
+            console.log("in reducer STATE", state)
+            return Object.assign({},state,{ 
+               ...state, meme: {...state.meme, meme_url: action.payload}
+            })
+    
+            
         case GENERATE_MEME_FAILURE:
             return{
                 ...state,
                 isFetching:false,
                 errors: action.payload,
             }
-        // case UPLOAD_IMAGE_START:
-        //     return{
-        //         meme:{
-        //             meme_url: URL
-        //         }
-        //     }
         default:
             return state;
     }
@@ -49,13 +50,14 @@ export const memeReducer = (state = initialState, action) => {
 
 export const uploadImageReducer = (state = initialState.meme, action)=>{
     switch(action.type){
-    case UPLOAD_IMAGE_START:
-            console.log("in reducer ACTION.PAYLOAD: ", action.payload);
+    case UPLOAD_IMAGE_START_TEST1:
+            // console.log("in reducer ACTION.PAYLOAD: ", action.payload);
+            // console.log("in reducer STATE", state)
             return{
             ...state,
             meme_url: action.payload}
         
     default:
         return state;
-}
+ }
 }
