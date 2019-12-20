@@ -54,7 +54,7 @@ export const uploadImageReducer = (state = initialState.meme, action)=>{
             // console.log("in reducer ACTION.PAYLOAD: ", action.payload);
             // console.log("in reducer STATE", state)
             return{
-            ...state,
+            ...state, 
             meme_url: action.payload}
         
     default:
