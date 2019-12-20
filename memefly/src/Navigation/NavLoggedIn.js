@@ -31,7 +31,7 @@ class Navigation extends React.Component {
           Generate a Meme
         </NavLink>
         
-        <NavLink to="/" href="url" className="NavButton" alt="Learn More">
+        <NavLink to="/LearnMore" href="url" className="NavButton" alt="Learn More">
           Learn More
         </NavLink>
 
