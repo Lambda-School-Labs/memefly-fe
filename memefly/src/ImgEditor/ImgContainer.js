@@ -1,6 +1,5 @@
 import React, {useEffect, useState, useRef} from "react";
 import { fabric } from "fabric";
-import Axios from 'axios';
 import { connect } from "react-redux";
 
 
@@ -18,7 +17,6 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 	}
 
 	const widthTest = imgSize.width - 50;
-	const middleOfImage = imgSize.width / 2;
 	const canvasRef = useRef(null);
 
 	// PROPERTIES FOR TEXT BOX.
@@ -68,7 +66,14 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		tempImg = meme_url;
 		let meme;
 		let memeImg = new Image();
+		// Img is set to a max of 500px
 		const max_width = 500;
+		// Calculates Scale to maintain aspect ratio of img
+		const scaleFactor = max_width / imgSize.width;
+		// console.log("SCALE FACTOR: ", scaleFactor)
+
+		const max_height = imgSize.width * scaleFactor;
+		console.log(max_height);
 		
 		
 		memeImg.onload = function (img) {
@@ -78,6 +83,8 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 				angle: 0,
 				left: 0,
 				top: 0,
+				width: max_width,
+				height: max_height,
 				selectable: false,
 			});
 			canvas.add(meme);
@@ -98,8 +105,8 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 			//   }
 
 			// Sets canvas size to size of image.
-			canvas.setHeight(memeImg.height)
-			canvas.setWidth(memeImg.width)
+			canvas.setWidth(meme.width);
+			canvas.setHeight(meme.height);
 		};
 		
 		memeImg.src = tempImg;
@@ -107,7 +114,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		canvas.add(text2);
 		// console.log(memeImg)
 
-		// Clears up canvas after each new meme is generated
+		// Cleans up canvas after each new meme is generated
 		return function clean_up () {
 			canvas.dispose();
 		}
