@@ -68,9 +68,11 @@ export const generateMeme = () => dispatch => {
     });
 };
 
-export const uploadImage =()=>{
+export const uploadImage =(previewURL)=> dispatch =>{
+    console.log("I'M INSIDE THE UPLOAD IMAGE", previewURL);
+    dispatch({type: UPLOAD_IMAGE_START, payload: previewURL});
     return{
-        type: UPLOAD_IMAGE_START
+        payload: previewURL
     }
 }
   

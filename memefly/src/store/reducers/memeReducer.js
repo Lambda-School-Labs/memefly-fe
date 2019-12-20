@@ -47,13 +47,14 @@ export const memeReducer = (state = initialState, action) => {
     }
 }
 
-export const uploadImageReducer = (state = initialState, action)=>{
+export const uploadImageReducer = (state = initialState.meme, action)=>{
     switch(action.type){
     case UPLOAD_IMAGE_START:
-            console.log("ACTION.PAYLOAD: ", action.payload);
-            return{ ...state,
-        meme: action.payload
-        }
+            console.log("in reducer ACTION.PAYLOAD: ", action.payload);
+            return{
+            ...state,
+            meme_url: action.payload}
+        
     default:
         return state;
 }

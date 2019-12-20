@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux'
 import { uploadImageReducer } from '../store/reducers/memeReducer';
 import {generateMeme, uploadImage, UPLOAD_IMAGE_START} from '../store/actions/actions'
 
-export const ImgUpload=()=>{
+export const ImgUpload=(props)=>{
 const [previewURL, setPreviewURL] = useState("");
 const dispatch = useDispatch;
 var preview = document.getElementById('imagePreview');
@@ -28,16 +28,24 @@ var preview = document.getElementById('imagePreview');
         }
       }
 
+
+      useEffect(()=>{
+      props.uploadImage(previewURL);
+      // console.log(props.uploadImage(previewURL))
+      console.log("I'm HIT!", previewURL)
+      },[previewURL]);
+
     console.log("THIS NEEDS TO MATCH/UPDATE CURRENT STATE", previewURL)
     let imageState = useSelector(state => state.memeReducer.meme.meme_url);
-    useDispatch({type: UPLOAD_IMAGE_START, payload: previewURL}, console.log("INSIDE THE DISPATCH"))
+    // useDispatch({type: UPLOAD_IMAGE_START, payload: previewURL}, console.log("INSIDE THE DISPATCH"))
     console.log("IMAGE CURRENT STATE", imageState)
     imageState = previewURL
 
     return(
         <>
-        <button></button><input type="file" onChange={previewFile}/>
-        <img src="" id="imagePreview" width="500" alt="Preview" visibility="hidden"/>
+        <input type="file" visibility="hidden" onChange={previewFile}/>
+        {/* <img src={previewURL} id="imagePreview" visibility="hidden" width="500" alt="YOUR IMAGE PREVIEW HERE"/> */}
+        <img src={previewURL} id="imagePreview" width="500"/>
         </>
     );
 }
@@ -49,4 +57,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, {ImgUpload}) (ImgUpload);
+export default connect(mapStateToProps, {ImgUpload, uploadImage}) (ImgUpload);
