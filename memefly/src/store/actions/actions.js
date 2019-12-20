@@ -70,8 +70,7 @@ export const generateMeme = () => dispatch => {
 
 export const uploadImage =()=>{
     return{
-        type: "UPLOAD_IMAGE_START",
-        payload: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
+        type: UPLOAD_IMAGE_START
     }
 }
   

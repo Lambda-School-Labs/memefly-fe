@@ -6,23 +6,22 @@ import ImgUpload from "../ImgUpload/ImgUpload.js"
 import {generateMeme, uploadImage} from '../store/actions/actions'
 
 function GenerateMemePage (props) {
+  // console.log(props.uploadedimageURL)
   const [meme, setMeme] = useState()
-  const memeURL = useSelector(state => state.memeReducer.meme.meme_url)
+  // const memeURL = useSelector(state => state.memeReducer.meme.meme_url)
   const dispatch = useDispatch();
-  console.log(memeURL)
+  // console.log(memeURL)
   const handleGenerateMeme = e => {
     console.log("Handled Generate meme")
     e.preventDefault();
    setMeme(props.generateMeme());
   }
 
-  const handleUploadImage = e =>{
-    console.log("Handled Image Upload");
-    e.preventDefault();
-    dispatch(uploadImage)
-    console.log("hi",uploadImage)
-    setMeme(props.uploadImage())
-  }
+  // const handleUploadImage = e =>{  
+  //   console.log("Handled Image Upload");
+  //   e.preventDefault();
+  //   setMeme(props.uploadImage())
+  // }
 
     return (
             <div className="MainContainer">
@@ -50,11 +49,10 @@ function GenerateMemePage (props) {
                     className="ButtonDesignOne"
                     type="file"
                     id="UploadImageButton"
-                    onClick={handleUploadImage}
                   >
                     UPLOAD IMAGE
                   </button>
-<ImgUpload/>
+                <ImgUpload/>
                 </div>
                   <div className="fb-share-button" data-href="https://www.memeflyai.com" data-layout="button_count" data-size="small">
                       <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.memeflyai.com%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a>

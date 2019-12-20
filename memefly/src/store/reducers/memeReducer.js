@@ -25,7 +25,7 @@ export const memeReducer = (state = initialState, action) => {
                 errors:null,
             }
         case GENERATE_MEME_SUCCESS:
-                // console.log("ACTION.PAYLOAD: ", action.payload);
+                console.log("ACTION.PAYLOAD: ", action.payload);
             return{
                 ...state,
                 meme: action.payload,
@@ -36,19 +36,25 @@ export const memeReducer = (state = initialState, action) => {
                 isFetching:false,
                 errors: action.payload,
             }
+        // case UPLOAD_IMAGE_START:
+        //     return{
+        //         meme:{
+        //             meme_url: URL
+        //         }
+        //     }
         default:
             return state;
     }
 }
 
-export const uploadImageReducer = (state = initialState.meme.meme_url, action)=>{
+export const uploadImageReducer = (state = initialState, action)=>{
     switch(action.type){
-        case UPLOAD_IMAGE_START:
-            return{
-                payload: ""
-                
-            }
-            default:
-                return state;
-    }
+    case UPLOAD_IMAGE_START:
+            console.log("ACTION.PAYLOAD: ", action.payload);
+            return{ ...state,
+        meme: action.payload
+        }
+    default:
+        return state;
+}
 }

@@ -1,25 +1,25 @@
-import React from 'react';
-import { useSelector } from 'react-redux'
+import React, {useState} from 'react';
+import { connect, useSelector, useDispatch } from 'react-redux'
+import { uploadImageReducer } from '../store/reducers/memeReducer';
+import {generateMeme, uploadImage, UPLOAD_IMAGE_START} from '../store/actions/actions'
 
-const ImgUpload=()=>{
-// const [previewURL, setPreviewURL] = useState("");
+export const ImgUpload=()=>{
+const [previewURL, setPreviewURL] = useState("");
+const dispatch = useDispatch;
+var preview = document.getElementById('imagePreview');
 
-const memeURL = useSelector(state=> state.uploadImageReducer)
-console.log(memeURL)
     function previewFile() {
         var preview = document.getElementById('imagePreview');
         var file    = document.querySelector('input[type=file]').files[0];
         var reader  = new FileReader();
-      
+
+
         reader.addEventListener("load", function () {
-          preview.src = reader.result;
-          console.log("base64?", preview.src)
-          const uploadedImageURL = URL.createObjectURL(file)
+          preview.src = URL.createObjectURL(file);
+          setPreviewURL(URL.createObjectURL(file));
           //include blob -> ex: blob:http://localhost:3002/215ed49c-5e30-408f-9da5-c047078ec3b2
-          console.log(uploadedImageURL);
           // const base64 = btoa(preview.src);
           // const decoded = atob(base64);
-
         }, false);
 
         if (file) {
@@ -28,14 +28,25 @@ console.log(memeURL)
         }
       }
 
-      //inside preview file we need to set the meme url to state so it will show on the screen, or send it to the be to save and have it displayed to the templates area.
+    console.log("THIS NEEDS TO MATCH/UPDATE CURRENT STATE", previewURL)
+    let imageState = useSelector(state => state.memeReducer.meme.meme_url);
+    useDispatch({type: UPLOAD_IMAGE_START, payload: previewURL}, console.log("INSIDE THE DISPATCH"))
+    console.log("IMAGE CURRENT STATE", imageState)
+    imageState = previewURL
+
     return(
         <>
-    
-        <input type="file" onChange={previewFile}/>
-        <img src="" id="imagePreview" width="500" alt="Preview" visibility="hidden" />
+        <button></button><input type="file" onChange={previewFile}/>
+        <img src="" id="imagePreview" width="500" alt="Preview" visibility="hidden"/>
         </>
     );
 }
 
-export default ImgUpload;
+const mapStateToProps = state => {
+	return{
+		meme_url: state.memeReducer.meme.meme_url,
+
+	}
+}
+
+export default connect(mapStateToProps, {ImgUpload}) (ImgUpload);

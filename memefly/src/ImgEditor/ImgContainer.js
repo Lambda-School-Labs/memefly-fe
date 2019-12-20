@@ -32,7 +32,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		fill:'white',
 	});
 
-	console.log(meme_url);	
+	console.log("memeURL", meme_url);	
 
 	// function addText() {
 
