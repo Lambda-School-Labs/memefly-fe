@@ -23,7 +23,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 	var text2 = new fabric.Textbox(randomMessage(), {
 		cursorColor :"blue",
 		top:16,
-		// left:middleOfImage,
+		left:20,
 		width: widthTest,
 		fontFamily:'impact',
 		fill:'white',
