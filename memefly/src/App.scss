@@ -96,8 +96,9 @@ padding-top: 4rem;
 
 .MemeContainer{
   max-width: 90%;
+  max-height: 90%;
   display: flex;
-  justify-content: space-around;
+  // justify-content: space-around;
   align-items: center;
   flex-direction: column; 
   background: linear-gradient(123.9deg, #C75C8C -11.73%, #1A61CB 48.53%, rgba(203, 58, 26, 0.65) 111.36%);
@@ -285,6 +286,25 @@ overflow: hidden;
 
 
 /* Canvas Section */
+#d{
+  max-width: 650px;
+  max-height: 650px;
+  // width: inherit;
+  // height: inherit;
+  object-fit: contain;
+
+}
+.canvas-container{
+  max-width: 650px;
+  max-height: 650px;
+
+  // width: fit-content;
+  // height: fit-content;
+}
+.upper-canvas{
+  max-width: 650px;
+  max-height: 650px;
+}
 
 #canvas{
   /* position: absolute; */

@@ -41,6 +41,7 @@ const [previewURL, setPreviewURL] = useState("https://imgflip.com/s/meme/Batman-
     return(
         <>
         <input type="file" visibility="hidden" onChange={previewFile}/>
+        <h2>HI</h2>
         {/* <img src={previewURL} id="imagePreview" visibility="hidden" width="500" alt="YOUR IMAGE PREVIEW HERE"/> */}
         <img src={previewURL} id="imagePreview" width="500"/>
         </>

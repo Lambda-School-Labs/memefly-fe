@@ -7,12 +7,12 @@ const initialState= {
         meme_bounding_box:[],
         meme_id:9999,
         meme_url:'https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg',
-        generated_meme_texts:["test Default"],
+        generated_meme_texts:["Text Default"],
     },
-    // status:{
-    //     isFetching:false,
-    //     errors: null,
-    // }
+    status:{
+        isFetching:false,
+        errors: null,
+    }
 }
 
 export const memeReducer = (state = initialState, action) => {
@@ -33,7 +33,13 @@ export const memeReducer = (state = initialState, action) => {
             console.log("in reducer ACTION.PAYLOAD: ", action.payload);
             console.log("in reducer STATE", state)
             return Object.assign({},state,{ 
-               ...state, meme: {...state.meme, meme_url: action.payload}
+               ...state, meme: {...state.meme, 
+                meme_url: action.payload, 
+                meme_bounding_box: [],
+                meme_id: Date.now(),
+                message: "User Uploaded Image",
+
+         }
             })
     
             

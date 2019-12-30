@@ -18,7 +18,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		};
 	}
 
-	const widthTest = imgSize.width - 50;
+	const textWidth = imgSize.width - 20;
 	const middleOfImage = imgSize.width / 2;
 	const canvasRef = useRef(null);
 
@@ -27,7 +27,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		cursorColor :"blue",
 		top:16,
 		// left:middleOfImage,
-		width: widthTest,
+		width: textWidth,
 		fontFamily:'impact',
 		fill:'white',
 	});
@@ -42,7 +42,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 	// 		cursorColor :"blue",
 	// 		top:16,
 	// 		// left:middleOfImage,
-	// 		width: widthTest,
+	// 		width: textWidth,
 	// 		fontFamily:'impact',
 	// 		fill:'white',
 	// 	});
@@ -103,7 +103,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 			canvas.setWidth(memeImg.width)
 		};
 		
-		memeImg.src = tempImg;
+		memeImg.src = tempImg
 
 
 		canvas.add(text2);
@@ -115,7 +115,6 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		}
 
 	},[meme_url])
-
 return (
 		<div>
 			<canvas ref={canvasRef} id="d" className="CanvasC"></canvas>

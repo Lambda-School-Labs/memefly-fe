@@ -10,6 +10,7 @@
     "formik": "^2.0.6",
     "graphql-tag": "^2.10.1",
     "html2canvas": "^1.0.0-rc.5",
+    "jimp": "^0.9.3",
     "node-sass": "^4.13.0",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
