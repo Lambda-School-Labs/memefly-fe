@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux'
 import { uploadImageReducer } from '../store/reducers/memeReducer';
 import {generateMeme, uploadImage, UPLOAD_IMAGE_START} from '../store/actions/actions'
@@ -13,7 +13,7 @@ const [previewURL, setPreviewURL] = useState("https://imgflip.com/s/meme/Batman-
 
 
         reader.addEventListener("load", function () {
-          preview.src = URL.createObjectURL(file);
+          // preview.src = URL.createObjectURL(file);
           setPreviewURL(URL.createObjectURL(file));
           //include blob -> ex: blob:http://localhost:3002/215ed49c-5e30-408f-9da5-c047078ec3b2
           // const base64 = btoa(preview.src);
@@ -40,10 +40,8 @@ const [previewURL, setPreviewURL] = useState("https://imgflip.com/s/meme/Batman-
 
     return(
         <>
-        <input type="file" visibility="hidden" onChange={previewFile}/>
-        <h2>HI</h2>
-        {/* <img src={previewURL} id="imagePreview" visibility="hidden" width="500" alt="YOUR IMAGE PREVIEW HERE"/> */}
-        <img src={previewURL} id="imagePreview" width="500"/>
+        
+<input type="file" className="ButtonDesignOne" id="upload" onChange={previewFile}></input>
         </>
     );
 }

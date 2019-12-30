@@ -45,13 +45,7 @@ function GenerateMemePage (props) {
                     SAVE MEME
                   </button>
 
-                  <button
-                    className="ButtonDesignOne"
-                    type="file"
-                    id="UploadImageButton"
-                  >
-                    UPLOAD IMAGE
-                  </button>
+              
                 <ImgUpload/>
                 </div>
                   <div className="fb-share-button" data-href="https://www.memeflyai.com" data-layout="button_count" data-size="small">
