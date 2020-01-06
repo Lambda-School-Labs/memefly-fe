@@ -306,18 +306,14 @@ overflow: hidden;
   max-height: 650px;
 }
 
-#canvas{
-  /* position: absolute; */
-  /* padding-top: 40px; */
-  margin: 10% auto;
-
-}
-
 #imageGroup{
   /* height: 40rem; */
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 2rem 0;
+  padding:2rem 0;
+
 }
 
 /* Profile Section */
@@ -414,3 +410,12 @@ overflow: hidden;
   max-height: 4rem;
   //  padding: 1rem 3rem; 
 }
+
+/* Learn More Page */
+.LearnMoreBox{
+  border:1px solid pink;
+  .LearnMoreContainer{
+    background-color: lightblue;
+
+  }
+} 
