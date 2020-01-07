@@ -11,6 +11,9 @@ const [savedImg, setSavedImg] = useState("https://imgflip.com/s/meme/Batman-Slap
         var file    = document.querySelector('input[type=file]').files[0];
         var reader  = new FileReader();
 
+        console.log('file',file)
+        console.log('file',preview)
+
         reader.addEventListener("load", function () {
           // preview.src = URL.createObjectURL(file);
           setSavedImg(URL.createObjectURL(file));
