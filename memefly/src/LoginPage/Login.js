@@ -58,6 +58,7 @@ class Login extends React.Component {
 				this.setState({ loggedIn: true });
 			}
 
+
 		} catch (error) {
 			resetForm();
 			alert(error);
