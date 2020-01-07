@@ -1,85 +1,93 @@
 import React, {useEffect, useState, useRef} from "react";
 import { fabric } from "fabric";
-import Axios from 'axios';
+import { connect } from "react-redux";
+import ImgUpload from "../ImgUpload/ImgUpload.js"
 
-function ImgContainer() {
-	const [memeData, setMemeData] = useState({
-		meme_url:'https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg'
-	});
-	const [imgSize, setImgSize] = useState({})
-	const [innerText, setText] = useState('');
-	const canvasRef = useRef(null);
 
-	function axiosConfig(query) {
-		return {
-			url: "http://memefly.herokuapp.com/api/memes/base",
-			method: "POST",
-			data: {
-				query
-			}
+function ImgContainer({meme_url, generated_meme_texts}) {
+
+	const [imgSize, setImgSize] = useState({width:400, height:400});
+
+	// DISPLAYS A RANDOM MESSAGE IF THERE IS MORE THAN 1 CHOICE.
+	function randomMessage() {
+		if(!generated_meme_texts.length){
+			return generated_meme_texts;
+		} else {
+			return generated_meme_texts[Math.floor(Math.random() * generated_meme_texts.length)];	
 		};
 	}
 
-	function getBaseMeme(id, rand = false) {
-	return `
-	query{
-	getBaseMeme(id:${id}, rand:${rand}){
-		message
-		fetched
-		meme_bounding_box
-		meme_id
-		meme_url
-		meme_text
-	}
-	}
-	`;
-	}
+	const textWidth = 600;
+	const middleOfImage = imgSize.width / 2;
+	const canvasRef = useRef(null);
 
-	useEffect(() => {
-	Axios(axiosConfig(getBaseMeme(null, true)))
-	.then(res => {
-		// console.log(res.data.data.getBaseMeme);
-		// setMemeData(res.data.data.getBaseMeme);
-	})
-
-	}, [])
-
-
-	var text2 = new fabric.Textbox('Hello', {
+	// PROPERTIES FOR TEXT BOX.
+	var text2 = new fabric.Textbox(randomMessage(), {
 		cursorColor :"blue",
 		top:16,
-		left:3,
+		left:20,
+		width: textWidth,
 		fontFamily:'impact',
+		fill:'white',
+		stroke: 'black'
 	});
 
-	var text = new fabric.Textbox('world', {
-		cursorColor :"blue",
-		top:5,
-		left:272,
-		fontFamily:'impact',
-	});
+	console.log("memeURL", meme_url);	
 
+	// function addText() {
+
+	// 	testTextAdd = fabric.Canvas('d');
+
+	// 	var newText = new fabric.Textbox(randomMessage(), {
+	// 		cursorColor :"blue",
+	// 		top:16,
+	// 		// left:middleOfImage,
+	// 		width: textWidth,
+	// 		fontFamily:'impact',
+	// 		fill:'white',
+	// 	});
+
+	// 	testTextAdd.add(newText);
+	// }
+
+	
+	// CANVAS USE EFFECT
 	useEffect(() => {
+		let canvas;
+		let tempImg;
+
+
 
 		// Creates Canvas 
-		let canvas = new fabric.Canvas('d',{
-			preserveObjectStacking:true
+		canvas = new fabric.Canvas('d',{
+			preserveObjectStacking:true,
 		});
 		
+		
+		
 		// This loads the image
-		let tempImg = memeData.meme_url;
-		// console.log('tempimg: ', tempImg);
+		tempImg = meme_url;
 		let meme;
 		let memeImg = new Image();
-		const max_width = 500;
+		// Img is set to a max of 500px
+		const max_width =650;
+		// // Calculates Scale to maintain aspect ratio of img
+		// const scaleFactor = max_width / imgSize.width;
+		// // console.log("SCALE FACTOR: ", scaleFactor)
+
+		// const max_height = imgSize.width * scaleFactor;
+		// console.log(max_height);
+		
 		
 		memeImg.onload = function (img) {
-
+			
 			// Properties for Meme Image
 			meme = new fabric.Image(memeImg, {
 				angle: 0,
 				left: 0,
 				top: 0,
+				// width: max_width,
+				// height: max_height,
 				selectable: false,
 			});
 			canvas.add(meme);
@@ -92,8 +100,6 @@ function ImgContainer() {
 				width: memeImg.width.toString(),
 				height: memeImg.height.toString()
 			});
-			// console.log("memeImg.height:", memeImg.height);
-			// console.log(" memeImg.width: ", memeImg.width);
 
 			// This Takes in the image and constrains it to a max width of 500px
 			// if (memeImg.width > max_width) {
@@ -102,39 +108,35 @@ function ImgContainer() {
 			//   }
 
 			// Sets canvas size to size of image.
-			canvas.setHeight(memeImg.height)
-			canvas.setWidth(memeImg.width)
+			canvas.setWidth(memeImg.width);
+			canvas.setHeight(memeImg.height);
 		};
+		
+		memeImg.src = tempImg
 
-		memeImg.src = tempImg;
 
-		function addText(){
-			canvas.add(text);
+		canvas.add(text2);
+		// console.log(memeImg)
+
+		// Cleans up canvas after each new meme is generated
+		return function clean_up () {
+			canvas.dispose();
 		}
 
-		addText();
-		canvas.add(text2);
-
-
-	},[])
-
-	useEffect(()=>{
-		let canvas = new fabric.Canvas('d',{
-			preserveObjectStacking:true
-		});
-		console.log(canvas, innerText)
-		canvas.text = innerText
-	}, [innerText])
-
-	
-
-
-	return (
+	},[meme_url])
+return (
 		<div>
 			<canvas ref={canvasRef} id="d" className="CanvasC"></canvas>
-			{/* <button onClick={() => setText('nothing here')}>Add some text!!!</button> */}
 		</div>
 	);
 }
 
-export default ImgContainer;
+const mapStateToProps = state => {
+	return{
+		meme_url: state.memeReducer.meme.meme_url,
+		generated_meme_texts: state.memeReducer.meme.generated_meme_texts,
+
+	}
+}
+
+export default connect(mapStateToProps, {ImgContainer}) (ImgContainer);

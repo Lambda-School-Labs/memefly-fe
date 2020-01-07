@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Meme } from "../ImgEditor/Meme";
+import ImgUpload from "../ImgUpload/ImgUpload";
 import { fabric } from "fabric";
 
 const MemeMain = () => {
@@ -143,7 +144,7 @@ const MemeMain = () => {
       memeData.name
     );
   } //End of Image Overlay
-  const max_width = "500px";
+  const max_width = "650px";
   function renderImage(src) {
     var image = new Image();
 

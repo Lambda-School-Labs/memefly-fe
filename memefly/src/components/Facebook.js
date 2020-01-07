@@ -12,7 +12,7 @@ const Facebook = () => {
 	});
 
 	const responseFacebook = response => {
-		console.log(response);
+		// console.log("Facebook Response: ", response);
 		setState({
 			isLoggedIn: true,
 			userID: response.id,
@@ -23,7 +23,7 @@ const Facebook = () => {
 		});
 		console.log("state", state);
 	};
-	console.log("Facebook state response: ", state);
+	// console.log("Facebook state response: ", state);
 	const componentClicked = () => console.log("component clicked");
 
 	useEffect(() => {

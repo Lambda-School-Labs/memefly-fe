@@ -22,8 +22,8 @@ const Register = () => {
 		try {
 			let config = {
 				method: "POST",
-				// url: "http://memefly.herokuapp.com/api/accounts",
-				url:"https://localhost:5000/api/accounts",
+				url: "http://memefly.herokuapp.com/api/accounts",
+				// url:"https://localhost:5000/api/accounts",
 				data: {
 					query: `
 	              mutation{
@@ -97,6 +97,10 @@ const Register = () => {
 							<button type="submit" id="YellowButton">
 								Submit
 							</button>
+							<br/>
+							<p>Or...</p>
+							<Facebook/>
+
 
 							<div>
 								<h3>

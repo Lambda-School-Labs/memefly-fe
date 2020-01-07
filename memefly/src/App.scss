@@ -1,4 +1,3 @@
-
 /* Font Files */
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700,800,900|Roboto:400,500,500i,700,900&display=swap');
 
@@ -96,8 +95,9 @@ padding-top: 4rem;
 
 .MemeContainer{
   max-width: 90%;
+  max-height: 90%;
   display: flex;
-  justify-content: space-around;
+  // justify-content: space-around;
   align-items: center;
   flex-direction: column; 
   background: linear-gradient(123.9deg, #C75C8C -11.73%, #1A61CB 48.53%, rgba(203, 58, 26, 0.65) 111.36%);
@@ -285,18 +285,33 @@ overflow: hidden;
 
 
 /* Canvas Section */
-
-#canvas{
-  /* position: absolute; */
-  /* padding-top: 40px; */
-  margin: 10% auto;
+#d{
+  max-width: 650px;
+  max-height: 650px;
+  // width: inherit;
+  // height: inherit;
+  object-fit: contain !important;
 
 }
+.canvas-container{
+  max-width: 650px;
+  max-height: 650px;
+
+  // width: fit-content;
+  // height: fit-content;
+}
+.upper-canvas{
+  max-width: 650px;
+  max-height: 90%;
+}
+
 #imageGroup{
   /* height: 40rem; */
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 2rem 0;
+  padding:2rem 0;
 
 }
 
@@ -394,3 +409,12 @@ overflow: hidden;
   max-height: 4rem;
   //  padding: 1rem 3rem; 
 }
+
+/* Learn More Page */
+.LearnMoreBox{
+  border:1px solid pink;
+  .LearnMoreContainer{
+    background-color: lightblue;
+
+  }
+} 
