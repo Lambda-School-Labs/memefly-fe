@@ -4,6 +4,7 @@ import ImgContainer from './ImgContainer';
 import DisplayTemplates from './DisplayTemplates';
 import ImgUpload from "../ImgUpload/ImgUpload.js"
 import {generateMeme, uploadImage} from '../store/actions/actions'
+import { SaveImg } from '../Save-Img/saveImg';
 
 function GenerateMemePage (props) {
   // console.log(props.uploadedimageURL)
@@ -22,6 +23,7 @@ function GenerateMemePage (props) {
     e.preventDefault();
     setMeme(props.uploadImage())
   }
+  console.log(props.meme_url)
 
     return (
             <div className="MainContainer">
@@ -47,6 +49,7 @@ function GenerateMemePage (props) {
 
               
                 <ImgUpload/>
+                <SaveImg></SaveImg>
                 </div>
                   <div className="fb-share-button" data-href="https://www.memeflyai.com" data-layout="button_count" data-size="small">
                       <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.memeflyai.com%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a>
@@ -70,6 +73,7 @@ function GenerateMemePage (props) {
 const mapStateToProps = state => {
   return{
     meme_data: state.memeReducer.meme,
+    meme_url: state.memeReducer.meme.meme_url
   }
 }
 

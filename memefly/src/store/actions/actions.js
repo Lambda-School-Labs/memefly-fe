@@ -36,8 +36,8 @@ export const generateMeme = () => dispatch => {
     dispatch({type: GENERATE_MEME_START});
     return axios({
         method: "POST",
-        url: "https://memefly.herokuapp.com/api/memes/base",
-        // url:"http://localhost:5000/api/memes/base"
+        // url: "https://memefly.herokuapp.com/api/memes/base",
+        url:"http://localhost:5000/api/memes/base",
         data: {
             query:  `
             query{

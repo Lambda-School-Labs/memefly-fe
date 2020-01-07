@@ -110,6 +110,8 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 			// Sets canvas size to size of image.
 			canvas.setWidth(memeImg.width);
 			canvas.setHeight(memeImg.height);
+			const CanvasToSVG = canvas.toSVG()
+			console.log(btoa(CanvasToSVG));
 		};
 		
 		memeImg.src = tempImg
@@ -123,6 +125,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 			canvas.dispose();
 		}
 
+
 	},[meme_url])
 return (
 		<div>
@@ -135,7 +138,6 @@ const mapStateToProps = state => {
 	return{
 		meme_url: state.memeReducer.meme.meme_url,
 		generated_meme_texts: state.memeReducer.meme.generated_meme_texts,
-
 	}
 }
 
