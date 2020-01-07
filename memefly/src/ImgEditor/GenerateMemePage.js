@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
-import { connect } from "react-redux"
+import { connect, useSelector, useDispatch } from "react-redux"
 import ImgContainer from './ImgContainer';
 import DisplayTemplates from './DisplayTemplates';
 import ImgUpload from "../ImgUpload/ImgUpload.js"
-import {generateMeme} from '../store/actions/actions'
+import {generateMeme, uploadImage} from '../store/actions/actions'
 
 function GenerateMemePage (props) {
+  // console.log(props.uploadedimageURL)
   const [meme, setMeme] = useState()
-
+  // const memeURL = useSelector(state => state.memeReducer.meme.meme_url)
+  const dispatch = useDispatch();
+  // console.log(memeURL)
   const handleGenerateMeme = e => {
     console.log("Handled Generate meme")
     e.preventDefault();
-   setMeme( props.generateMeme());
+   setMeme(props.generateMeme());
+  }
+
+  const handleUploadImage = e =>{  
+    console.log("Handled Image Upload");
+    e.preventDefault();
+    setMeme(props.uploadImage())
   }
 
     return (
@@ -24,22 +33,23 @@ function GenerateMemePage (props) {
                 <div className="ImageControlWrapper">
                   <button
                     onClick={handleGenerateMeme}
-                    class="ButtonDesignOne"
+                    className="ButtonDesignOne"
                     id="mainGenerateButton"
                   >
                     GENERATE MEME
                   </button>
                   <button
-                    class="ButtonDesignOne"
+                    className="ButtonDesignOne"
                     id="SaveMemeButton"
                   >
                     SAVE MEME
                   </button>
-                  <ImgUpload>Upload Image</ImgUpload>
 
+              
+                <ImgUpload/>
                 </div>
-                  <div class="fb-share-button" data-href="https://www.memeflyai.com" data-layout="button_count" data-size="small">
-                      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.memeflyai.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+                  <div className="fb-share-button" data-href="https://www.memeflyai.com" data-layout="button_count" data-size="small">
+                      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.memeflyai.com%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a>
                 </div>
         
                 {/* <>
@@ -63,4 +73,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps,{ generateMeme }) (GenerateMemePage);
+export default connect(mapStateToProps,{ generateMeme, uploadImage }) (GenerateMemePage);

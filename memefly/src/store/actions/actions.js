@@ -27,6 +27,10 @@ export const GENERATE_MEME_START = 'GENERATE_MEME_START';
 export const GENERATE_MEME_SUCCESS = 'GENERATE_MEME_SUCCESS';
 export const GENERATE_MEME_FAILURE = 'GENERATE_MEME_FAILURE';
 
+//USER UPLOADED IMAGE
+export const UPLOAD_IMAGE_START = 'UPLOAD_IMAGE_START'
+export const UPLOAD_IMAGE_START_TEST1 = 'UPLOAD_IMAGE_START'
+
 
 export const generateMeme = () => dispatch => {
     dispatch({type: GENERATE_MEME_START});
@@ -64,4 +68,11 @@ export const generateMeme = () => dispatch => {
         console.log(err)
     });
 };
-  
+
+export const uploadImage =(previewURL)=> dispatch =>{
+    console.log("I'M INSIDE THE UPLOAD IMAGE", previewURL);
+    dispatch({type: UPLOAD_IMAGE_START, payload: previewURL});
+    return{
+        payload: previewURL,
+    }
+}

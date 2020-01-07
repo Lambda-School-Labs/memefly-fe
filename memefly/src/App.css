@@ -1,0 +1,507 @@
+/* Font Files */
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700,800,900|Roboto:400,500,500i,700,900&display=swap");
+/* Style Info */
+/* font-family: 'Nunito', sans-serif;
+font-family: 'Roboto', sans-serif; */
+/* Corner Radius: 6px; */
+/* Page Fonts are set here as variables for easy change */
+:root {
+  --title-Font:'Roboto', sans-serif;
+  --body-Font: 'Nunito', sans-serif;
+  /* Font Set to 10px for easy Easy Rem Calculations
+  1rem = 10px
+  1.4rem = 14px */
+  font-size: 10px;
+  background-color: #0E1111;
+}
+
+main {
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -ms-grid;
+  display: grid;
+  font-family: 'Nunito';
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  line-height: 1.65;
+  margin: 0 auto;
+  max-width: 680px;
+  min-height: 100vh;
+  padding: 72px 0;
+  text-align: center;
+  background-color: #0E1111;
+}
+
+h1 {
+  font-size: 4.5rem;
+}
+
+h2 {
+  font-size: 3.8rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+}
+
+h4 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  padding: 1rem;
+  margin: .5rem;
+  min-width: 10rem;
+  font-family: var(--body-Font);
+  text-align: center;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 1.8rem;
+}
+
+code,
+pre {
+  color: #d400ff;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  font-size: 0.92em;
+}
+
+code:before,
+code:after {
+  content: '\`';
+}
+
+.mainmeme {
+  max-width: 45%;
+  padding-top: 4rem;
+}
+
+.MainContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #0E1111;
+}
+
+.MemeContainer {
+  max-width: 90%;
+  max-height: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: linear-gradient(123.9deg, #C75C8C -11.73%, #1A61CB 48.53%, rgba(203, 58, 26, 0.65) 111.36%);
+  /* border: 1px solid white; */
+  border-radius: 6px;
+}
+
+.MidPageNav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  /* border-bottom: 2px solid black; */
+}
+
+.templateMemeContainer {
+  width: 95%;
+  margin: 1% auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background: rgba(253, 253, 254, 0.2);
+  background-size: contain;
+  border-radius: .6rem;
+}
+
+.templateMemeGroup {
+  padding: .5rem;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.MemeCardContainer {
+  width: 200px;
+  height: 255px;
+  height: 255px;
+  border-radius: .4rem;
+  background-color: rgba(204, 204, 204, 0.351);
+  padding: 1rem;
+  margin: .5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+  -webkit-transition: -webkit-transform .2s ease-in-out;
+  transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+}
+
+.MemeCardContainer:hover {
+  background-color: #d3d3d3e1;
+  -webkit-transform: rotate(10deg) scale(1.125);
+          transform: rotate(10deg) scale(1.125);
+  -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+}
+
+.IndividualMemeCards {
+  max-width: 20rem;
+  max-height: 25rem;
+  background-size: contain;
+  border-radius: .4rem;
+  -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+}
+
+.trendingMemeUrlContainer {
+  max-width: 10rem;
+  padding: 1rem;
+  margin: 1rem;
+  /* border: 2px solid red; */
+  border-radius: 4px;
+  text-align: center;
+  -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.363);
+  background-color: #98f8ff;
+  overflow: hidden;
+}
+
+.trendingMemeUrl {
+  /* padding: 10px; */
+  max-width: 80%;
+}
+
+/* NAVIGATION STYLING */
+.nav {
+  background-color: #0E1111;
+  width: 100%;
+}
+
+.navWrap {
+  width: 90%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.navlogo {
+  max-width: 16Rem;
+  width: 70%;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navlogo a:hover {
+  border: 2px solid red;
+}
+
+.linkContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 60%;
+}
+
+.NavButton {
+  color: #FDFDFE;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  margin: auto 0;
+  cursor: pointer;
+  /* border: 1px solid orange; */
+}
+
+.NavButton:hover {
+  border-top: .4rem solid #0076ff;
+}
+
+#HighLightLink {
+  color: #FFFE54;
+  border: .2rem solid #FFFE54;
+  border-radius: .6rem;
+  max-height: 4rem;
+  /* padding: 1rem 3rem; */
+}
+
+.UserWrapper {
+  /* border: 1px solid silver; */
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.UserWrapper #UserNavAvatar {
+  padding: 1rem;
+}
+
+.UserWrapper #LogOut {
+  display: block;
+  font-size: 1.4rem;
+  /* padding-top: 4rem; */
+}
+
+.UserWrapper #LogOut:hover {
+  color: red;
+  border-top: none;
+}
+
+.ButtonDesignOne {
+  width: 36.4rem;
+  padding: 1rem;
+  margin: 0 1rem;
+  background-color: transparent;
+  border: .2rem solid #FDFDFE;
+  border-radius: .6rem;
+  color: #FDFDFE;
+  font-family: var(--body-Font);
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Canvas Section */
+#d {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  height: 650px;
+  width: 650px;
+  border: 5px solid red;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
+}
+
+.canvas-container {
+  max-width: 650px !important;
+  max-height: 650px !important;
+}
+
+.upper-canvas {
+  max-width: 650px;
+  max-height: 100px;
+}
+
+#imageGroup {
+  /* height: 40rem; */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2rem 0;
+  padding: 2rem 0;
+}
+
+/* Profile Section */
+.profileCard {
+  border: 2px solid red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+/* Log-In Section */
+.LoginContainer {
+  background-color: #494692;
+  color: #FFFFFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.LoginContainer .LoginWrapper {
+  padding: 0 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.LoginContainer #SignUpHere {
+  color: #FFFE54;
+}
+
+.LoginContainer #WelcomeBack {
+  border: 4px solid #FFFFFF;
+  padding: 4rem 20%;
+}
+
+.LoginContainer .inputWrapper {
+  padding: 5%;
+}
+
+/* Register Section */
+.RegisterContainer {
+  background-color: #494692;
+  color: #FFFFFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+}
+
+.RegisterContainer .RegisterWrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.RegisterContainer #WelcomeBack {
+  border: 4px solid #FFFFFF;
+  padding: 4rem 15%;
+  text-align: center;
+}
+
+.input {
+  background-color: transparent !important;
+  border: none;
+  border-bottom: 3px solid #FFFFFF;
+  margin: .5rem;
+  color: #FFFFFF;
+}
+
+#YellowButton {
+  width: 15rem;
+  height: 3.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #FFFE54;
+  font-family: var(--body-Font);
+  font-weight: 800;
+}
+
+.YellowLink {
+  color: #FFFE54;
+  max-height: 4rem;
+}
+
+/* Learn More Page */
+.LearnMoreBox {
+  border: 1px solid pink;
+}
+
+.LearnMoreBox .LearnMoreContainer {
+  background-color: lightblue;
+}
+/*# sourceMappingURL=App.css.map */

@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useRef} from "react";
 import { fabric } from "fabric";
 import { connect } from "react-redux";
+import ImgUpload from "../ImgUpload/ImgUpload.js"
 
 
 function ImgContainer({meme_url, generated_meme_texts}) {
@@ -16,7 +17,8 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		};
 	}
 
-	const widthTest = imgSize.width - 50;
+	const textWidth = imgSize.width - 20;
+	const middleOfImage = imgSize.width / 2;
 	const canvasRef = useRef(null);
 
 	// PROPERTIES FOR TEXT BOX.
@@ -24,12 +26,12 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		cursorColor :"blue",
 		top:16,
 		left:20,
-		width: widthTest,
+		width: textWidth,
 		fontFamily:'impact',
 		fill:'white',
 	});
 
-	console.log(meme_url);	
+	console.log("memeURL", meme_url);	
 
 	// function addText() {
 
@@ -39,7 +41,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 	// 		cursorColor :"blue",
 	// 		top:16,
 	// 		// left:middleOfImage,
-	// 		width: widthTest,
+	// 		width: textWidth,
 	// 		fontFamily:'impact',
 	// 		fill:'white',
 	// 	});
@@ -67,13 +69,13 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		let meme;
 		let memeImg = new Image();
 		// Img is set to a max of 500px
-		const max_width = 500;
-		// Calculates Scale to maintain aspect ratio of img
-		const scaleFactor = max_width / imgSize.width;
-		// console.log("SCALE FACTOR: ", scaleFactor)
+		const max_width =650;
+		// // Calculates Scale to maintain aspect ratio of img
+		// const scaleFactor = max_width / imgSize.width;
+		// // console.log("SCALE FACTOR: ", scaleFactor)
 
-		const max_height = imgSize.width * scaleFactor;
-		console.log(max_height);
+		// const max_height = imgSize.width * scaleFactor;
+		// console.log(max_height);
 		
 		
 		memeImg.onload = function (img) {
@@ -83,8 +85,8 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 				angle: 0,
 				left: 0,
 				top: 0,
-				width: max_width,
-				height: max_height,
+				// width: max_width,
+				// height: max_height,
 				selectable: false,
 			});
 			canvas.add(meme);
@@ -105,11 +107,12 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 			//   }
 
 			// Sets canvas size to size of image.
-			canvas.setWidth(meme.width);
-			canvas.setHeight(meme.height);
+			canvas.setWidth(memeImg.width);
+			canvas.setHeight(memeImg.height);
 		};
 		
-		memeImg.src = tempImg;
+		memeImg.src = tempImg
+
 
 		canvas.add(text2);
 		// console.log(memeImg)
@@ -120,7 +123,6 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		}
 
 	},[meme_url])
-
 return (
 		<div>
 			<canvas ref={canvasRef} id="d" className="CanvasC"></canvas>
