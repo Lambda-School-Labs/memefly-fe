@@ -18,11 +18,11 @@ const Register = () => {
 		var { setSubmitting, resetForm } = formikBag;
 		let { username, email, password } = values;
 		console.log(username, email, password);
-		console.log("HANDLE SUBMIT WAS HIT.");
+		// console.log("HANDLE SUBMIT WAS HIT.");
 		try {
 			let config = {
 				method: "POST",
-				url: "http://memefly.herokuapp.com/api/accounts",
+				url: "https://memefly.herokuapp.com/api/accounts",
 				// url:"https://localhost:5000/api/accounts",
 				data: {
 					query: `
