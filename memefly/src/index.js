@@ -13,9 +13,9 @@ import './index.scss';
 import combineReducers from "./store/reducers";
 
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
-const store= createStore(combineReducers, composeEnhancers(applyMiddleware( thunk, logger)));
+const store= createStore(combineReducers, applyMiddleware( thunk, logger));
 
 ReactDOM.render(<Provider store={store}> <Router><App /></Router> </Provider>, document.getElementById('root'));
 
