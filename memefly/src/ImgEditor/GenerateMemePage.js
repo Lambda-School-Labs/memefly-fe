@@ -22,6 +22,7 @@ function GenerateMemePage (props) {
     e.preventDefault();
     setMeme(props.uploadImage())
   }
+  console.log(props.meme_url)
 
     return (
             <div className="MainContainer">
@@ -70,6 +71,7 @@ function GenerateMemePage (props) {
 const mapStateToProps = state => {
   return{
     meme_data: state.memeReducer.meme,
+    meme_url: state.memeReducer.meme.meme_url
   }
 }
 
