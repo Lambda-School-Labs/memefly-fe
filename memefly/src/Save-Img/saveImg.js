@@ -45,7 +45,6 @@ const [savedImg, setSavedImg] = useState("https://imgflip.com/s/meme/Batman-Slap
 
         <button onClick={saveMeme}>SAVE TEST</button>
         
-{/* <input type="file" className="ButtonDesignOne" id="upload" onChange={previewFile}></input> */}
         </>
     );
 }
