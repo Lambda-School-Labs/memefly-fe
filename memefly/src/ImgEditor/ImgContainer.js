@@ -17,7 +17,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		};
 	}
 
-	const textWidth = imgSize.width - 20;
+	const textWidth = 650;
 	const middleOfImage = imgSize.width / 2;
 	const canvasRef = useRef(null);
 
