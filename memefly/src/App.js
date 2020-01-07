@@ -10,8 +10,8 @@ import "./App.scss";
 import Login from "./LoginPage/Login";
 import Register from "./RegisterPage/Register";
 import Header from "./Navigation/Header";
-import ImgContainer from "./ImgEditor/ImgContainer";
 import GenerateMemePage from "./ImgEditor/GenerateMemePage";
+import {LearnMore} from "./learnMore/LearnMore";
 
 
 import Userprofile from "./UserProfile/Userprofile";
@@ -26,6 +26,7 @@ function App() {
         <Route exact path="/" component={GenerateMemePage} />
         <Route path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
+        <Route path="/LearnMore" component={LearnMore} />
         <Route path="/Profile" component={Userprofile} />
       </Switch>
     </>

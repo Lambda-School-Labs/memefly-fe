@@ -1,4 +1,3 @@
-
 /* Font Files */
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700,800,900|Roboto:400,500,500i,700,900&display=swap');
 
@@ -291,7 +290,7 @@ overflow: hidden;
   max-height: 650px;
   // width: inherit;
   // height: inherit;
-  object-fit: contain;
+  object-fit: contain !important;
 
 }
 .canvas-container{
@@ -303,14 +302,7 @@ overflow: hidden;
 }
 .upper-canvas{
   max-width: 650px;
-  max-height: 650px;
-}
-
-#canvas{
-  /* position: absolute; */
-  /* padding-top: 40px; */
-  margin: 10% auto;
-
+  max-height: 90%;
 }
 
 #imageGroup{
@@ -318,6 +310,9 @@ overflow: hidden;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 2rem 0;
+  padding:2rem 0;
+
 }
 
 /* Profile Section */
@@ -414,3 +409,12 @@ overflow: hidden;
   max-height: 4rem;
   //  padding: 1rem 3rem; 
 }
+
+/* Learn More Page */
+.LearnMoreBox{
+  border:1px solid pink;
+  .LearnMoreContainer{
+    background-color: lightblue;
+
+  }
+} 
