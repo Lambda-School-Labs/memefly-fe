@@ -17,7 +17,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		};
 	}
 
-	const textWidth = imgSize.width - 20;
+	const textWidth = 600;
 	const middleOfImage = imgSize.width / 2;
 	const canvasRef = useRef(null);
 
@@ -29,6 +29,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		width: textWidth,
 		fontFamily:'impact',
 		fill:'white',
+		stroke: 'black'
 	});
 
 	console.log("memeURL", meme_url);	
