@@ -159,7 +159,7 @@ export function LearnMore() {
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               MemeFly Ai is a small team of full stack developers and data engineers from Lambda School. 
-              Despite losing 40% of its web team, they continued to push to finish together. 
+              Despite losing 40% of its web team and the rest to a nasty flu, they continued to push to finish together. 
             </Typography>
             {/* <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
