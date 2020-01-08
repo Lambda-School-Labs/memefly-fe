@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Formik, Field, Form, useFormik, ErrorMessage } from "formik";
-import { Redirect, Link } from "react-router-dom";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import {Container} from "@material-ui/core";
 import Facebook from "../components/Facebook";
-import { push_uniq } from "terser";
+import {Redirect} from "react-router-dom";
 
-const Register = () => {
+const Register = (props) => {
 	const [created, setCreated] = useState({
 		created: false
 	});
 
-	console.log(created);
+	// console.log(created);
 
 	async function handleSubmit(values, formikBag) {
-		var { setSubmitting, resetForm } = formikBag;
+		var { resetForm } = formikBag;
 		let { username, email, password } = values;
-		console.log(username, email, password);
+		// console.log(username, email, password);
 		// console.log("HANDLE SUBMIT WAS HIT.");
 		try {
 			let config = {
@@ -33,10 +32,11 @@ const Register = () => {
 				}
 			};
 
-			axios.defaults.withCredentials = true;
+			
+			// axios.defaults.withCredentials = true;
 			let test = await axios(config);
 			console.log(test);
-			window.push("/");
+			props.history.push("/login");
 			// if (!created) {
 			//   console.log("true");
 			//   throw `Email already Taken`;

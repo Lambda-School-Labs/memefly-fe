@@ -68,7 +68,7 @@ const MemeMain = () => {
       "VINI VINI VICHII"
     ];
     // memeData.name;
-    console.log("Top Text:", topText);
+    // console.log("Top Text:", topText);
 
     printAtWordWrap(
       ctx,
@@ -138,11 +138,11 @@ const MemeMain = () => {
     }
     ////END of function that wraps canvas.
 
-    console.log(
-      "%c memeData: ",
-      "background: #222; color: #bada55",
-      memeData.name
-    );
+    // console.log(
+    //   "%c memeData: ",
+    //   "background: #222; color: #bada55",
+    //   memeData.name
+    // );
   } //End of Image Overlay
   const max_width = "650px";
   function renderImage(src) {
@@ -197,7 +197,7 @@ const MemeMain = () => {
         query: `query getMemes{name box url}`
       }
     }).then(res => {
-      console.log(res.data.data.getMemes[0].url);
+      // console.log(res.data.data.getMemes[0].url);
       setAllMemes(res.data.data.getMemes);
       setTemplates(res.data.data.getMemes);
     });
@@ -205,16 +205,16 @@ const MemeMain = () => {
 
   const generateMeme = () => {
     let randomNumber = Math.floor(Math.random() * 104);
-    console.log("ALL MEMES HERE", allMemes[randomNumber]);
+    // console.log("ALL MEMES HERE", allMemes[randomNumber]);
     setMemeData(allMemes[randomNumber]);
-    console.log("MEME NAME HERE: ", memeData.name.toLowerCase());
+    // console.log("MEME NAME HERE: ", memeData.name.toLowerCase());
 
     axios
       .post(
         `http://memeflydsapp-env.cjpgr2xwjn.us-west-2.elasticbeanstalk.com/generate-meme-text?meme_name=${memeData.name.toLowerCase()}`
       )
       .then(res => {
-        console.log("Meme text Axios Response", res.data.meme_text);
+        // console.log("Meme text Axios Response", res.data.meme_text);
         setMemeText(res.data.meme_text);
       })
       .catch(err => console.log(err));

@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const Meme = ({template, onClick}) => {
-    console.log("Meme card Template: ", template)
+    // console.log("Meme card Template: ", template)
     return (
         <div className='MemeCardContainer'>
         <img 

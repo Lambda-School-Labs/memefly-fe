@@ -1,7 +1,6 @@
 import React from "react";
 import { Avatar, Grid, Box } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
-import WelcomeTag from './WelcomeTag';
 
 // Navigation bar when user is logged in with valid credentials
 
@@ -16,7 +15,7 @@ class Navigation extends React.Component {
   handleChange = () => {
     // this.state.cookies.remove("_uid");
     this.props.history.push("/login");
-    console.log("run");
+    // console.log("run");
   };
 
    logOut = () => {
@@ -38,8 +37,6 @@ class Navigation extends React.Component {
         <Box className="UserWrapper">
           <NavLink to="/profile" className="NavButton" id="Profile" alt="Username, access to account">
             <Grid container justify="center" alignItems="center" id="UserNavAvatar">
-
-              <WelcomeTag />
 
               <a className="NavButton" id="LogOut" onClick={this.logOut} alt="LogOut">
                 Log Out

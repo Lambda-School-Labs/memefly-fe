@@ -1,29 +1,41 @@
-import React, { useState } from 'react';
-import { connect, useSelector, useDispatch } from "react-redux"
+import React, { useState, useEffect } from 'react';
+import { connect } from "react-redux"
 import ImgContainer from './ImgContainer';
-import DisplayTemplates from './DisplayTemplates';
 import ImgUpload from "../ImgUpload/ImgUpload.js"
 import {generateMeme, uploadImage} from '../store/actions/actions'
 import { SaveImg } from '../Save-Img/saveImg';
+import * as FileSaver from "file-saver";
+
+
+
+function downloadImg(){
+	const GrabCanvas = document.getElementById("d");
+	// console.log(GrabCanvas);
+	let test = GrabCanvas.toBlob(function(blob){
+		// console.log("blebl", blob)
+		FileSaver.saveAs(blob, "myImg.png")
+	});
+}
+
+
 
 function GenerateMemePage (props) {
   // console.log(props.uploadedimageURL)
   const [meme, setMeme] = useState()
   // const memeURL = useSelector(state => state.memeReducer.meme.meme_url)
-  const dispatch = useDispatch();
   // console.log(memeURL)
   const handleGenerateMeme = e => {
-    console.log("Handled Generate meme")
+    // console.log("Handled Generate meme")
     e.preventDefault();
    setMeme(props.generateMeme());
   }
 
-  const handleUploadImage = e =>{  
-    console.log("Handled Image Upload");
-    e.preventDefault();
-    setMeme(props.uploadImage())
-  }
-  console.log(props.meme_url)
+  useEffect(() => {
+    if(props.meme_url === '') {
+      props.generateMeme();
+    }
+  }, [props.meme_url])
+
 
     return (
             <div className="MainContainer">
@@ -43,6 +55,7 @@ function GenerateMemePage (props) {
                   <button
                     className="ButtonDesignOne"
                     id="SaveMemeButton"
+                    onClick={downloadImg}
                   >
                     SAVE MEME
                   </button>

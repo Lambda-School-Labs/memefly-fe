@@ -3,7 +3,7 @@ import axios from "axios";
 import { Formik, Field, Form } from "formik";
 import { Redirect } from "react-router-dom";
 import * as Yup from "yup";
-import {Container, Grid} from "@material-ui/core";
+import { Grid} from "@material-ui/core";
 import Facebook from "../components/Facebook";
 
 class Login extends React.Component {
@@ -47,7 +47,8 @@ class Login extends React.Component {
 	            `
 				}
 			};
-			axios.defaults.withCredentials = true;
+
+			// axios.defaults.withCredentials = true;
 			let {data:{data:{login:{loggedIn, token}}}} = await axios(config);
 
 			if (!loggedIn) {
