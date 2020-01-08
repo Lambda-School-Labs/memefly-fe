@@ -4,6 +4,20 @@ import ImgContainer from './ImgContainer';
 import ImgUpload from "../ImgUpload/ImgUpload.js"
 import {generateMeme, uploadImage} from '../store/actions/actions'
 import { SaveImg } from '../Save-Img/saveImg';
+import * as FileSaver from "file-saver";
+
+
+
+function downloadImg(){
+	const GrabCanvas = document.getElementById("d");
+	// console.log(GrabCanvas);
+	let test = GrabCanvas.toBlob(function(blob){
+		// console.log("blebl", blob)
+		FileSaver.saveAs(blob, "myImg.png")
+	});
+}
+
+
 
 function GenerateMemePage (props) {
   // console.log(props.uploadedimageURL)
@@ -41,6 +55,7 @@ function GenerateMemePage (props) {
                   <button
                     className="ButtonDesignOne"
                     id="SaveMemeButton"
+                    onClick={downloadImg}
                   >
                     SAVE MEME
                   </button>
