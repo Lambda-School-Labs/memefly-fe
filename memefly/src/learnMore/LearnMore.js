@@ -19,6 +19,7 @@ const Data = {
    team: [{
     name: 'Nick Burkhalter',
     bio: 'Business School -> Musician -> Military -> Data Scientist',
+    role:'Data Scientist',
     lastBook:' Strategy - Lawrence Freedman',
     secretTalent:' I don’t know what language I think in',
     portfolioLink: 'https://nburkhal.github.io/',
@@ -28,17 +29,19 @@ const Data = {
     },
     {
     name: 'Andrew Ogle',
-    bio: '',
-    lastBook:'',
-    secretTalent:'',
-    portfolioLink: '',
-    linkedInLink: 'https://github.com/andrewogle',
-    gitHubLink: '',
+    bio: 'I write code and eat food, sometimes at the same time.',
+    role:'Project Manager',
+    lastBook:'Starsight By Brandon Sanderson',
+    secretTalent:'I can forget what I am talking about while I am talking about it.',
+    portfolioLink: 'andrewryanogle.com',
+    linkedInLink: 'https://www.linkedin.com/in/andrew-ogle/',
+    gitHubLink: 'https://github.com/andrewogle',
     img_url: 'https://avatars3.githubusercontent.com/u/35720141?s=460&v=4'
     },
     {
     name: 'Danniel Vidal',
     bio: '',
+    role:'Full Stack Developer',
     lastBook:'',
     secretTalent:'',
     portfolioLink: '',
@@ -49,6 +52,7 @@ const Data = {
     {
     name: 'Han Lee',
     bio: 'Unprofessional Troll hiding under the bridge with Python and Tensorflow.',
+    role:'Data Scientist',
     lastBook:'Introduction to Natural Language Processing - Jacob Eisenstin',
     secretTalent:'The first rule of Fight Club is...',
     portfolioLink: 'https://leehanchung.github.io/',
@@ -59,6 +63,7 @@ const Data = {
     {
     name: 'Lindsey Cason',
     bio: 'Florida raised, New Orleans transplant. When I’m not coding or listening to live music in the city, you can find me recharging by a body of water with friends.',
+    role:'Full Stack Developer',
     lastBook:'The Magic-Rhonda Byrne',
     secretTalent:'The cherry stem in a knot thing. Nailed it.',
     portfolioLink: 'https://www.linkedin.com/in/lindseyacason/',
@@ -69,16 +74,18 @@ const Data = {
     {
     name: 'Harsh Desai',
     bio: '',
-    lastBook:'',
-    secretTalent:'',
-    portfolioLink: '',
-    linkedInLink: '',
-    gitHubLink: '',
+    role:'Data Scientist',
+    lastBook:'Life 3.0: Being Human in the Age of AI',
+    secretTalent:'You didn’t see this… ',
+    portfolioLink: 'https://hurshdesai.com/',
+    linkedInLink: 'https://www.linkedin.com/in/harsh-d-6b153a155/',
+    gitHubLink: 'https://github.com/hurshd0',
     img_url: 'https://avatars0.githubusercontent.com/u/16807421?s=460&v=4'
     },
     {
     name: 'Derek Etman',
     bio: 'Full stack developer with a degree in music composition',
+    role:'Full Stack Developer',
     lastBook: "You Don't Know JS Scope & Closures",
     secretTalent:'Can cook or bake anything',
     portfolioLink: 'https://www.DerekEtman.com',
@@ -184,6 +191,9 @@ export function LearnMore() {
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
                     {card.name}
+                    </Typography>
+                    <Typography gutterBottom variant="subtitle2" component="h2">
+                    {card.role}
                     </Typography>
                     <Typography>
                       {card.bio}
