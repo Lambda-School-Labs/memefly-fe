@@ -48,7 +48,7 @@ function GenerateMemePage(props) {
 	return (
 		<div className="MainContainer">
 			<div className="MemeContainer">
-				<div style={{padding:'2rem'}}> 
+				<div style={{margin:'2rem auto'}}> 
 					<Alert severity="warning">
 						<AlertTitle>Warning</AlertTitle>
 						*THIS DATA WAS TRAINED ON DATA STRAIGHT FROM THE INTERNET, SOME MESSAGES
