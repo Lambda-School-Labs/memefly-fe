@@ -30,8 +30,6 @@ export const memeReducer = (state = initialState, action) => {
                 meme: action.payload,
             }
         case UPLOAD_IMAGE_START:
-            console.log("in reducer ACTION.PAYLOAD: ", action.payload);
-            console.log("in reducer STATE", state)
             return Object.assign({},state,{ 
                ...state, meme: {...state.meme, 
                 meme_url: action.payload, 
