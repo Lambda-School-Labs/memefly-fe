@@ -22,11 +22,12 @@ class Navigation extends React.Component {
     return (
 
           <div className="linkContainer">
-            <NavLink to="/MemeMain" href="url" className="NavButton" alt="Generate a Meme">
+            
+            <NavLink to="/" href="url" className="NavButton" alt="Generate a Meme">
               Generate-A-Meme
             </NavLink>
 
-            <NavLink to="/" href="url" className="NavButton" alt="Learn More">
+            <NavLink to="/LearnMore" href="url" className="NavButton" alt="Learn More">
               Learn More
             </NavLink>
 

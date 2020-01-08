@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
-import axios from "axios";
+// import React, {useState} from 'react';
+// import axios from "axios";
 
-const WelcomeTag = ()=>{
-    let name = localStorage.getItem("name")
+// const WelcomeTag = ()=>{
+//     let name = localStorage.getItem("name")
     
-    if(name === undefined){
-        return "Welcome!"
-    }else{
-        return `"Welcome,  ${name}!"`
-    }
-}
+//     if(!name){
+//         return "Welcome!"
+//     }else{
+//         return `"Welcome,  ${name}!"`
+//     }
+// }
 
-export default WelcomeTag;
+// export default WelcomeTag;

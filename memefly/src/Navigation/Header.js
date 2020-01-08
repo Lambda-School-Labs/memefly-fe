@@ -1,6 +1,7 @@
 import React from 'react';
 import NavCondition from './NavCondition';
-import WelcomeTag from './WelcomeTag';
+
+
 
 // Container for all Nav bar Items.
 
@@ -16,9 +17,7 @@ const Header = () => {
                 </a>
             </div>
             
-            <div className="NavButton"><WelcomeTag /></div>
             <NavCondition/>
-            
           </div>
         </nav>
       </header>

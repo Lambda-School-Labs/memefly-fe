@@ -1,8 +1,8 @@
-import React, { useState, useEffect, Context, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Meme } from "../ImgEditor/Meme";
+import ImgUpload from "../ImgUpload/ImgUpload";
 import { fabric } from "fabric";
-import { border } from "@material-ui/system";
 
 const MemeMain = () => {
   const [search, setSearch] = useState("");
@@ -18,6 +18,20 @@ const MemeMain = () => {
 
   const [templates, setTemplates] = useState([]);
   const [template, setTemplate] = useState(null);
+
+//FB Login Auth Below
+//Check FBloginNotes.txt
+
+// FB.getLoginStatus(function(response) {
+//   statusChangeCallback(response);
+// });
+
+// function checkLoginState() {
+//   FB.getLoginStatus(function(response) {
+//     statusChangeCallback(response);
+//   });
+// }
+//FB Login Auth Above
 
   const canvas = useRef(null);
 
@@ -130,8 +144,7 @@ const MemeMain = () => {
       memeData.name
     );
   } //End of Image Overlay
-  var image = new Image();
-  const max_width = "500px";
+  const max_width = "650px";
   function renderImage(src) {
     var image = new Image();
 
@@ -174,21 +187,21 @@ const MemeMain = () => {
 
   //on click set search to value, use includes endpoint to return meme that includes search term in the title/tag and set returned meme ur to setMemeData to display in main meme page
 
-  // useEffect(() => {
-  //   //This loads all of the memes into state
-  //   axios({
-  //     url:
-  //       "https://memefly.herokuapp.com/api/memes?query=%7B%0A%20getMemes%7B%0A%09name%0A%20%20box%0A%20%20url%0A%09%7D%0A%7D",
-  //     method: "post",
-  //     data: {
-  //       query: `query getMemes{name box url}`
-  //     }
-  //   }).then(res => {
-  //     console.log(res.data.data.getMemes[0].url);
-  //     setAllMemes(res.data.data.getMemes);
-  //     setTemplates(res.data.data.getMemes);
-  //   });
-  // }, []);
+  useEffect(() => {
+    //This loads all of the memes into state
+    axios({
+      url:
+        "http://memefly.herokuapp.com/api/memes/base",
+      method: "post",
+      data: {
+        query: `query getMemes{name box url}`
+      }
+    }).then(res => {
+      console.log(res.data.data.getMemes[0].url);
+      setAllMemes(res.data.data.getMemes);
+      setTemplates(res.data.data.getMemes);
+    });
+  }, []);
 
   const generateMeme = () => {
     let randomNumber = Math.floor(Math.random() * 104);
@@ -212,8 +225,10 @@ const MemeMain = () => {
     window.open(document.querySelector("screen"));
   };
 
-  var test = new fabric.Canvas('c', {
-    backgroundImage: memeData.url,
+
+  
+  var test = new fabric.Canvas('c',{
+    backgroundImage:memeData.url,
   });
 
   var text = new fabric.Text(memeData.name, { left: 0, top: 0 , fontFamily:'Impact'});
@@ -224,16 +239,7 @@ const MemeMain = () => {
     <div className="MainContainer">
       <div className="MemeContainer">
         <div id="imageGroup screen">
-          {/* Div Props will have variety of pointer events:  */}
-          <canvas
-            ref={canvas}
-            id="canvas"
-            className="cnvs"
-            style={{ width: "500px", display: "hidden" }}
-          >
-            {renderImage(memeData.url)}{" "}
-          </canvas>
-          {/* <canvas id="c" ></canvas> */}
+          <canvas id="c" className="CanvasC" width="500"></canvas>
         </div>
 
         <div className="ImageControlWrapper">
@@ -252,6 +258,7 @@ const MemeMain = () => {
             SAVE MEME
           </button>
         </div>
+          <div class="fb-share-button" data-href="https://www.memeflyai.com" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.memeflyai.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
 
         <>
           <div className="trendingMeme">

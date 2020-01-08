@@ -1,6 +1,7 @@
 import React from "react";
-import { Avatar, Grid } from "@material-ui/core";
+import { Avatar, Grid, Box } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
+import WelcomeTag from './WelcomeTag';
 
 // Navigation bar when user is logged in with valid credentials
 
@@ -18,6 +19,11 @@ class Navigation extends React.Component {
     console.log("run");
   };
 
+   logOut = () => {
+    localStorage.clear();
+    window.location.href = '/';
+  }
+
   render() {
     return (
       <div className="linkContainer">
@@ -25,26 +31,26 @@ class Navigation extends React.Component {
           Generate a Meme
         </NavLink>
         
-        <NavLink to="/" href="url" className="NavButton" alt="Learn More">
+        <NavLink to="/LearnMore" href="url" className="NavButton" alt="Learn More">
           Learn More
         </NavLink>
 
-        <div className="UserWrapper">
-          <NavLink to="/" className="NavButton" id="UserName" alt="Username, access to account">
-            UserName
+        <Box className="UserWrapper">
+          <NavLink to="/profile" className="NavButton" id="Profile" alt="Username, access to account">
             <Grid container justify="center" alignItems="center" id="UserNavAvatar">
-              <Avatar alt="Avatar Image" src="https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg" />
+
+              <WelcomeTag />
+
+              <a className="NavButton" id="LogOut" onClick={this.logOut} alt="LogOut">
+                Log Out
+              </a>
             </Grid>
-          </NavLink>
 
-          <NavLink className="NavButton" id="Profile" to="/profile" alt="Profile">
-           Profile
-          </NavLink>
+              <Avatar to="/profile" alt="Avatar Image" src="https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg" />
 
-          <NavLink className="NavButton" id="LogOut" to="/" alt="LogOut">
-            Log Out
+
           </NavLink>
-        </div>
+        </Box>
       </div>
     );
   }

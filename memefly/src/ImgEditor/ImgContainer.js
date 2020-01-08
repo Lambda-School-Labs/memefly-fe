@@ -1,92 +1,144 @@
-import React, { useEffect, useState } from 'react';
-import Axios from 'axios';
-import { Meme } from './Meme';
+import React, {useEffect, useState, useRef} from "react";
+import { fabric } from "fabric";
+import { connect } from "react-redux";
+import ImgUpload from "../ImgUpload/ImgUpload.js"
 
 
-const objectToQueryParam = obj => {
-    const params = Object.entries(obj).map(([key, value]) => `${key}=${value}`);
-    return "?" + params.join("&");
-  };
+function ImgContainer({meme_url, generated_meme_texts}) {
 
-function ImgContainer() {
+	const [imgSize, setImgSize] = useState({width:400, height:400});
 
-    const [templates, setTemplates] = useState([]);
-    const [template, setTemplate] = useState(null);
-    const [topText, setTopText] = useState("");
-    const [bottomText, setBottomText] = useState("");
-    const [meme, setMeme] = useState(null);
+	// DISPLAYS A RANDOM MESSAGE IF THERE IS MORE THAN 1 CHOICE.
+	function randomMessage() {
+		if(!generated_meme_texts.length){
+			return generated_meme_texts;
+		} else {
+			return generated_meme_texts[Math.floor(Math.random() * generated_meme_texts.length)];	
+		};
+	}
+
+	const textWidth = 600;
+	const middleOfImage = imgSize.width / 2;
+	const canvasRef = useRef(null);
+
+	// PROPERTIES FOR TEXT BOX.
+	var text2 = new fabric.Textbox(randomMessage(), {
+		cursorColor :"blue",
+		top:16,
+		left:20,
+		width: textWidth,
+		fontFamily:'impact',
+		fill:'white',
+		stroke: 'black'
+	});
+
+	console.log("memeURL", meme_url);	
+
+	// function addText() {
+
+	// 	testTextAdd = fabric.Canvas('d');
+
+	// 	var newText = new fabric.Textbox(randomMessage(), {
+	// 		cursorColor :"blue",
+	// 		top:16,
+	// 		// left:middleOfImage,
+	// 		width: textWidth,
+	// 		fontFamily:'impact',
+	// 		fill:'white',
+	// 	});
+
+	// 	testTextAdd.add(newText);
+	// }
+
+	
+	// CANVAS USE EFFECT
+	useEffect(() => {
+		let canvas;
+		let tempImg;
 
 
-    useEffect(() => {
-        Axios
-        .get('https://api.imgflip.com/get_memes')
-        .then(res => {
-            console.log("MEMEFLIP RESPONSE", res.data.data.memes)
-            setTemplates(res.data.data.memes);
-        })
-        .catch(err => console.log(err))
-    },[])
 
-    if(meme) {
-        return (<div>
-            <img src={meme} alt="custom meme" style={{ textAlign: "center" }} />
-        </div>)
-    }
+		// Creates Canvas 
+		canvas = new fabric.Canvas('d',{
+			preserveObjectStacking:true,
+		});
+		
+		
+		
+		// This loads the image
+		tempImg = meme_url;
+		let meme;
+		let memeImg = new Image();
+		// Img is set to a max of 500px
+		const max_width =650;
+		// // Calculates Scale to maintain aspect ratio of img
+		// const scaleFactor = max_width / imgSize.width;
+		// // console.log("SCALE FACTOR: ", scaleFactor)
 
-    return (
-      <div style={{ textAlign: "center" }}>
-        {template && (
-        <form
-        onSubmit={async e => {
-          e.preventDefault();
-          // add logic to create meme from api
-          const params = {
-            template_id: template.id,
-            text0: topText,
-            text1: bottomText,
-            username: "xzk03017",
-            password: "xzk03017@cndps.com"
-          };
-          const response = await fetch(
-            `https://api.imgflip.com/caption_image${objectToQueryParam(
-              params
-            )}`
-          );
-          const json = await response.json();
-          setMeme( json.data.url);
-        }}
-      > 
-            <Meme template={template} />
-            <input 
-            placeholder="Top Text" 
-            value={topText} 
-            onChange={ e => setTopText(e.target.value)}
-            />
-            <input             
-            placeholder="Bottom Text" 
-            value={bottomText} 
-            onChange={ e => setBottomText(e.target.value)}/>
-            <button type="submit">Create Meme</button>
+		// const max_height = imgSize.width * scaleFactor;
+		// console.log(max_height);
+		
+		
+		memeImg.onload = function (img) {
+			
+			// Properties for Meme Image
+			meme = new fabric.Image(memeImg, {
+				angle: 0,
+				left: 0,
+				top: 0,
+				// width: max_width,
+				// height: max_height,
+				selectable: false,
+			});
+			canvas.add(meme);
 
-        </form>    
-        )}
-        {!template && (
-          <>
-            <h2>Pick a Template</h2>
-            {templates.map(template => {
-              return (
-                <Meme
-                  template={template}
-                  onClick={() => {
-                    setTemplate(template);
-                  }}
-                />
-              );
-            })}
-          </>
-        )}
-      </div>
-    );
-};
+			// This is like z-index, this keeps the image behind the text
+			canvas.moveTo(meme, 0);
 
-export default ImgContainer;
+			// Stores Image Dimensions in imgSize as object.
+			setImgSize({
+				width: memeImg.width.toString(),
+				height: memeImg.height.toString()
+			});
+
+			// This Takes in the image and constrains it to a max width of 500px
+			// if (memeImg.width > max_width) {
+			// 	memeImg.height *= max_width / memeImg.height;
+			// 	memeImg.width = max_width;
+			//   }
+
+			// Sets canvas size to size of image.
+			canvas.setWidth(memeImg.width);
+			canvas.setHeight(memeImg.height);
+			const CanvasToSVG = canvas.toSVG()
+			console.log(btoa(CanvasToSVG));
+		};
+		
+		memeImg.src = tempImg
+
+
+		canvas.add(text2);
+		// console.log(memeImg)
+
+		// Cleans up canvas after each new meme is generated
+		return function clean_up () {
+			canvas.dispose();
+		}
+
+
+	},[meme_url])
+return (
+		<div>
+			<canvas ref={canvasRef} id="d" className="CanvasC"></canvas>
+		</div>
+	);
+}
+
+const mapStateToProps = state => {
+	return{
+		meme_url: state.memeReducer.meme.meme_url,
+		generated_meme_texts: state.memeReducer.meme.generated_meme_texts,
+	}
+}
+
+export default connect(mapStateToProps, {ImgContainer}) (ImgContainer);
