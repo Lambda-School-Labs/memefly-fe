@@ -1,7 +1,6 @@
-import React, {useState, useEffect, useRef} from 'react';
-import { connect, useSelector, useDispatch } from 'react-redux'
-import { uploadImageReducer } from '../store/reducers/memeReducer';
-import {generateMeme, uploadImage, UPLOAD_IMAGE_START} from '../store/actions/actions'
+import React, {useState, useEffect} from 'react';
+import { connect, useSelector } from 'react-redux'
+import {uploadImage} from '../store/actions/actions'
 
 export const ImgUpload=(props)=>{
 const [previewURL, setPreviewURL] = useState("https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg");
@@ -30,7 +29,6 @@ const [previewURL, setPreviewURL] = useState("https://imgflip.com/s/meme/Batman-
       useEffect(()=>{
       props.uploadImage(previewURL);
       // console.log(props.uploadImage(previewURL))
-      console.log("I'm HIT!", previewURL)
       },[previewURL]);
 
     // console.log("THIS NEEDS TO MATCH/UPDATE CURRENT STATE", previewURL)
