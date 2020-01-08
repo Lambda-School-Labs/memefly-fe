@@ -24,6 +24,7 @@ const Data = {
     portfolioLink: 'https://nburkhal.github.io/',
     linkedInLink: 'https://www.linkedin.com/in/nick-burkhalter-4b0377108/',
     gitHubLink: 'https://github.com/Nburkhal',
+    img_url: 'https://avatars2.githubusercontent.com/u/6277592?s=460&v=4'
     },
     {
     name: 'Andrew Ogle',
@@ -31,8 +32,9 @@ const Data = {
     lastBook:'',
     secretTalent:'',
     portfolioLink: '',
-    linkedInLink: '',
+    linkedInLink: 'https://github.com/andrewogle',
     gitHubLink: '',
+    img_url: 'https://avatars3.githubusercontent.com/u/35720141?s=460&v=4'
     },
     {
     name: 'Danniel Vidal',
@@ -42,6 +44,7 @@ const Data = {
     portfolioLink: '',
     linkedInLink: '',
     gitHubLink: '',
+    img_url: 'https://avatars2.githubusercontent.com/u/56495634?s=460&v=4'
     },
     {
     name: 'Han Lee',
@@ -51,6 +54,7 @@ const Data = {
     portfolioLink: 'https://leehanchung.github.io/',
     linkedInLink: 'https://www.linkedin.com/in/hanchunglee/',
     gitHubLink: 'https://github.com/leehanchung',
+    img_url: 'https://avatars2.githubusercontent.com/u/4794839?s=460&v=4'
     },
     {
     name: 'Lindsey Cason',
@@ -60,6 +64,7 @@ const Data = {
     portfolioLink: 'https://www.linkedin.com/in/lindseyacason/',
     linkedInLink: ' https://www.linkedin.com/in/lindseyacason/',
     gitHubLink: 'https://github.com/LindseyCason',
+    img_url: 'https://avatars3.githubusercontent.com/u/29295649?s=460&v=4'
     },
     {
     name: 'Harsh Desai',
@@ -69,15 +74,17 @@ const Data = {
     portfolioLink: '',
     linkedInLink: '',
     gitHubLink: '',
+    img_url: 'https://avatars0.githubusercontent.com/u/16807421?s=460&v=4'
     },
     {
     name: 'Derek Etman',
-    bio: '',
+    bio: 'Full stack developer with a degree in music composition',
     lastBook: "You Don't Know JS Scope & Closures",
     secretTalent:'Can cook or bake anything',
     portfolioLink: 'https://www.DerekEtman.com',
     linkedInLink: 'https://www.linkedin.com/in/dereketman/',
-    gitHubLink: 'https://github.com/DerekEtman',  
+    gitHubLink: 'https://github.com/DerekEtman',
+    img_url: 'https://avatars0.githubusercontent.com/u/49086915?s=460&v=4'  
     }
     ]
 };
@@ -128,10 +135,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, ];
 
 export function LearnMore() {
   const classes = useStyles();
+
+  console.log(Data.team)
 
   return (
     <React.Fragment>
@@ -140,19 +148,18 @@ export function LearnMore() {
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Album layout
+              Tiny Team, Big Goals.
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
+              MemeFly Ai is a small team of full stack developers and data engineers from Lambda School. 
+              Despite losing 40% of its web team, they continued to push to finish together. 
             </Typography>
-            <div className={classes.heroButtons}>
+            {/* <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
                   <Button variant="contained" color="primary">
                     Main call to action
-                  </Button>
+                  </Button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
                 </Grid>
                 <Grid item>
                   <Button variant="outlined" color="primary">
@@ -160,34 +167,41 @@ export function LearnMore() {
                   </Button>
                 </Grid>
               </Grid>
-            </div>
+            </div> */}
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map(card => (
+            {Data.team.map(card => (
               <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <Card className={classes.card} >
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
+                    image={card.img_url}
+                    title={card.name}
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                    {card.name}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      {card.bio}
+                    </Typography>
+                    <br/>
+                    <Typography gutterBottom variant="h6" component="h2">
+                    Secret Talent
+                    </Typography>
+                    <Typography>
+                      {card.secretTalent}
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                    <Button size="small" color="primary" href={card.linkedInLink}>
+                      Linked in
                     </Button>
-                    <Button size="small" color="primary">
-                      Edit
+                    <Button size="small" color="primary" href={card.portfolioLink}>
+                      Portfolio
                     </Button>
                   </CardActions>
                 </Card>
@@ -199,10 +213,10 @@ export function LearnMore() {
       {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
+          Thanks for visiting!
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
+          Computers think, so you don't have to!
         </Typography>
         <Copyright />
       </footer>
