@@ -37,8 +37,13 @@ export const generateMeme = () => dispatch => {
     return axios({
         method: "POST",
         // url: "https://memefly.herokuapp.com/api/memes/base",
-        url:"http://localhost:5000/api/memes/base",
+        url:"http://localhost:5000/api/memes/base", 
+        headers: {
+            'Content-Type': `application/json`,
+            'Accept'      : `application/json`
+        },
         data: {
+
             query:  `
             query{
                 generateMeme( rand:true ){
@@ -70,7 +75,7 @@ export const generateMeme = () => dispatch => {
 };
 
 export const uploadImage =(previewURL)=> dispatch =>{
-    console.log("I'M INSIDE THE UPLOAD IMAGE", previewURL);
+    // console.log("I'M INSIDE THE UPLOAD IMAGE", previewURL);
     dispatch({type: UPLOAD_IMAGE_START, payload: previewURL});
     return{
         payload: previewURL,

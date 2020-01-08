@@ -12,12 +12,12 @@ const Register = () => {
 		created: false
 	});
 
-	console.log(created);
+	// console.log(created);
 
 	async function handleSubmit(values, formikBag) {
 		var { setSubmitting, resetForm } = formikBag;
 		let { username, email, password } = values;
-		console.log(username, email, password);
+		// console.log(username, email, password);
 		// console.log("HANDLE SUBMIT WAS HIT.");
 		try {
 			let config = {

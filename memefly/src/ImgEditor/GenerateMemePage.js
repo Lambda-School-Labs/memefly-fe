@@ -13,17 +13,17 @@ function GenerateMemePage (props) {
   const dispatch = useDispatch();
   // console.log(memeURL)
   const handleGenerateMeme = e => {
-    console.log("Handled Generate meme")
+    // console.log("Handled Generate meme")
     e.preventDefault();
    setMeme(props.generateMeme());
   }
 
   const handleUploadImage = e =>{  
-    console.log("Handled Image Upload");
+    // console.log("Handled Image Upload");
     e.preventDefault();
     setMeme(props.uploadImage())
   }
-  console.log(props.meme_url)
+  // console.log(props.meme_url)
 
     return (
             <div className="MainContainer">

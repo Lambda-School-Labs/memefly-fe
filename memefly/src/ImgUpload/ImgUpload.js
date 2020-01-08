@@ -30,7 +30,7 @@ const [previewURL, setPreviewURL] = useState("https://imgflip.com/s/meme/Batman-
       useEffect(()=>{
       props.uploadImage(previewURL);
       // console.log(props.uploadImage(previewURL))
-      console.log("I'm HIT!", previewURL)
+      // console.log("I'm HIT!", previewURL)
       },[previewURL]);
 
     // console.log("THIS NEEDS TO MATCH/UPDATE CURRENT STATE", previewURL)
