@@ -1,7 +1,19 @@
 import React, {useEffect, useState, useRef} from "react";
 import { fabric } from "fabric";
 import { connect } from "react-redux";
+import ImgUpload from "../ImgUpload/ImgUpload.js";
+import * as FileSaver from "file-saver";
+import html2canvas from 'html2canvas';
 import domtoimage from 'dom-to-image';
+
+function downloadImg(){
+	const GrabCanvas = document.getElementById("d");
+	// console.log(GrabCanvas);
+	let test = GrabCanvas.toBlob(function(blob){
+		// console.log("blebl", blob)
+		FileSaver.saveAs(blob, "myImg.png")
+	});
+}
 
 function ImgContainer({meme_url, generated_meme_texts}) {
 
