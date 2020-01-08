@@ -3,6 +3,10 @@ import { fabric } from "fabric";
 import { connect } from "react-redux";
 import ImgUpload from "../ImgUpload/ImgUpload.js";
 import * as FileSaver from "file-saver";
+import {generateMeme, uploadImage} from '../store/actions/actions'
+
+import html2canvas from 'html2canvas';
+import domtoimage from 'dom-to-image';
 
 function downloadImg(){
 	const GrabCanvas = document.getElementById("d");
@@ -12,8 +16,7 @@ function downloadImg(){
 		FileSaver.saveAs(blob, "myImg.png")
 	});
 }
-import html2canvas from 'html2canvas';
-import domtoimage from 'dom-to-image';
+
 
 
 function ImgContainer({meme_url, generated_meme_texts}) {
@@ -47,18 +50,15 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 
 	// CANVAS USE EFFECT
 	useEffect(() => {
+
 		let canvas;
 		let tempImg;
-
-
 
 		// Creates Canvas 
 		canvas = new fabric.Canvas('d',{
 			preserveObjectStacking:true,
 		});
-		
-		
-		
+
 		// This loads the image
 		tempImg = meme_url;
 		let meme;
@@ -114,7 +114,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 			// console.log(btoa(CanvasToSVG));
 		};
 
-		// memeImg.crossOrigin = "anonymous";
+		memeImg.crossOrigin = "anonymous";
 		
 			
 		memeImg.src = tempImg
