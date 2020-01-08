@@ -3,7 +3,7 @@ import axios from "axios";
 import { Formik, Field, Form } from "formik";
 import { Redirect } from "react-router-dom";
 import * as Yup from "yup";
-import {Container, Grid} from "@material-ui/core";
+import { Grid} from "@material-ui/core";
 import Facebook from "../components/Facebook";
 
 class Login extends React.Component {
@@ -37,7 +37,7 @@ class Login extends React.Component {
 			}
 			let config = {
 				method: "POST",
-				url: "http://memefly.herokuapp.com/api/accounts",
+				url: "https://memefly.herokuapp.com/api/accounts",
 				// url:"http://localhost:5000/api/accounts",
 				data: {
 					query: `
@@ -57,6 +57,7 @@ class Login extends React.Component {
 				setSubmitting(false);
 				this.setState({ loggedIn: true });
 			}
+
 
 		} catch (error) {
 			resetForm();

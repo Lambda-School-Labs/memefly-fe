@@ -1,8 +1,7 @@
 import React, {useEffect, useState, useRef} from "react";
 import { fabric } from "fabric";
 import { connect } from "react-redux";
-import ImgUpload from "../ImgUpload/ImgUpload.js"
-
+import domtoimage from 'dom-to-image';
 
 function ImgContainer({meme_url, generated_meme_texts}) {
 
@@ -18,7 +17,6 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 	}
 
 	const textWidth = 600;
-	const middleOfImage = imgSize.width / 2;
 	const canvasRef = useRef(null);
 
 	// PROPERTIES FOR TEXT BOX.
@@ -32,43 +30,24 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		stroke: 'black'
 	});
 
-	console.log("memeURL", meme_url);	
+	// console.log("memeURL", meme_url);	
 
-	// function addText() {
-
-	// 	testTextAdd = fabric.Canvas('d');
-
-	// 	var newText = new fabric.Textbox(randomMessage(), {
-	// 		cursorColor :"blue",
-	// 		top:16,
-	// 		// left:middleOfImage,
-	// 		width: textWidth,
-	// 		fontFamily:'impact',
-	// 		fill:'white',
-	// 	});
-
-	// 	testTextAdd.add(newText);
-	// }
-
-	
 	// CANVAS USE EFFECT
 	useEffect(() => {
+
 		let canvas;
 		let tempImg;
-
-
 
 		// Creates Canvas 
 		canvas = new fabric.Canvas('d',{
 			preserveObjectStacking:true,
 		});
-		
-		
-		
+
 		// This loads the image
 		tempImg = meme_url;
 		let meme;
 		let memeImg = new Image();
+
 		// Img is set to a max of 500px
 		const max_width =650;
 		// // Calculates Scale to maintain aspect ratio of img
@@ -107,27 +86,60 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 			// 	memeImg.width = max_width;
 			//   }
 
+
 			// Sets canvas size to size of image.
 			canvas.setWidth(memeImg.width);
 			canvas.setHeight(memeImg.height);
+
+
+
+			//SAVING IMG FROM FABRICJS
+			const CanvasToSVG = canvas.toSVG()
+			// console.log(btoa(CanvasToSVG));
 		};
+
+		memeImg.crossOrigin = "anonymous";
 		
+			
 		memeImg.src = tempImg
 
-
 		canvas.add(text2);
-		// console.log(memeImg)
+		console.log('mememimg', memeImg)
 
 		// Cleans up canvas after each new meme is generated
 		return function clean_up () {
 			canvas.dispose();
 		}
 
+
 	},[meme_url])
+	function save(){
+		const options = {
+			quality: 0.95,
+			allowTaint: true
+		};
+		const myCanvas = document.getElementById('canvasContainer');
+
+		domtoimage.toJpeg((myCanvas),{ allowTaint: true }).then(function(dataURL){
+			console.log(dataURL)
+		var img = new Image();
+		img.crossOrigin="anonymous";
+		img.src =dataURL;
+		document.body.appendChild(img);
+		}).catch(function(error){
+		console.log('oops, something went wrong!', error)
+	});
+			// html2canvas(document.getElementById('canvasContainer'), { allowTaint: true }).then(function(canvas){
+			// 	document.body.appendChild(canvas);
+			// 	console.log(canvas.toDataURL())
+				//
+			// })
+		}
 return (
 		<div>
 			<canvas ref={canvasRef} id="d" className="CanvasC"></canvas>
 		</div>
+
 	);
 }
 
@@ -135,7 +147,6 @@ const mapStateToProps = state => {
 	return{
 		meme_url: state.memeReducer.meme.meme_url,
 		generated_meme_texts: state.memeReducer.meme.generated_meme_texts,
-
 	}
 }
 
