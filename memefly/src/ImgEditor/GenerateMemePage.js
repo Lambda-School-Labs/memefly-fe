@@ -62,7 +62,7 @@ function GenerateMemePage(props) {
 					<ImgContainer />
 				</div>
 
-				<div className="ImageControlWrapper">
+				<div className="ImageControlWrapper" style={{padding:'2rem'}}>
 					<button
 						onClick={handleGenerateMeme}
 						className="ButtonDesignOne"
