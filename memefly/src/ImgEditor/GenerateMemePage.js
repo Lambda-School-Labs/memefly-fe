@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { connect, useSelector, useDispatch } from "react-redux"
+import { connect } from "react-redux"
 import ImgContainer from './ImgContainer';
-import DisplayTemplates from './DisplayTemplates';
 import ImgUpload from "../ImgUpload/ImgUpload.js"
 import {generateMeme, uploadImage} from '../store/actions/actions'
 import { SaveImg } from '../Save-Img/saveImg';
@@ -10,7 +9,6 @@ function GenerateMemePage (props) {
   // console.log(props.uploadedimageURL)
   const [meme, setMeme] = useState()
   // const memeURL = useSelector(state => state.memeReducer.meme.meme_url)
-  const dispatch = useDispatch();
   // console.log(memeURL)
   const handleGenerateMeme = e => {
     console.log("Handled Generate meme")
@@ -18,12 +16,6 @@ function GenerateMemePage (props) {
    setMeme(props.generateMeme());
   }
 
-  const handleUploadImage = e =>{  
-    console.log("Handled Image Upload");
-    e.preventDefault();
-    setMeme(props.uploadImage())
-  }
-  console.log(props.meme_url)
 
     return (
             <div className="MainContainer">

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Formik, Field, Form, useFormik, ErrorMessage } from "formik";
-import { Redirect, Link } from "react-router-dom";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import {Container} from "@material-ui/core";
 import Facebook from "../components/Facebook";
-import { push_uniq } from "terser";
 
 const Register = () => {
 	const [created, setCreated] = useState({
@@ -15,7 +13,7 @@ const Register = () => {
 	console.log(created);
 
 	async function handleSubmit(values, formikBag) {
-		var { setSubmitting, resetForm } = formikBag;
+		var { resetForm } = formikBag;
 		let { username, email, password } = values;
 		console.log(username, email, password);
 		// console.log("HANDLE SUBMIT WAS HIT.");
