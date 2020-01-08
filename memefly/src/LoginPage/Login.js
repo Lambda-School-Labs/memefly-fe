@@ -47,7 +47,8 @@ class Login extends React.Component {
 	            `
 				}
 			};
-			axios.defaults.withCredentials = true;
+
+			// axios.defaults.withCredentials = true;
 			let {data:{data:{login:{loggedIn, token}}}} = await axios(config);
 
 			if (!loggedIn) {

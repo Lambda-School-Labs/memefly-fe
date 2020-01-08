@@ -3,6 +3,8 @@ import { fabric } from "fabric";
 import { connect } from "react-redux";
 import ImgUpload from "../ImgUpload/ImgUpload.js";
 import * as FileSaver from "file-saver";
+import html2canvas from 'html2canvas';
+import domtoimage from 'dom-to-image';
 
 function downloadImg(){
 	const GrabCanvas = document.getElementById("d");
@@ -12,8 +14,6 @@ function downloadImg(){
 		FileSaver.saveAs(blob, "myImg.png")
 	});
 }
-import html2canvas from 'html2canvas';
-import domtoimage from 'dom-to-image';
 
 
 function ImgContainer({meme_url, generated_meme_texts}) {
@@ -154,7 +154,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 return (
 		<div>
 			<canvas ref={canvasRef} id="d" className="CanvasC"></canvas>
-			<button id="download-image" onClick={downloadImg}>Download Image</button>
+			<button id="download-image" className="buttonDesignOne" onClick={downloadImg}>Download Image</button>
 		</div>
 
 	);
