@@ -32,6 +32,7 @@ const Register = (props) => {
 				}
 			};
 
+			
 			// axios.defaults.withCredentials = true;
 			let test = await axios(config);
 			console.log(test);
