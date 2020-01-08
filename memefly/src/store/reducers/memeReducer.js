@@ -6,7 +6,7 @@ const initialState= {
         fetched:false,
         meme_bounding_box:[],
         meme_id:9999,
-        meme_url:'public/Batman-Slapping-Robin.jpg',
+        meme_url:'https://imgflip.com/s/meme/Batman-Slapping-Robin.jpg',
         generated_meme_texts:["Text Default"],
     },
     status:{
@@ -30,8 +30,6 @@ export const memeReducer = (state = initialState, action) => {
                 meme: action.payload,
             }
         case UPLOAD_IMAGE_START:
-            console.log("in reducer ACTION.PAYLOAD: ", action.payload);
-            console.log("in reducer STATE", state)
             return Object.assign({},state,{ 
                ...state, meme: {...state.meme, 
                 meme_url: action.payload, 

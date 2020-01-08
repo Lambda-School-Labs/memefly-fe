@@ -16,7 +16,7 @@ class Navigation extends React.Component {
   handleChange = () => {
     // this.state.cookies.remove("_uid");
     this.props.history.push("/login");
-    console.log("run");
+    // console.log("run");
   };
 
    logOut = () => {
