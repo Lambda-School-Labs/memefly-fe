@@ -28,7 +28,10 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		};
 	}
 
-	const textWidth = 600;
+	console.log(imgSize)
+	
+
+	const textWidth = imgSize.width/1.1;
 	const canvasRef = useRef(null);
 
 	// PROPERTIES FOR TEXT BOX.
@@ -39,7 +42,8 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		width: textWidth,
 		fontFamily:'impact',
 		fill:'white',
-		stroke: 'black'
+		stroke: 'black',
+		fontSize: 25
 	});
 
 	// console.log("memeURL", meme_url);	
