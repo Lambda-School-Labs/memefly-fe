@@ -4,8 +4,9 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import {Container} from "@material-ui/core";
 import Facebook from "../components/Facebook";
+import {Redirect} from "react-router-dom";
 
-const Register = () => {
+const Register = (props) => {
 	const [created, setCreated] = useState({
 		created: false
 	});
@@ -34,7 +35,7 @@ const Register = () => {
 			// axios.defaults.withCredentials = true;
 			let test = await axios(config);
 			console.log(test);
-			window.push("/");
+			props.history.push("/login");
 			// if (!created) {
 			//   console.log("true");
 			//   throw `Email already Taken`;

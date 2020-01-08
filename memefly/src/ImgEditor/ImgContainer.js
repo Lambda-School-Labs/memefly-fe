@@ -1,7 +1,6 @@
 import React, {useEffect, useState, useRef} from "react";
 import { fabric } from "fabric";
 import { connect } from "react-redux";
-<<<<<<< HEAD
 import ImgUpload from "../ImgUpload/ImgUpload.js";
 import * as FileSaver from "file-saver";
 import html2canvas from 'html2canvas';
@@ -15,9 +14,6 @@ function downloadImg(){
 		FileSaver.saveAs(blob, "myImg.png")
 	});
 }
-=======
-import domtoimage from 'dom-to-image';
->>>>>>> d4221134e9a8e489a670f835f3d9fb27f33ad95d
 
 function ImgContainer({meme_url, generated_meme_texts}) {
 
@@ -154,10 +150,6 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 return (
 		<div>
 			<canvas ref={canvasRef} id="d" className="CanvasC"></canvas>
-<<<<<<< HEAD
-			<button id="download-image" className="buttonDesignOne" onClick={downloadImg}>Download Image</button>
-=======
->>>>>>> d4221134e9a8e489a670f835f3d9fb27f33ad95d
 		</div>
 
 	);
