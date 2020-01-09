@@ -21,11 +21,11 @@
 <br>
 <br>
 
-![MongoDB](http://pluspng.com/logo-mongodb-png-1892.html)
-![GraphiQL](https://raw.githubusercontent.com/JosephWoodward/graphiql-dotnet/master/assets/logo_128_128.png)
+![MongoDB](https://img.shields.io/badge/MongoDB-MongoDB-green)
+![GraphiQL](https://img.shields.io/badge/GraphiQL-GraphiQL-ff69b4)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](www.memefly.netlify.com)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 
