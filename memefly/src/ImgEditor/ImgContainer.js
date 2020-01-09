@@ -5,7 +5,6 @@ import ImgUpload from "../ImgUpload/ImgUpload.js";
 import * as FileSaver from "file-saver";
 import html2canvas from 'html2canvas';
 import domtoimage from 'dom-to-image';
-import html2canvas from 'html2canvas';
 
 function downloadImg(){
 	const GrabCanvas = document.getElementById("d");
@@ -29,6 +28,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		};
 	}
 
+
 	console.log(imgSize)
 	
 
@@ -44,12 +44,9 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		fontFamily:'Alegreya Sans SC',
 		fill:'white',
 		stroke: 'black',
-<<<<<<< HEAD
 		fontWeight: 900,
-		textTransform: 'uppercase'
-=======
-		fontSize: 25
->>>>>>> 5ae5b7b2554f00fe2bedb7eef41442178fbc8792
+		fontSize: 30,
+		textAlign: 'center'
 	});
 
 	// console.log("memeURL", meme_url);	
