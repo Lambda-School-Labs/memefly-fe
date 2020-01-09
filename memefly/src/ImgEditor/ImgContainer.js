@@ -28,6 +28,7 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		};
 	}
 
+
 	console.log(imgSize)
 	
 
@@ -40,10 +41,12 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		top:16,
 		left:20,
 		width: textWidth,
-		fontFamily:'impact',
+		fontFamily:'Alegreya Sans SC',
 		fill:'white',
 		stroke: 'black',
-		fontSize: 25
+		fontWeight: 900,
+		fontSize: 30,
+		textAlign: 'center'
 	});
 
 	// console.log("memeURL", meme_url);	
@@ -118,7 +121,8 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		
 			
 		memeImg.src = tempImg
-
+		// const upperText = text2.toUpperCase();
+		let upperText = (text2.text.toUpperCase())
 		canvas.add(text2);
 		console.log('mememimg', memeImg)
 
@@ -145,11 +149,11 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		}).catch(function(error){
 		console.log('oops, something went wrong!', error)
 	});
-			// html2canvas(document.getElementById('canvasContainer'), { allowTaint: true }).then(function(canvas){
-			// 	document.body.appendChild(canvas);
-			// 	console.log(canvas.toDataURL())
-				//
-			// })
+			html2canvas(document.getElementById('d')).then(function(canvas){
+				document.body.appendChild(canvas);
+				console.log("HELLO", canvas.toDataURL())
+				
+			})
 		}
 return (
 		<div>
