@@ -1,8 +1,20 @@
 import React, {useEffect, useState, useRef} from "react";
 import { fabric } from "fabric";
 import { connect } from "react-redux";
+import ImgUpload from "../ImgUpload/ImgUpload.js";
+import * as FileSaver from "file-saver";
+import html2canvas from 'html2canvas';
 import domtoimage from 'dom-to-image';
 import html2canvas from 'html2canvas';
+
+function downloadImg(){
+	const GrabCanvas = document.getElementById("d");
+	// console.log(GrabCanvas);
+	let test = GrabCanvas.toBlob(function(blob){
+		// console.log("blebl", blob)
+		FileSaver.saveAs(blob, "myImg.png")
+	});
+}
 
 function ImgContainer({meme_url, generated_meme_texts}) {
 
@@ -17,7 +29,10 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		};
 	}
 
-	const textWidth = 600;
+	console.log(imgSize)
+	
+
+	const textWidth = imgSize.width/1.1;
 	const canvasRef = useRef(null);
 
 	// PROPERTIES FOR TEXT BOX.
@@ -29,8 +44,12 @@ function ImgContainer({meme_url, generated_meme_texts}) {
 		fontFamily:'Alegreya Sans SC',
 		fill:'white',
 		stroke: 'black',
+<<<<<<< HEAD
 		fontWeight: 900,
 		textTransform: 'uppercase'
+=======
+		fontSize: 25
+>>>>>>> 5ae5b7b2554f00fe2bedb7eef41442178fbc8792
 	});
 
 	// console.log("memeURL", meme_url);	

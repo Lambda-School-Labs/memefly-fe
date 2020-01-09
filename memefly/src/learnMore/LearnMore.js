@@ -40,13 +40,13 @@ const Data = {
     },
     {
     name: 'Danniel Vidal',
-    bio: '',
+    bio: 'I have been a self taught developer since early 2016 I have experience with multiple languages. Currently I consider JavaScript to be my main language.',
     role:'Full Stack Developer',
-    lastBook:'',
-    secretTalent:'',
-    portfolioLink: '',
-    linkedInLink: '',
-    gitHubLink: '',
+    lastBook:'YDKJS book series ',
+    secretTalent:'Can play piano',
+    portfolioLink: 'https://www.dannyvidal.codes',
+    linkedInLink: 'https://www.linkedin.com/in/danny-vidal-51798919a/',
+    gitHubLink: 'https://github.com/dannyvidal',
     img_url: 'https://avatars2.githubusercontent.com/u/56495634?s=460&v=4'
     },
     {
@@ -73,7 +73,7 @@ const Data = {
     },
     {
     name: 'Harsh Desai',
-    bio: '',
+    bio: 'Stared as Chemist, evolved into Tech, now plan to become AI/ML pro',
     role:'Data Scientist',
     lastBook:'Life 3.0: Being Human in the Age of AI',
     secretTalent:'You didn’t see this… ',
@@ -159,7 +159,7 @@ export function LearnMore() {
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               MemeFly Ai is a small team of full stack developers and data engineers from Lambda School. 
-              Despite losing 40% of its web team, they continued to push to finish together. 
+              Despite losing 40% of its web team and the rest to a nasty flu, they continued to push to finish together. 
             </Typography>
             {/* <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
