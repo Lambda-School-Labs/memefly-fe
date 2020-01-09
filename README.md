@@ -10,9 +10,9 @@
 
 ## 4️⃣ Contributors
 
+🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
 
-
-|                                       [Lindsey Cason](https://github.com/LindseyCason)                                        |                                       [Alex Supriana](https://github.com/asupriana)                                        |                                       [Derek Etman](https://github.com/DerekEtman)                                        |                                       [Danny Vidal](https://github.com/dannyvidal)                                        |                                                                              
+|                                       [Lindsey Cason](https://github.com/LindseyCason)                                        |                                       [Alex Supriana](https://github.com/asupriana)                                        |                                       [Derek Etman](https://github.com/DerekEtman)                                        |                                       [Danny Vidal](https://github.com/dannyvidal)                                        |                                       [ ]()                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
 |                      [<img src="https://avatars3.githubusercontent.com/u/29295649?s=460&v=4" width = "200" />](https://github.com/LindseyCason)                       |                      [<img src="https://avatars3.githubusercontent.com/u/45403274?s=460&v=4" width = "200" />](https://github.com/asupriana)                       |                      [<img src="https://avatars0.githubusercontent.com/u/49086915?s=460&v=4" width = "200" />](https://github.com/DerekEtman)                       |                      [<img src="https://avatars2.githubusercontent.com/u/56495634?s=460&v=4" width = "200" />](https://github.com/dannyvidal)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
 |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/LindseyCason)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/asupriana)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/DerekEtman)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/dannyvidal)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/dannyvidal)             |
@@ -21,21 +21,19 @@
 <br>
 <br>
 
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
-
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![MongoDB](http://pluspng.com/logo-mongodb-png-1892.html)
+![GraphiQL](https://raw.githubusercontent.com/JosephWoodward/graphiql-dotnet/master/assets/logo_128_128.png)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-🚫 more info on using badges [here](https://github.com/badges/shields)
 
 ## Project Overview
 
 1️⃣ [Trello Board](https://trello.com/b/BLp7jI06/memefly)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+1️⃣ [Product Canvas](https://www.notion.so/96b569b46abd4f549e33de477a9690ce?v=866a959890804deb81060db37987a057)
 
 1️⃣ [UX Design files](https://www.figma.com/file/pLBz3CeZOUgf9s2se5qpuk/MemeFly?node-id=0%3A1)
 
